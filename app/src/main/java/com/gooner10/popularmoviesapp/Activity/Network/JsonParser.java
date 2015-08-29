@@ -9,6 +9,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -22,6 +24,7 @@ public class JsonParser {
         @Override
         public void onResponse(JSONArray response) {
             Log.d("MovieActivity",""+response);
+            parseJSONresponse(response);
         }
     }, new Response.ErrorListener() {
         @Override
@@ -30,6 +33,17 @@ public class JsonParser {
         }
     }
     );
+
+    private void parseJSONresponse(JSONArray response) {
+        for(int i = 0; i < response.length(); i++){
+            try {
+                JSONObject jsonObject = (JSONObject) response.get(i);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
 }

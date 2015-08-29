@@ -18,12 +18,12 @@
         android:layout_toEndOf="@+id/imageView"
         android:layout_marginLeft="47dp"
         android:layout_marginStart="47dp"
-        android:id="@+id/textView" />
+        android:id="@+id/titleTextView" />
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+    <!--<RatingBar-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/ratingBar"-->
+        <!--android:layout_below="@+id/textView"-->
+        <!--android:layout_centerHorizontal="true" />-->
 </RelativeLayout>

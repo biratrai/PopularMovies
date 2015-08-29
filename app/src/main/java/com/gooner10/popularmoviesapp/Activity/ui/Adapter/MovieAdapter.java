@@ -1,32 +1,41 @@
 package com.gooner10.popularmoviesapp.Activity.ui.Adapter;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gooner10 on 8/28/15.
  */
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolderData> {
+public class MovieAdapter extends FragmentPagerAdapter {
+    private final List<Fragment> mFragments = new ArrayList<>();
+    private final List<String> mFragmentTitles = new ArrayList<>();
 
-    @Override
-    public ViewHolderData onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    public MovieAdapter(FragmentManager fm) {
+        super(fm);
+    }
+
+    public void addFragment(Fragment fragment, String title) {
+
+        mFragments.add(fragment);
+        mFragmentTitles.add(title);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderData holder, int position) {
-
+    public Fragment getItem(int position) {
+        return mFragments.get(position);
     }
 
     @Override
-    public int getItemCount() {
-        return 0;
+    public int getCount() {
+        return mFragments.size();
     }
 
-    public class ViewHolderData extends RecyclerView.ViewHolder {
-        public ViewHolderData(View itemView) {
-            super(itemView);
-        }
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mFragmentTitles.get(position);
     }
 }

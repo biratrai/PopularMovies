@@ -18,14 +18,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.gooner10.popularmoviesapp.Activity.Network.VolleySingleton;
 import com.gooner10.popularmoviesapp.Activity.ui.Adapter.MovieAdapter;
-import com.gooner10.popularmoviesapp.Activity.ui.Fragments.FavouriteFragment;
 import com.gooner10.popularmoviesapp.Activity.ui.Fragments.MovieFragment;
 import com.gooner10.popularmoviesapp.R;
 
-import org.json.JSONArray;
+import org.json.JSONObject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,7 +47,8 @@ public class MovieActivity extends AppCompatActivity {
     public String LOG_TAG = "MovieActivity";
 
     Fragment mMovieFragment = new MovieFragment();
-    Fragment mFavouriteFragment = new FavouriteFragment();
+//    Fragment mFavouriteFragment = new FavouriteFragment();
+//    private static MovieData mMovideData = new MovieData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,6 @@ public class MovieActivity extends AppCompatActivity {
 
         // Setup ViewPager
         setupViewPager();
-        Log.d(LOG_TAG, "" + mViewPager);
 
         // Initialize Tabs
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -78,7 +77,7 @@ public class MovieActivity extends AppCompatActivity {
         if (mViewPager != null) {
             MovieAdapter mMovieAdapter = new MovieAdapter(getSupportFragmentManager());
             mMovieAdapter.addFragment(mMovieFragment, "Popular Movies");
-            mMovieAdapter.addFragment(mFavouriteFragment, "Favourites");
+//            mMovieAdapter.addFragment(mFavouriteFragment, "Favourites");
             mViewPager.setAdapter(mMovieAdapter);
         }
     }
@@ -98,13 +97,13 @@ public class MovieActivity extends AppCompatActivity {
     }
 
     public void JsonParser() {
-//        final String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=530c5cfd24953abae83df3e614c6d774";
-        final String url = "http://quizzes.fuzzstaging.com/quizzes/mobile/1/data.json";
-
+        final String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=530c5cfd24953abae83df3e614c6d774";
+//        final String url = "http://quizzes.fuzzstaging.com/quizzes/mobile/1/data.json";
+        Log.d("MovieActivity", "JsonParser");
         RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, new Response.Listener<JSONArray>() {
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONArray response) {
+            public void onResponse(JSONObject response) {
                 Log.d("MovieActivity",""+response);
             }
         }, new Response.ErrorListener() {
@@ -112,11 +111,10 @@ public class MovieActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }
-        );
-        requestQueue.add(jsonArrayRequest);
+        });
+        requestQueue.add(jsObjRequest);
 
-    }
+        }
 
     private void setupNavigationView() {
         if (mToolbar != null) {

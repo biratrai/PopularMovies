@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.brai.myapplication.Fragments.FragmentAll">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fragmentMovie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tab RecyclerView">
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/fragmentMovie"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Tab RecyclerView">-->
 
-    </android.support.v7.widget.RecyclerView>
+    <!--</android.support.v7.widget.RecyclerView>-->
 
 </FrameLayout>
