@@ -81,7 +81,7 @@ public class MovieActivity extends AppCompatActivity {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mViewPager);
 
-        ParseJSON();
+//        ParseJSON();
 //        MovieBus.getInstance().register(this);
     }
 

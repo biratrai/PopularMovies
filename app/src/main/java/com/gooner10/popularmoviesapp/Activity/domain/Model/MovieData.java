@@ -1,9 +1,12 @@
 package com.gooner10.popularmoviesapp.Activity.domain.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Gooner10 on 8/28/15.
  */
-public class MovieData {
+public class MovieData implements Parcelable {
 
 
     public final String id;
@@ -56,4 +59,45 @@ public class MovieData {
     public String getmReleaseDate() {
         return mReleaseDate;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(mTitle);
+        parcel.writeString(mOverview);
+        parcel.writeString(mPosterPath);
+        parcel.writeString(mVoteAverage);
+        parcel.writeString(mVoteCount);
+        parcel.writeString(mReleaseDate);
+        parcel.writeString(mPopularity);
+        parcel.writeString(mBackdropPath);
+    }
+
+    public MovieData(Parcel input){
+        id = input.readString();
+        mTitle = input.readString();
+        mOverview = input.readString();
+        mPosterPath = input.readString();
+        mVoteAverage = input.readString();
+        mVoteCount = input.readString();
+        mReleaseDate = input.readString();
+        mPopularity = input.readString();
+        mBackdropPath = input.readString();
+    }
+
+    public static final Parcelable.Creator<MovieData> CREATOR
+            = new Parcelable.Creator<MovieData>() {
+        public MovieData createFromParcel(Parcel in) {
+            return new MovieData(in);
+        }
+
+        public MovieData[] newArray(int size) {
+            return new MovieData[size];
+        }
+    };
 }
