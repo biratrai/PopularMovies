@@ -6,15 +6,18 @@ package com.gooner10.popularmoviesapp.Activity.domain.Model;
 public class MovieData {
 
 
-    public final long id;
+    public final String id;
     public final String mTitle;
     public final String mOverview;
     public final String mPosterPath;
-    public final double mVoteAverage;
-    public final long mVoteCount;
+    public final String mVoteAverage;
+    public final String mVoteCount;
     public final String mReleaseDate;
+    public final String mPopularity;
+    public final String mBackdropPath;
 
-    public MovieData(long id, String mTitle, String overview, String poster_path, double vote_average, long vote_count, String release_date) {
+    public MovieData(String id, String mTitle, String overview, String poster_path, String vote_average,
+                     String vote_count, String release_date, String mPopularity, String mBackdropPath) {
         this.id = id;
         this.mTitle = mTitle;
         this.mOverview = overview;
@@ -22,9 +25,11 @@ public class MovieData {
         this.mVoteAverage = vote_average;
         this.mVoteCount = vote_count;
         this.mReleaseDate = release_date;
+        this.mPopularity = mPopularity;
+        this.mBackdropPath = mBackdropPath;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
@@ -40,11 +45,11 @@ public class MovieData {
         return mPosterPath;
     }
 
-    public double getmVoteAverage() {
+    public String getmVoteAverage() {
         return mVoteAverage;
     }
 
-    public long getmVoteCount() {
+    public String getmVoteCount() {
         return mVoteCount;
     }
 

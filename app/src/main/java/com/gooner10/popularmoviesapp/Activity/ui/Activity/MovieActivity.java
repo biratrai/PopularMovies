@@ -19,15 +19,23 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.gooner10.popularmoviesapp.Activity.Network.JsonParser;
 import com.gooner10.popularmoviesapp.Activity.Network.VolleySingleton;
+import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
 import com.gooner10.popularmoviesapp.Activity.ui.Adapter.MovieAdapter;
+import com.gooner10.popularmoviesapp.Activity.ui.Fragments.FavouriteFragment;
 import com.gooner10.popularmoviesapp.Activity.ui.Fragments.MovieFragment;
 import com.gooner10.popularmoviesapp.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public class MovieActivity extends AppCompatActivity {
 
@@ -47,8 +55,12 @@ public class MovieActivity extends AppCompatActivity {
     public String LOG_TAG = "MovieActivity";
 
     Fragment mMovieFragment = new MovieFragment();
-//    Fragment mFavouriteFragment = new FavouriteFragment();
-//    private static MovieData mMovideData = new MovieData();
+    Fragment mFavouriteFragment = new FavouriteFragment();
+    private static MovieData mMovideData;
+    ArrayList<MovieData> mMovieDataArrayList = new ArrayList<>();
+
+    String id, title, overview, poster_path, vote_average, release_date, backdrop_path, vote_count, popularity;
+    JsonParser jsonParser = new JsonParser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +81,26 @@ public class MovieActivity extends AppCompatActivity {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mViewPager);
 
+        ParseJSON();
+//        MovieBus.getInstance().register(this);
+    }
+
+    private void ParseJSON() {
+//        mMovieDataArrayList = jsonParser.ParseJson();
         JsonParser();
+//        Log.d(LOG_TAG, "ParseJSON" + mMovieDataArrayList);
+    }
+
+    public class parseCompleteEvent {
+        private ArrayList<MovieData> arrayList;
+
+        public parseCompleteEvent(ArrayList<MovieData> dataArrayList) {
+            this.arrayList = dataArrayList;
+        }
+
+        public ArrayList<MovieData> getData() {
+            return arrayList;
+        }
 
     }
 
@@ -77,7 +108,7 @@ public class MovieActivity extends AppCompatActivity {
         if (mViewPager != null) {
             MovieAdapter mMovieAdapter = new MovieAdapter(getSupportFragmentManager());
             mMovieAdapter.addFragment(mMovieFragment, "Popular Movies");
-//            mMovieAdapter.addFragment(mFavouriteFragment, "Favourites");
+            mMovieAdapter.addFragment(mFavouriteFragment, "Favourites");
             mViewPager.setAdapter(mMovieAdapter);
         }
     }
@@ -96,15 +127,16 @@ public class MovieActivity extends AppCompatActivity {
         }
     }
 
+
     public void JsonParser() {
         final String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=530c5cfd24953abae83df3e614c6d774";
-//        final String url = "http://quizzes.fuzzstaging.com/quizzes/mobile/1/data.json";
         Log.d("MovieActivity", "JsonParser");
         RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("MovieActivity",""+response);
+                Log.d("MovieActivity", "" + response);
+                parseJSONresponse(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -114,7 +146,38 @@ public class MovieActivity extends AppCompatActivity {
         });
         requestQueue.add(jsObjRequest);
 
+    }
+
+    private void parseJSONresponse(JSONObject response) {
+        try {
+            String jsonString = response.getString("results");
+
+            JSONArray jsonArray = new JSONArray(jsonString);
+            Log.i(LOG_TAG, "Array" + jsonArray.getClass());
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+                id = jsonObject.getString("id");
+                title = jsonObject.getString("original_title");
+                overview = jsonObject.getString("overview");
+                release_date = jsonObject.getString("release_date");
+                poster_path = jsonObject.getString("poster_path");
+                backdrop_path = jsonObject.getString("backdrop_path");
+                vote_average = jsonObject.getString("vote_average");
+                vote_count = jsonObject.getString("vote_count");
+                vote_average = jsonObject.getString("vote_average");
+                popularity = jsonObject.getString("popularity");
+                mMovideData = new MovieData(id, title, overview, poster_path, vote_average, vote_count,
+                        release_date, popularity, backdrop_path);
+                mMovieDataArrayList.add(mMovideData);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        Log.d(LOG_TAG, "" + mMovieDataArrayList);
+//        EventBus.getDefault().postSticky(mMovieDataArrayList);
+
+    }
 
     private void setupNavigationView() {
         if (mToolbar != null) {
@@ -149,5 +212,11 @@ public class MovieActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
