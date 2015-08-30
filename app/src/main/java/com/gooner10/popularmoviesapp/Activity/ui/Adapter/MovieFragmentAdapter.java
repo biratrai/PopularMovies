@@ -4,23 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.gooner10.popularmoviesapp.Activity.MovieBus.MovieBus;
-import com.gooner10.popularmoviesapp.Activity.MovieBus.MovieDetailBusEvent;
+import com.gooner10.popularmoviesapp.Activity.MovieBus.OnItemClickEvent;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.Constants;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
 import com.gooner10.popularmoviesapp.Activity.ui.Activity.MovieDetail;
 import com.gooner10.popularmoviesapp.R;
-import com.squareup.otto.Bus;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Gooner10 on 8/29/15.
@@ -47,7 +46,6 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
     @Override
     public void onBindViewHolder(ViewHolderData holder, final int position) {
         MovieData movie = mMovieData.get(position);
-        Log.d("TAG",""+movie.getmPosterPath());
         Picasso.with(mContext)
                 .load(Constants.POSTER_PATH+movie.getmPosterPath())
                 .resize(250, 300)
@@ -66,11 +64,8 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
                 intent.putExtras(bundle);
                 context.startActivity(intent);
 
-                // Send data to Bus
-                Bus bus = MovieBus.getInstance();
-//                MovieDetailBusEvent movieDetailBusEvent = new MovieDetailBusEvent("My Movie");
-                MovieDetailBusEvent movieDetailBusEvent = new MovieDetailBusEvent(bundle);
-                bus.post(movieDetailBusEvent);
+                // Get and Post the event
+                EventBus.getDefault().postSticky(new OnItemClickEvent(bundle));
             }
         });
     }

@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 
 
-public class MovieFragment extends Fragment {
+public class MovieFragment extends Fragment{
     private static ArrayList<MovieData> mPopularDataArrayList;
     private static MovieData mMovideData;
     ArrayList<MovieData> mMovieDataArrayList = new ArrayList<>();
@@ -122,4 +122,5 @@ public class MovieFragment extends Fragment {
 //      EventBus.getDefault().postSticky(mMovieDataArrayList);
 
     }
+
 }
