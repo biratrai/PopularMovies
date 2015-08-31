@@ -9,21 +9,37 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:background="@drawable/ic_launcher"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Movie Title"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageView"
         android:layout_toEndOf="@+id/imageView"
         android:layout_marginLeft="47dp"
         android:layout_marginStart="47dp"
-        android:id="@+id/titleTextView" />
+        android:id="@+id/titleTextView"
+        android:layout_marginTop="14dp"/>
 
-    <!--<RatingBar-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/ratingBar"-->
-        <!--android:layout_below="@+id/textView"-->
-        <!--android:layout_centerHorizontal="true" />-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medium Text"
+        android:id="@+id/releaseDateTextView"
+        android:layout_below="@+id/titleTextView"
+        android:layout_alignLeft="@+id/titleTextView"
+        android:layout_alignStart="@+id/titleTextView" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar"
+        android:layout_below="@+id/releaseDateTextView"
+        android:layout_alignLeft="@+id/releaseDateTextView"
+        android:layout_alignStart="@+id/releaseDateTextView"
+        android:layout_alignRight="@+id/titleTextView"
+        android:layout_alignEnd="@+id/titleTextView"
+        android:layout_margin="10dp"/>
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.gooner10.popularmoviesapp.Activity.MovieBus.OnItemClickEvent;
@@ -53,6 +54,8 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
                 .error(R.drawable.ic_done)
                 .into(holder.movieImageView);
         holder.titleTextView.setText(movie.getmTitle());
+        holder.dateTextView.setText("Release Date: "+movie.getmReleaseDate());
+        holder.ratingBar.setRating(Float.parseFloat("2.0"));
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,12 +82,16 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
         public final View mView;
         public final ImageView movieImageView;
         public final TextView titleTextView;
+        public final TextView dateTextView;
+        public final RatingBar ratingBar;
 
         public ViewHolderData(View itemView) {
             super(itemView);
             mView = itemView;
             movieImageView = (ImageView) itemView.findViewById(R.id.imageView);
             titleTextView = (TextView) itemView.findViewById(R.id.titleTextView);
+            dateTextView = (TextView) itemView.findViewById(R.id.releaseDateTextView);
+            ratingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
         }
     }
 
