@@ -15,7 +15,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.gooner10.popularmoviesapp.Activity.MovieBus.MovieBus;
 import com.gooner10.popularmoviesapp.Activity.Network.VolleySingleton;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
 import com.gooner10.popularmoviesapp.Activity.ui.Adapter.MovieFragmentAdapter;
@@ -50,7 +49,7 @@ public class MovieFragment extends Fragment{
                              Bundle savedInstanceState) {
 
         // Register to the bus
-        MovieBus.getInstance().register(this);
+//        MovieBus.getInstance().register(this);
 
         JsonParser();
 
