@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.MovieBus;
+package com.gooner10.popularmoviesapp.Activity.movieBus;
 
 import android.os.Bundle;
 

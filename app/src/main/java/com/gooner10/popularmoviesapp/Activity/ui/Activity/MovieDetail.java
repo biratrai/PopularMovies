@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.ui.Activity;
+package com.gooner10.popularmoviesapp.Activity.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.gooner10.popularmoviesapp.Activity.MovieBus.OnItemClickEvent;
+import com.gooner10.popularmoviesapp.Activity.movieBus.OnItemClickEvent;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.Constants;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
 import com.gooner10.popularmoviesapp.R;
@@ -29,6 +29,12 @@ public class MovieDetail extends AppCompatActivity {
     @Bind(R.id.movie_description)
     TextView movieDescription;
 
+    @Bind(R.id.vote_average)
+    TextView voteAverage;
+
+    @Bind(R.id.release_date)
+    TextView releaseDate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +43,26 @@ public class MovieDetail extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // assert the null pointer exception error
+        assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Register to the bus
         EventBus.getDefault().registerSticky(this);
 
+        // Set the image view to the Detail Activity
+        loadBackdrop();
+
+        // Set the relevant text to the field
         movieDescription.setText(movie.mOverview);
+        releaseDate.setText(movie.getmReleaseDate());
+        voteAverage.setText(movie.getmVoteAverage());
+
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(movie.getmTitle());
-        loadBackdrop();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.detail_fab_button);
         fab.setOnClickListener(new View.OnClickListener() {

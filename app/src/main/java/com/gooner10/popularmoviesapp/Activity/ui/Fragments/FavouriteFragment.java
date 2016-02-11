@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.ui.Fragments;
+package com.gooner10.popularmoviesapp.Activity.ui.fragments;
 
 
 import android.os.Bundle;

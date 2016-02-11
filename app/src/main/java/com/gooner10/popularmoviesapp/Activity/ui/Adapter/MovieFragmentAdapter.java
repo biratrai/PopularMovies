@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.ui.Adapter;
+package com.gooner10.popularmoviesapp.Activity.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.gooner10.popularmoviesapp.Activity.MovieBus.OnItemClickEvent;
+import com.gooner10.popularmoviesapp.Activity.movieBus.OnItemClickEvent;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.Constants;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
-import com.gooner10.popularmoviesapp.Activity.ui.Activity.MovieDetail;
+import com.gooner10.popularmoviesapp.Activity.ui.activity.MovieDetail;
 import com.gooner10.popularmoviesapp.R;
 import com.squareup.picasso.Picasso;
 

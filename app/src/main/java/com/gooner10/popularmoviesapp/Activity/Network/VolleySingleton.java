@@ -1,8 +1,8 @@
-package com.gooner10.popularmoviesapp.Activity.Network;
+package com.gooner10.popularmoviesapp.Activity.network;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.gooner10.popularmoviesapp.Activity.Extras.MyApplication;
+import com.gooner10.popularmoviesapp.Activity.extras.MyApplication;
 
 /**
  * Volley Singleton Class

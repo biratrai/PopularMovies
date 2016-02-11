@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.Network;
+package com.gooner10.popularmoviesapp.Activity.network;
 
 import android.util.Log;
 

@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.ui.Fragments;
+package com.gooner10.popularmoviesapp.Activity.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,9 +15,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.gooner10.popularmoviesapp.Activity.Network.VolleySingleton;
+import com.gooner10.popularmoviesapp.Activity.network.VolleySingleton;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
-import com.gooner10.popularmoviesapp.Activity.ui.Adapter.MovieFragmentAdapter;
+import com.gooner10.popularmoviesapp.Activity.ui.adapter.MovieFragmentAdapter;
 import com.gooner10.popularmoviesapp.R;
 
 import org.json.JSONArray;

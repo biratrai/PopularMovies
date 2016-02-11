@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.ui.Activity;
+package com.gooner10.popularmoviesapp.Activity.network;
 
 /**
  * Rating Singleton Class

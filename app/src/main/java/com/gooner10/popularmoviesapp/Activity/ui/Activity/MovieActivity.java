@@ -1,5 +1,6 @@
-package com.gooner10.popularmoviesapp.Activity.ui.Activity;
+package com.gooner10.popularmoviesapp.Activity.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,21 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.gooner10.popularmoviesapp.Activity.Network.VolleySingleton;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
-import com.gooner10.popularmoviesapp.Activity.ui.Adapter.MovieAdapter;
-import com.gooner10.popularmoviesapp.Activity.ui.Fragments.FavouriteFragment;
-import com.gooner10.popularmoviesapp.Activity.ui.Fragments.MovieFragment;
+import com.gooner10.popularmoviesapp.Activity.ui.adapter.MovieAdapter;
+import com.gooner10.popularmoviesapp.Activity.ui.fragments.FavouriteFragment;
+import com.gooner10.popularmoviesapp.Activity.ui.fragments.MovieFragment;
 import com.gooner10.popularmoviesapp.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -65,7 +56,6 @@ public class MovieActivity extends AppCompatActivity {
     TabLayout mTabLayout;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,32 +73,10 @@ public class MovieActivity extends AppCompatActivity {
         // Setup ViewPager
         setupViewPager();
 
+        setUpHamburger();
         // Initialize Tabs
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mViewPager);
-
-    }
-
-    private void ParseJSON() {
-//        mMovieDataArrayList = jsonParser.ParseJson();
-        JsonParser();
-//        Log.d(LOG_TAG, "ParseJSON" + mMovieDataArrayList);
-    }
-
-//    public class ButtonClick(){
-//        Toast.makeText(this,"This is toast",Toast.LENGTH_SHORT).show();
-//    }
-
-    public class parseCompleteEvent {
-        private final ArrayList<MovieData> arrayList;
-
-        public parseCompleteEvent(ArrayList<MovieData> dataArrayList) {
-            this.arrayList = dataArrayList;
-        }
-
-        public ArrayList<MovieData> getData() {
-            return arrayList;
-        }
 
     }
 
@@ -133,56 +101,6 @@ public class MovieActivity extends AppCompatActivity {
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
         }
-    }
-
-    private void JsonParser() {
-        final String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=530c5cfd24953abae83df3e614c6d774";
-        Log.d("MovieActivity", "JsonParser");
-        RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d("MovieActivity", "" + response);
-                parseJSONresponse(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-        requestQueue.add(jsObjRequest);
-
-    }
-
-    private void parseJSONresponse(JSONObject response) {
-        try {
-            String jsonString = response.getString("results");
-
-            JSONArray jsonArray = new JSONArray(jsonString);
-            Log.i(LOG_TAG, "Array" + jsonArray.getClass());
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-                String id = jsonObject.getString("id");
-                title = jsonObject.getString("original_title");
-                overview = jsonObject.getString("overview");
-                release_date = jsonObject.getString("release_date");
-                poster_path = jsonObject.getString("poster_path");
-                backdrop_path = jsonObject.getString("backdrop_path");
-                vote_average = jsonObject.getString("vote_average");
-                vote_count = jsonObject.getString("vote_count");
-                vote_average = jsonObject.getString("vote_average");
-                popularity = jsonObject.getString("popularity");
-                MovieData mMovideData = new MovieData(id, title, overview, poster_path, vote_average, vote_count,
-                        release_date, popularity, backdrop_path);
-                mMovieDataArrayList.add(mMovideData);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        Log.d(LOG_TAG, "" + mMovieDataArrayList);
-
     }
 
     private void setupNavigationView() {
@@ -214,7 +132,7 @@ public class MovieActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            startActivity(new Intent(MovieActivity.this, SettingsActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

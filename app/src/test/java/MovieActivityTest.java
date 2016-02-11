@@ -1,4 +1,4 @@
-import com.gooner10.popularmoviesapp.Activity.ui.Activity.MovieActivity;
+import com.gooner10.popularmoviesapp.Activity.ui.activity.MovieActivity;
 
 import org.junit.Before;
 import org.junit.Test;
