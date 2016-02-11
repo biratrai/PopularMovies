@@ -11,7 +11,12 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -23,8 +28,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
+    // app dependencies
     apt 'com.bluelinelabs:logansquare-compiler:1.1.0'
-
+    compile 'com.android.support:support-annotations:23.0.1'
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.android.support:design:23.0.0'
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -36,4 +42,17 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.0.0'
     compile 'com.github.bumptech.glide:glide:3.6.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Testing Dependencies
+    testCompile 'org.robolectric:robolectric:3.0'
+
+    // Espresso Testing Dependencies
+    androidTestCompile 'com.android.support:support-annotations:23.0.1'
+    androidTestCompile 'com.android.support.test:runner:0.3'
+    androidTestCompile 'com.android.support.test:rules:0.3'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
+
+    // add this for intent mocking support
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2'
+
 }

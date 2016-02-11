@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import de.greenrobot.event.EventBus;
 
 /**
- * Created by Gooner10 on 8/29/15.
+ * Fragment adapter for the MovieFragment
  */
 
 public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdapter.ViewHolderData> {
@@ -40,22 +40,25 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
     @Override
     public ViewHolderData onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.single_movie_row, parent, false);
-        ViewHolderData viewHolderData = new ViewHolderData(view);
-        return viewHolderData;
+        return new ViewHolderData(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolderData holder, final int position) {
         MovieData movie = mMovieData.get(position);
         Picasso.with(mContext)
-                .load(Constants.POSTER_PATH+movie.getmPosterPath())
+                .load(Constants.POSTER_PATH + movie.getmPosterPath())
                 .resize(250, 300)
                 .placeholder(R.drawable.ic_headset)
                 .error(R.drawable.ic_done)
                 .into(holder.movieImageView);
         holder.titleTextView.setText(movie.getmTitle());
-        holder.dateTextView.setText("Release Date: "+movie.getmReleaseDate());
-        holder.ratingBar.setRating(Float.parseFloat("2.0"));
+        holder.dateTextView.setText("Release Date: " + movie.getmReleaseDate());
+
+        float movie_rating = Float.parseFloat(movie.getmVoteAverage()) / 2;
+
+        holder.ratingBar.setRating((movie_rating));
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

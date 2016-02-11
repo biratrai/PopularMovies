@@ -26,14 +26,15 @@ public class JsonParser {
     String id, title, overview, poster_path, vote_average, release_date, backdrop_path, vote_count, popularity;
 
     public ArrayList<MovieData> ParseJson() {
-        final String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=530c5cfd24953abae83df3e614c6d774";
+//        final String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=530c5cfd24953abae83df3e614c6d774";
+        final String url = "https://www.okcupid.com/matchSample.json";
         Log.d("MovieActivity", "JsonParser");
         RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("MovieActivity", "" + response);
-               mMovieArrayList = parseJSONresponse(response);
+                Log.d("MovieActivity", "response " + response);
+//               mMovieArrayList = parseJSONresponse(response);
             }
         }, new Response.ErrorListener() {
             @Override

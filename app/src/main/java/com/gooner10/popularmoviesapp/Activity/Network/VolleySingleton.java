@@ -5,7 +5,7 @@ import com.android.volley.toolbox.Volley;
 import com.gooner10.popularmoviesapp.Activity.Extras.MyApplication;
 
 /**
- * Created by Gooner10 on 8/28/15.
+ * Volley Singleton Class
  */
 public class VolleySingleton {
 

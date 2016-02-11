@@ -19,7 +19,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.gooner10.popularmoviesapp.Activity.Network.JsonParser;
 import com.gooner10.popularmoviesapp.Activity.Network.VolleySingleton;
 import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
 import com.gooner10.popularmoviesapp.Activity.ui.Adapter.MovieAdapter;
@@ -38,6 +37,21 @@ import butterknife.ButterKnife;
 
 public class MovieActivity extends AppCompatActivity {
 
+    private final String LOG_TAG = "MovieActivity";
+
+    private final Fragment mMovieFragment = new MovieFragment();
+    private final Fragment mFavouriteFragment = new FavouriteFragment();
+    private final ArrayList<MovieData> mMovieDataArrayList = new ArrayList<>();
+
+    private String title;
+    private String overview;
+    private String poster_path;
+    private String vote_average;
+    private String release_date;
+    private String backdrop_path;
+    private String vote_count;
+    private String popularity;
+
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
 
@@ -50,21 +64,14 @@ public class MovieActivity extends AppCompatActivity {
     @Bind(R.id.tabs)
     TabLayout mTabLayout;
 
-    private ActionBarDrawerToggle mActionDrawerToggle;
-    public String LOG_TAG = "MovieActivity";
 
-    Fragment mMovieFragment = new MovieFragment();
-    Fragment mFavouriteFragment = new FavouriteFragment();
-    private static MovieData mMovideData;
-    ArrayList<MovieData> mMovieDataArrayList = new ArrayList<>();
-
-    String id, title, overview, poster_path, vote_average, release_date, backdrop_path, vote_count, popularity;
-    JsonParser jsonParser = new JsonParser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+
+        // Bind all of the view
         ButterKnife.bind(this);
 
         // Setup Toolbar
@@ -80,8 +87,6 @@ public class MovieActivity extends AppCompatActivity {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mViewPager);
 
-//        ParseJSON();
-//        MovieBus.getInstance().register(this);
     }
 
     private void ParseJSON() {
@@ -90,8 +95,12 @@ public class MovieActivity extends AppCompatActivity {
 //        Log.d(LOG_TAG, "ParseJSON" + mMovieDataArrayList);
     }
 
+//    public class ButtonClick(){
+//        Toast.makeText(this,"This is toast",Toast.LENGTH_SHORT).show();
+//    }
+
     public class parseCompleteEvent {
-        private ArrayList<MovieData> arrayList;
+        private final ArrayList<MovieData> arrayList;
 
         public parseCompleteEvent(ArrayList<MovieData> dataArrayList) {
             this.arrayList = dataArrayList;
@@ -114,7 +123,7 @@ public class MovieActivity extends AppCompatActivity {
 
     private void setUpHamburger() {
         // Set up the hamburger icon to open and close the drawer
-        mActionDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
+        ActionBarDrawerToggle mActionDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
                 R.string.drawer_close);
         mDrawerLayout.setDrawerListener(mActionDrawerToggle);
         mActionDrawerToggle.syncState();
@@ -126,8 +135,7 @@ public class MovieActivity extends AppCompatActivity {
         }
     }
 
-
-    public void JsonParser() {
+    private void JsonParser() {
         final String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=530c5cfd24953abae83df3e614c6d774";
         Log.d("MovieActivity", "JsonParser");
         RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
@@ -155,7 +163,7 @@ public class MovieActivity extends AppCompatActivity {
             Log.i(LOG_TAG, "Array" + jsonArray.getClass());
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-                id = jsonObject.getString("id");
+                String id = jsonObject.getString("id");
                 title = jsonObject.getString("original_title");
                 overview = jsonObject.getString("overview");
                 release_date = jsonObject.getString("release_date");
@@ -165,7 +173,7 @@ public class MovieActivity extends AppCompatActivity {
                 vote_count = jsonObject.getString("vote_count");
                 vote_average = jsonObject.getString("vote_average");
                 popularity = jsonObject.getString("popularity");
-                mMovideData = new MovieData(id, title, overview, poster_path, vote_average, vote_count,
+                MovieData mMovideData = new MovieData(id, title, overview, poster_path, vote_average, vote_count,
                         release_date, popularity, backdrop_path);
                 mMovieDataArrayList.add(mMovideData);
             }
@@ -174,7 +182,6 @@ public class MovieActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Log.d(LOG_TAG, "" + mMovieDataArrayList);
-//        EventBus.getDefault().postSticky(mMovieDataArrayList);
 
     }
 

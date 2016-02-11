@@ -4,19 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by Gooner10 on 8/28/15.
+ * Movie Data Model for the pojo
  */
 public class MovieData implements Parcelable {
 
 
-    public final String id;
-    public final String mTitle;
+    private final String id;
+    private final String mTitle;
     public final String mOverview;
-    public final String mPosterPath;
-    public final String mVoteAverage;
-    public final String mVoteCount;
-    public final String mReleaseDate;
-    public final String mPopularity;
+    private final String mPosterPath;
+    private final String mVoteAverage;
+    private final String mVoteCount;
+    private final String mReleaseDate;
+    private final String mPopularity;
     public final String mBackdropPath;
 
     public MovieData(String id, String mTitle, String overview, String poster_path, String vote_average,
@@ -78,7 +78,7 @@ public class MovieData implements Parcelable {
         parcel.writeString(mBackdropPath);
     }
 
-    public MovieData(Parcel input){
+    private MovieData(Parcel input){
         id = input.readString();
         mTitle = input.readString();
         mOverview = input.readString();

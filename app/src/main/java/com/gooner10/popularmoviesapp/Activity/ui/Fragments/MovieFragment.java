@@ -27,15 +27,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import butterknife.Bind;
-
+/**
+ * Fragment to display the Movie List
+ */
 
 public class MovieFragment extends Fragment{
-    private static ArrayList<MovieData> mPopularDataArrayList;
-    private static MovieData mMovideData;
-    ArrayList<MovieData> mMovieDataArrayList = new ArrayList<>();
-    public String LOG_TAG = "MovieFragment";
-    String id, title, overview, poster_path, vote_average, release_date, backdrop_path, vote_count, popularity;
-    private MovieFragmentAdapter mMovieAdapter;
+    private final ArrayList<MovieData> mMovieDataArrayList = new ArrayList<>();
+    private final String LOG_TAG = "MovieFragment";
 
     @Bind(R.id.recyclerViewMovie)
     RecyclerView mMovieRecyclerView;
@@ -57,7 +55,7 @@ public class MovieFragment extends Fragment{
         mMovieRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewMovie);
         mMovieRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mMovieAdapter = new MovieFragmentAdapter(getActivity(), mMovieDataArrayList);
+        MovieFragmentAdapter mMovieAdapter = new MovieFragmentAdapter(getActivity(), mMovieDataArrayList);
         mMovieRecyclerView.setAdapter(mMovieAdapter);
 
         return view;
@@ -71,9 +69,10 @@ public class MovieFragment extends Fragment{
     }
 
 
-    public void JsonParser() {
+    private void JsonParser() {
         final String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=530c5cfd24953abae83df3e614c6d774";
         Log.d("MovieActivity", "JsonParser");
+//        final String url = "https://www.okcupid.com/matchSample.json";
         RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
@@ -99,17 +98,16 @@ public class MovieFragment extends Fragment{
             Log.i(LOG_TAG, "Array" + jsonArray.getClass());
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-                id = jsonObject.getString("id");
-                title = jsonObject.getString("original_title");
-                overview = jsonObject.getString("overview");
-                release_date = jsonObject.getString("release_date");
-                poster_path = jsonObject.getString("poster_path");
-                backdrop_path = jsonObject.getString("backdrop_path");
-                vote_average = jsonObject.getString("vote_average");
-                vote_count = jsonObject.getString("vote_count");
-                vote_average = jsonObject.getString("vote_average");
-                popularity = jsonObject.getString("popularity");
-                mMovideData = new MovieData(id, title, overview, poster_path, vote_average, vote_count,
+                String id = jsonObject.getString("id");
+                String title = jsonObject.getString("original_title");
+                String overview = jsonObject.getString("overview");
+                String release_date = jsonObject.getString("release_date");
+                String poster_path = jsonObject.getString("poster_path");
+                String backdrop_path = jsonObject.getString("backdrop_path");
+                String vote_average = jsonObject.getString("vote_average");
+                String vote_count = jsonObject.getString("vote_count");
+                String popularity = jsonObject.getString("popularity");
+                MovieData mMovideData = new MovieData(id, title, overview, poster_path, vote_average, vote_count,
                         release_date, popularity, backdrop_path);
                 mMovieDataArrayList.add(mMovideData);
             }

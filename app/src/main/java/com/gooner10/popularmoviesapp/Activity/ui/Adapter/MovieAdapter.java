@@ -22,6 +22,7 @@ public class MovieAdapter extends FragmentPagerAdapter {
 
         mFragments.add(fragment);
         mFragmentTitles.add(title);
+
     }
 
     @Override
