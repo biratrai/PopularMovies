@@ -25,9 +25,9 @@ import de.greenrobot.event.EventBus;
  */
 
 public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdapter.ViewHolderData> {
-    public LayoutInflater layoutInflater;
-    public Context mContext;
-    public ArrayList<MovieData> mMovieData;
+    private LayoutInflater layoutInflater;
+    private Context mContext;
+    private ArrayList<MovieData> mMovieData;
 
     public MovieFragmentAdapter(Context context, ArrayList<MovieData> mMovieArray) {
         layoutInflater = LayoutInflater.from(context);

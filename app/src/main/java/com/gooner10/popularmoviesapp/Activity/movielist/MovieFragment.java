@@ -24,8 +24,8 @@ import butterknife.ButterKnife;
 
 public class MovieFragment extends Fragment implements MovieContract.View {
     private final String LOG_TAG = "MovieFragment";
-    MovieContract.UserActionsListener movieListPresenter = new MovieListPresenter(this);
     private MovieFragmentAdapter mMovieAdapter;
+    MovieContract.UserActionsListener movieListPresenter = new MovieListPresenter(this);
 
     @BindView(R.id.recyclerViewMovie)
     RecyclerView mMovieRecyclerView;

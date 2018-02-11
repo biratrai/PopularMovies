@@ -1,7 +1,7 @@
 package com.gooner10.popularmoviesapp.Activity.data;
 
 /**
- * Created by Gooner10 on 8/28/15.
+ * Constants for the project
  */
 public class Constants {
     public static final String KEY_ID = "id";
