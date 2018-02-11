@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.gooner10.popularmoviesapp.Activity.moviedetail.MovieAdapter;
 import com.gooner10.popularmoviesapp.Activity.moviefavourite.FavouriteFragment;
 import com.gooner10.popularmoviesapp.Activity.moviesettings.SettingsActivity;
 import com.gooner10.popularmoviesapp.R;
