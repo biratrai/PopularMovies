@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gooner10 on 8/28/15.
+ * View pager for MovieActivity
  */
 public class MovieAdapter extends FragmentPagerAdapter {
-    private final List<Fragment> mFragments = new ArrayList<>();
-    private final List<String> mFragmentTitles = new ArrayList<>();
+    private final List<Fragment> fragmentList = new ArrayList<>();
+    private final List<String> fragmentTitlesList = new ArrayList<>();
 
     public MovieAdapter(FragmentManager fm) {
         super(fm);
@@ -20,23 +20,23 @@ public class MovieAdapter extends FragmentPagerAdapter {
 
     public void addFragment(Fragment fragment, String title) {
 
-        mFragments.add(fragment);
-        mFragmentTitles.add(title);
+        fragmentList.add(fragment);
+        fragmentTitlesList.add(title);
 
     }
 
     @Override
     public Fragment getItem(int position) {
-        return mFragments.get(position);
+        return fragmentList.get(position);
     }
 
     @Override
     public int getCount() {
-        return mFragments.size();
+        return fragmentList.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mFragmentTitles.get(position);
+        return fragmentTitlesList.get(position);
     }
 }

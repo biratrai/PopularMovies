@@ -28,21 +28,20 @@ import butterknife.ButterKnife;
 public class MovieActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MovieActivity.class.getSimpleName();
-
-    private final Fragment mMovieFragment = new MovieFragment();
-    private final Fragment mFavouriteFragment = new FavouriteFragment();
+    private final Fragment movieFragment = new MovieFragment();
+    private final Fragment favouriteFragment = new FavouriteFragment();
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    Toolbar toolbar;
 
     @BindView(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
+    DrawerLayout drawerLayout;
 
     @BindView(R.id.viewpager)
-    ViewPager mViewPager;
+    ViewPager viewPager;
 
     @BindView(R.id.tabs)
-    TabLayout mTabLayout;
+    TabLayout tablayout;
 
 
     @Override
@@ -64,45 +63,45 @@ public class MovieActivity extends AppCompatActivity {
 
         setUpHamburger();
         // Initialize Tabs
-        mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        mTabLayout.setupWithViewPager(mViewPager);
+        tablayout = findViewById(R.id.tabs);
+        tablayout.setupWithViewPager(viewPager);
 
         PreferenceManager.setDefaultValues(this, R.xml.pref_general, false);
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String username = sharedPref.getString(getString(R.string.pref_sort_choice), "default value");
-        Log.d("TAG",username);
+        Log.d("TAG", username);
     }
 
     private void setupViewPager() {
-        if (mViewPager != null) {
+        if (viewPager != null) {
             MovieAdapter mMovieAdapter = new MovieAdapter(getSupportFragmentManager());
-            mMovieAdapter.addFragment(mMovieFragment, "Popular Movies");
-            mMovieAdapter.addFragment(mFavouriteFragment, "Favourites");
-            mViewPager.setAdapter(mMovieAdapter);
+            mMovieAdapter.addFragment(movieFragment, "Popular Movies");
+            mMovieAdapter.addFragment(favouriteFragment, "Favourites");
+            viewPager.setAdapter(mMovieAdapter);
         }
     }
 
     private void setUpHamburger() {
         // Set up the hamburger icon to open and close the drawer
-        ActionBarDrawerToggle mActionDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
+        ActionBarDrawerToggle mActionDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open,
                 R.string.drawer_close);
-        mDrawerLayout.setDrawerListener(mActionDrawerToggle);
+        drawerLayout.setDrawerListener(mActionDrawerToggle);
         mActionDrawerToggle.syncState();
     }
 
     private void setUpToolbar() {
-        if (mToolbar != null) {
-            setSupportActionBar(mToolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
         }
     }
 
     private void setupNavigationView() {
-        if (mToolbar != null) {
-            mToolbar.setNavigationIcon(R.drawable.ic_launcher);
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        if (toolbar != null) {
+            toolbar.setNavigationIcon(R.drawable.ic_launcher);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mDrawerLayout.openDrawer(GravityCompat.START);
+                    drawerLayout.openDrawer(GravityCompat.START);
                     Log.d(LOG_TAG, "onClick");
                 }
             });
