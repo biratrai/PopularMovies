@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.domain.Model;
+package com.gooner10.popularmoviesapp.Activity.data;
 
 /**
  * Created by Gooner10 on 8/28/15.

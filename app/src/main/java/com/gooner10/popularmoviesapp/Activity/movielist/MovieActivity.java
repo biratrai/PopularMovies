@@ -1,7 +1,9 @@
-package com.gooner10.popularmoviesapp.Activity.ui.activity;
+package com.gooner10.popularmoviesapp.Activity.movielist;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -15,44 +17,31 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
-import com.gooner10.popularmoviesapp.Activity.ui.adapter.MovieAdapter;
-import com.gooner10.popularmoviesapp.Activity.ui.fragments.FavouriteFragment;
-import com.gooner10.popularmoviesapp.Activity.ui.fragments.MovieFragment;
+import com.gooner10.popularmoviesapp.Activity.moviedetail.MovieAdapter;
+import com.gooner10.popularmoviesapp.Activity.moviefavourite.FavouriteFragment;
+import com.gooner10.popularmoviesapp.Activity.moviesettings.SettingsActivity;
 import com.gooner10.popularmoviesapp.R;
 
-import java.util.ArrayList;
-
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MovieActivity extends AppCompatActivity {
 
-    private final String LOG_TAG = "MovieActivity";
+    private final String LOG_TAG = MovieActivity.class.getSimpleName();
 
     private final Fragment mMovieFragment = new MovieFragment();
     private final Fragment mFavouriteFragment = new FavouriteFragment();
-    private final ArrayList<MovieData> mMovieDataArrayList = new ArrayList<>();
 
-    private String title;
-    private String overview;
-    private String poster_path;
-    private String vote_average;
-    private String release_date;
-    private String backdrop_path;
-    private String vote_count;
-    private String popularity;
-
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    @Bind(R.id.drawer_layout)
+    @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
 
-    @Bind(R.id.viewpager)
+    @BindView(R.id.viewpager)
     ViewPager mViewPager;
 
-    @Bind(R.id.tabs)
+    @BindView(R.id.tabs)
     TabLayout mTabLayout;
 
 
@@ -78,6 +67,10 @@ public class MovieActivity extends AppCompatActivity {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mViewPager);
 
+        PreferenceManager.setDefaultValues(this, R.xml.pref_general, false);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String username = sharedPref.getString(getString(R.string.pref_sort_choice), "default value");
+        Log.d("TAG",username);
     }
 
     private void setupViewPager() {

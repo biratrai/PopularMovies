@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.ui.adapter;
+package com.gooner10.popularmoviesapp.Activity.movielist;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,13 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
+import com.gooner10.popularmoviesapp.Activity.data.Constants;
+import com.gooner10.popularmoviesapp.Activity.data.MovieData;
 import com.gooner10.popularmoviesapp.Activity.movieBus.OnItemClickEvent;
-import com.gooner10.popularmoviesapp.Activity.domain.Model.Constants;
-import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
-import com.gooner10.popularmoviesapp.Activity.ui.activity.MovieDetail;
+import com.gooner10.popularmoviesapp.Activity.moviedetail.MovieDetail;
 import com.gooner10.popularmoviesapp.R;
 import com.squareup.picasso.Picasso;
 
@@ -44,27 +42,20 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderData holder, final int position) {
+    public void onBindViewHolder(final ViewHolderData holder, int position) {
         MovieData movie = mMovieData.get(position);
         Picasso.with(mContext)
                 .load(Constants.POSTER_PATH + movie.getmPosterPath())
-                .resize(250, 300)
                 .placeholder(R.drawable.ic_headset)
                 .error(R.drawable.ic_done)
                 .into(holder.movieImageView);
-        holder.titleTextView.setText(movie.getmTitle());
-        holder.dateTextView.setText("Release Date: " + movie.getmReleaseDate());
-
-        float movie_rating = Float.parseFloat(movie.getmVoteAverage()) / 2;
-
-        holder.ratingBar.setRating((movie_rating));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, MovieDetail.class);
-                MovieData movie = mMovieData.get(position);
+                MovieData movie = mMovieData.get(holder.getAdapterPosition());
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("movie_data", movie);
                 intent.putExtras(bundle);
@@ -84,17 +75,11 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
     public class ViewHolderData extends RecyclerView.ViewHolder {
         public final View mView;
         public final ImageView movieImageView;
-        public final TextView titleTextView;
-        public final TextView dateTextView;
-        public final RatingBar ratingBar;
 
         public ViewHolderData(View itemView) {
             super(itemView);
             mView = itemView;
             movieImageView = (ImageView) itemView.findViewById(R.id.imageView);
-            titleTextView = (TextView) itemView.findViewById(R.id.titleTextView);
-            dateTextView = (TextView) itemView.findViewById(R.id.releaseDateTextView);
-            ratingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
         }
     }
 

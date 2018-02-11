@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.ui.adapter;
+package com.gooner10.popularmoviesapp.Activity.moviedetail;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

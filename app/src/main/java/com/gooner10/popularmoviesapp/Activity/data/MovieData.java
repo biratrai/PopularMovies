@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.domain.Model;
+package com.gooner10.popularmoviesapp.Activity.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,7 +7,6 @@ import android.os.Parcelable;
  * Movie Data Model for the pojo
  */
 public class MovieData implements Parcelable {
-
 
     private final String id;
     private final String mTitle;

@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.ui.activity;
+package com.gooner10.popularmoviesapp.Activity.moviedetail;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,15 +10,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.gooner10.popularmoviesapp.Activity.movieBus.OnItemClickEvent;
-import com.gooner10.popularmoviesapp.Activity.domain.Model.Constants;
-import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
+import com.gooner10.popularmoviesapp.Activity.data.Constants;
+import com.gooner10.popularmoviesapp.Activity.data.MovieData;
+import com.gooner10.popularmoviesapp.Activity.movielist.MovieActivity;
 import com.gooner10.popularmoviesapp.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 
@@ -26,14 +28,20 @@ public class MovieDetail extends AppCompatActivity {
 
     private MovieData movie;
 
-    @Bind(R.id.movie_description)
+    @BindView(R.id.movie_description)
     TextView movieDescription;
 
-    @Bind(R.id.vote_average)
+    @BindView(R.id.vote_average)
     TextView voteAverage;
 
-    @Bind(R.id.release_date)
+    @BindView(R.id.release_date)
     TextView releaseDate;
+
+    @BindView(R.id.detailRatingBar)
+    RatingBar mDetailRatingBar;
+
+//    @Bind(R.id.releaseDateTextView)
+//    TextView mReleaseDateText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +67,15 @@ public class MovieDetail extends AppCompatActivity {
         releaseDate.setText(movie.getmReleaseDate());
         voteAverage.setText(movie.getmVoteAverage());
 
+//        mReleaseDateText.setText("Release Date: " + movie.getmReleaseDate());
+
+        float movie_rating = Float.parseFloat(movie.getmVoteAverage()) / 2;
+
+        mDetailRatingBar.setRating((movie_rating));
+
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(movie.getmTitle());
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.detail_fab_button);
         fab.setOnClickListener(new View.OnClickListener() {

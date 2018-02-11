@@ -10,6 +10,7 @@
     <string name="release_date">Release Date</string>
     <string name="movie_image_description">Movie Image</string>
     <string name="plot_synopsis">Plot Synopsis</string>
+    <string name="movie_release_date">Movie Release Date</string>
     <string name="vote_average">Vote Average</string>
     <string name="title_activity_movie_settings">Movie Settings</string>
 
@@ -17,16 +18,16 @@
     <string name="sort_movies">Sort Movies</string>
 
     <!--  Sort Movie Choice in Movie Settings preference -->
-    <string name="pref_choice_popularity" translatable="false">By Popularity</string>
+    <string name="pref_choice_popularity_default" translatable="false">By Popularity</string>
     <string name="pref_choice_rated" translatable="false">By Ratings</string>
 
     <!-- Array of possible value of Movie Choice ListPreference that user sees-->
     <array name="pref_movie_choice_entries">
-        <item>@string/pref_choice_popularity</item>
+        <item>@string/pref_choice_popularity_default</item>
         <item>@string/pref_choice_rated</item>
     </array>
 
-    <!-- Array of possible value of temperature ListPreference that we bind entries to-->
+    <!-- Array of possible value of movie ListPreference that we bind entries to-->
     <string-array name="pref_movie_choice_values">
         <item>0</item>
         <item>1</item>

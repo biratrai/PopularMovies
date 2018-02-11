@@ -1,60 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/card_margin">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
+        android:adjustViewBounds="true"
+        android:background="#AA6699"
+        android:contentDescription="@string/movie_image_description"
+        android:scaleType="centerCrop" />
+</LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_margin="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_launcher"
-            android:contentDescription="@string/movie_image_description" />
+    <!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_margin="@dimen/card_margin">-->
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_toRightOf="@+id/imageView"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
+    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:orientation="vertical">-->
 
-            <TextView
-                android:id="@+id/titleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/movie_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                />
+    <!--<ImageView--><!--android:id="@+id/imageView"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:adjustViewBounds="true"--><!--android:background="#AA6699"--><!--android:contentDescription="@string/movie_image_description"--><!--android:scaleType="centerCrop" />--><!--</LinearLayout>--><!--</android.support.v7.widget.CardView>-->
 
-            <TextView
-                android:id="@+id/releaseDateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/release_date"
+<!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_margin="@dimen/card_margin">-->
 
-                android:layout_margin="5dp"/>
+<!--<RelativeLayoutandroid:layout_width-->
+<!--="match_parent"android:layout_height="match_parent"android:orientation="vertical"android:layout_margin="10dp">-->
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="10"
-                android:stepSize="0.1"
-                android:layout_margin="5dp"/>
-        </LinearLayout>
+<!--<ImageViewandroid:id-->
+<!--="@+id/imageView"android:layout_margin="10dp"android:layout_width="wrap_content"android:layout_height="wrap_content"android:background="@drawable/ic_launcher"android:contentDescription="@string/movie_image_description"-->
+<!--/>-->
 
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
+<!--<LinearLayoutandroid:id-->
+<!--="@+id/linearLayout"android:layout_width="wrap_content"android:layout_height="wrap_content"android:layout_toEndOf="@+id/imageView"android:layout_toRightOf="@+id/imageView"android:layout_margin="10dp"android:orientation="vertical">-->
+
+<!--<TextViewandroid:id-->
+<!--="@+id/titleTextView"android:layout_width="wrap_content"android:layout_height="wrap_content"android:layout_margin="5dp"android:text="@string/movie_title"android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>-->
+
+<!--<TextViewandroid:id-->
+<!--="@+id/releaseDateTextView"android:layout_width="wrap_content"android:layout_height="wrap_content"android:text="@string/release_date"-->
+
+<!--android:layout_margin="5dp"/>-->
+
+<!--<RatingBarandroid:id-->
+<!--="@+id/ratingBar"style="?android:attr/ratingBarStyleSmall"android:layout_width="wrap_content"android:layout_height="wrap_content"android:isIndicator="true"android:numStars="5"android:rating="10"android:stepSize="0.1"android:layout_margin="5dp"/>-->
+<!--</LinearLayout>-->
+
+    <!--</RelativeLayout></android.support.v7.widget.CardView>-->

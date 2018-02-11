@@ -1,10 +1,10 @@
-package com.gooner10.popularmoviesapp.Activity.ui.activity;
+package com.gooner10.popularmoviesapp.Activity.moviesettings;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.gooner10.popularmoviesapp.Activity.ui.fragments.SettingsFragment;
+import com.gooner10.popularmoviesapp.Activity.movielist.SettingsFragment;
 import com.gooner10.popularmoviesapp.R;
 
 public class SettingsActivity extends AppCompatActivity {

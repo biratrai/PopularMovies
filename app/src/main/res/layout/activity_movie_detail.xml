@@ -85,19 +85,24 @@
                         android:layout_height="wrap_content"
                         android:text="@string/release_date"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
                     <TextView
+                        android:id="@+id/release_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/release_date"/>
+                        android:layout_marginBottom="5dp"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/vote_average"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
                     <TextView
+                        android:id="@+id/vote_average"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/vote_average"/>
+                        android:layout_marginBottom="5dp"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -109,7 +114,30 @@
                         android:id="@+id/movie_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/movie_description" />
+                        android:text="@string/movie_description"
+                        android:layout_marginBottom="5dp"/>
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/movie_release_date"-->
+                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Title" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/releaseDateTextView"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/release_date" />-->
+
+                    <RatingBar
+                        android:id="@+id/detailRatingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:rating="10"
+                        android:stepSize="0.1" />
 
                 </LinearLayout>
 

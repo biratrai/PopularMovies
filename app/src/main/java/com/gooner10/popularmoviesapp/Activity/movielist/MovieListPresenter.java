@@ -1,24 +1,14 @@
-package com.gooner10.popularmoviesapp.Activity.ui.fragments;
+package com.gooner10.popularmoviesapp.Activity.movielist;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.gooner10.popularmoviesapp.Activity.data.MovieData;
 import com.gooner10.popularmoviesapp.Activity.network.VolleySingleton;
-import com.gooner10.popularmoviesapp.Activity.domain.Model.MovieData;
-import com.gooner10.popularmoviesapp.Activity.ui.adapter.MovieFragmentAdapter;
-import com.gooner10.popularmoviesapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,53 +16,28 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
 /**
- * Fragment to display the Movie List
+ * Presenter for the Movie
  */
-
-public class MovieFragment extends Fragment{
+public class MovieListPresenter implements MovieContract.UserActionsListener {
+    private final String LOG_TAG = MovieListPresenter.class.getSimpleName();
     private final ArrayList<MovieData> mMovieDataArrayList = new ArrayList<>();
-    private final String LOG_TAG = "MovieFragment";
+    private final MovieContract.View movieView;
 
-    @Bind(R.id.recyclerViewMovie)
-    RecyclerView mMovieRecyclerView;
-
-    public MovieFragment() {
-        // Required empty public constructor
+    public MovieListPresenter(MovieContract.View movieView) {
+        this.movieView = movieView;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        // Register to the bus
-//        MovieBus.getInstance().register(this);
+    public void loadData() {
 
         JsonParser();
-
-        View view = inflater.inflate(R.layout.fragment_movie, container, false);
-        mMovieRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewMovie);
-        mMovieRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        MovieFragmentAdapter mMovieAdapter = new MovieFragmentAdapter(getActivity(), mMovieDataArrayList);
-        mMovieRecyclerView.setAdapter(mMovieAdapter);
-
-        return view;
+        Log.i(LOG_TAG, "loadData");
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-//        EventBus.getDefault().registerSticky(this);
-
-    }
-
 
     private void JsonParser() {
         final String url = "http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=530c5cfd24953abae83df3e614c6d774";
         Log.d("MovieActivity", "JsonParser");
-//        final String url = "https://www.okcupid.com/matchSample.json";
         RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
         JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
@@ -83,11 +48,9 @@ public class MovieFragment extends Fragment{
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
             }
         });
         requestQueue.add(jsObjRequest);
-
     }
 
     private void parseJSONresponse(JSONObject response) {
@@ -95,7 +58,7 @@ public class MovieFragment extends Fragment{
             String jsonString = response.getString("results");
 
             JSONArray jsonArray = new JSONArray(jsonString);
-            Log.i(LOG_TAG, "Array" + jsonArray.getClass());
+//            Log.i(LOG_TAG, "Array" + jsonArray.getClass());
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
                 String id = jsonObject.getString("id");
@@ -107,17 +70,17 @@ public class MovieFragment extends Fragment{
                 String vote_average = jsonObject.getString("vote_average");
                 String vote_count = jsonObject.getString("vote_count");
                 String popularity = jsonObject.getString("popularity");
-                MovieData mMovideData = new MovieData(id, title, overview, poster_path, vote_average, vote_count,
+                MovieData movieData
+                        = new MovieData(id, title, overview, poster_path, vote_average, vote_count,
                         release_date, popularity, backdrop_path);
-                mMovieDataArrayList.add(mMovideData);
+                mMovieDataArrayList.add(movieData);
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        movieView.displayMovieList(mMovieDataArrayList);
         Log.d(LOG_TAG, "" + mMovieDataArrayList);
 //      EventBus.getDefault().postSticky(mMovieDataArrayList);
-
     }
-
 }
