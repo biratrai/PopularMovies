@@ -1,7 +1,5 @@
 package com.gooner10.popularmoviesapp.Activity.movielist;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -41,7 +39,6 @@ public class MovieFragment extends Fragment implements MovieContract.View {
         super.onCreate(savedInstanceState);
     }
 
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,7 +48,7 @@ public class MovieFragment extends Fragment implements MovieContract.View {
         View view = inflater.inflate(R.layout.fragment_movie, container, false);
 
         // Bind all of the view
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         mMovieRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         mMovieAdapter = new MovieFragmentAdapter(getActivity(), new ArrayList<MovieData>());
