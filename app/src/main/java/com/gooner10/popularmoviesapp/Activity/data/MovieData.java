@@ -1,5 +1,7 @@
 package com.gooner10.popularmoviesapp.Activity.data;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -8,55 +10,91 @@ import android.os.Parcelable;
  */
 public class MovieData implements Parcelable {
 
-    private final String id;
-    private final String mTitle;
-    public final String mOverview;
-    private final String mPosterPath;
-    private final String mVoteAverage;
-    private final String mVoteCount;
-    private final String mReleaseDate;
-    private final String mPopularity;
-    public final String mBackdropPath;
+    @PrimaryKey
+    private int uid;
 
-    public MovieData(String id, String mTitle, String overview, String poster_path, String vote_average,
-                     String vote_count, String release_date, String mPopularity, String mBackdropPath) {
+    @ColumnInfo
+    private final String id;
+
+    @ColumnInfo
+    private final String movieTitle;
+
+    @ColumnInfo
+    public final String movieOverview;
+
+    @ColumnInfo
+    private final String moviePosterPath;
+
+    @ColumnInfo
+    private final String movieVoteAverage;
+
+    @ColumnInfo
+    private final String movieVoteCount;
+
+    @ColumnInfo
+    private final String movieReleaseDate;
+
+    @ColumnInfo
+    private final String moviePopularity;
+
+    @ColumnInfo
+    public final String movieBackdropPath;
+
+    public MovieData(String id, String movieTitle, String overview, String posterPath, String voteAverage,
+                     String voteCount, String releaseDate, String moviePopularity, String movieBackdropPath) {
         this.id = id;
-        this.mTitle = mTitle;
-        this.mOverview = overview;
-        this.mPosterPath = poster_path;
-        this.mVoteAverage = vote_average;
-        this.mVoteCount = vote_count;
-        this.mReleaseDate = release_date;
-        this.mPopularity = mPopularity;
-        this.mBackdropPath = mBackdropPath;
+        this.movieTitle = movieTitle;
+        this.movieOverview = overview;
+        this.moviePosterPath = posterPath;
+        this.movieVoteAverage = voteAverage;
+        this.movieVoteCount = voteCount;
+        this.movieReleaseDate = releaseDate;
+        this.moviePopularity = moviePopularity;
+        this.movieBackdropPath = movieBackdropPath;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getmTitle() {
-        return mTitle;
+    public String getMovieTitle() {
+        return movieTitle;
     }
 
-    public String getmOverview() {
-        return mOverview;
+    public String getMovieOverview() {
+        return movieOverview;
     }
 
-    public String getmPosterPath() {
-        return mPosterPath;
+    public String getMoviePosterPath() {
+        return moviePosterPath;
     }
 
-    public String getmVoteAverage() {
-        return mVoteAverage;
+    public String getMovieVoteAverage() {
+        return movieVoteAverage;
     }
 
-    public String getmVoteCount() {
-        return mVoteCount;
+    public String getMovieVoteCount() {
+        return movieVoteCount;
     }
 
-    public String getmReleaseDate() {
-        return mReleaseDate;
+    public String getMovieReleaseDate() {
+        return movieReleaseDate;
+    }
+
+    public String getMoviePopularity() {
+        return moviePopularity;
+    }
+
+    public String getMovieBackdropPath() {
+        return movieBackdropPath;
     }
 
     @Override
@@ -67,26 +105,26 @@ public class MovieData implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(id);
-        parcel.writeString(mTitle);
-        parcel.writeString(mOverview);
-        parcel.writeString(mPosterPath);
-        parcel.writeString(mVoteAverage);
-        parcel.writeString(mVoteCount);
-        parcel.writeString(mReleaseDate);
-        parcel.writeString(mPopularity);
-        parcel.writeString(mBackdropPath);
+        parcel.writeString(movieTitle);
+        parcel.writeString(movieOverview);
+        parcel.writeString(moviePosterPath);
+        parcel.writeString(movieVoteAverage);
+        parcel.writeString(movieVoteCount);
+        parcel.writeString(movieReleaseDate);
+        parcel.writeString(moviePopularity);
+        parcel.writeString(movieBackdropPath);
     }
 
-    private MovieData(Parcel input){
+    private MovieData(Parcel input) {
         id = input.readString();
-        mTitle = input.readString();
-        mOverview = input.readString();
-        mPosterPath = input.readString();
-        mVoteAverage = input.readString();
-        mVoteCount = input.readString();
-        mReleaseDate = input.readString();
-        mPopularity = input.readString();
-        mBackdropPath = input.readString();
+        movieTitle = input.readString();
+        movieOverview = input.readString();
+        moviePosterPath = input.readString();
+        movieVoteAverage = input.readString();
+        movieVoteCount = input.readString();
+        movieReleaseDate = input.readString();
+        moviePopularity = input.readString();
+        movieBackdropPath = input.readString();
     }
 
     public static final Parcelable.Creator<MovieData> CREATOR
@@ -99,4 +137,5 @@ public class MovieData implements Parcelable {
             return new MovieData[size];
         }
     };
+
 }
