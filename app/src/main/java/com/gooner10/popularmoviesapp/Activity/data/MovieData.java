@@ -11,9 +11,6 @@ import android.os.Parcelable;
 public class MovieData implements Parcelable {
 
     @PrimaryKey
-    private int uid;
-
-    @ColumnInfo
     private final String id;
 
     @ColumnInfo
@@ -51,14 +48,6 @@ public class MovieData implements Parcelable {
         this.movieReleaseDate = releaseDate;
         this.moviePopularity = moviePopularity;
         this.movieBackdropPath = movieBackdropPath;
-    }
-
-    public int getUid() {
-        return uid;
-    }
-
-    public void setUid(int uid) {
-        this.uid = uid;
     }
 
     public String getId() {

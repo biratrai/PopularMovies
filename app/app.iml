@@ -117,15 +117,11 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/check-manifest" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-safeguard" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaPrecompile" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/pre-dexed" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/shaders" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/splits-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
@@ -139,7 +135,6 @@
     <orderEntry type="library" name="com.android.support:animated-vector-drawable-27.0.2" level="project" />
     <orderEntry type="library" scope="TEST" name="org.apache.maven.wagon:wagon-http-lightweight:1.0-beta-6@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.ow2.asm:asm-util:5.0.1@jar" level="project" />
-    <orderEntry type="library" name="com.android.support:support-annotations:22.1.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.bouncycastle:bcprov-jdk16:1.46@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.codehaus.plexus:plexus-interpolation:1.11@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.ow2.asm:asm-tree:5.0.1@jar" level="project" />
@@ -166,6 +161,7 @@
     <orderEntry type="library" name="com.jakewharton:butterknife-annotations:8.8.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.ow2.asm:asm:5.0.1@jar" level="project" />
     <orderEntry type="library" name="android.arch.core:common:1.0.0@jar" level="project" />
+    <orderEntry type="library" name="android.arch.persistence:db-framework-1.0.0" level="project" />
     <orderEntry type="library" name="com.android.support:support-core-ui-27.0.2" level="project" />
     <orderEntry type="library" scope="TEST" name="org.apache.maven:maven-ant-tasks:2.1.3@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-compat-27.0.2" level="project" />
@@ -178,6 +174,7 @@
     <orderEntry type="library" name="com.jakewharton.hugo:hugo-runtime-1.2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="org.apache.maven:maven-artifact:2.2.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1@jar" level="project" />
+    <orderEntry type="library" name="android.arch.core:runtime-1.0.0" level="project" />
     <orderEntry type="library" name="com.android.support:support-v4-27.0.2" level="project" />
     <orderEntry type="library" scope="TEST" name="org.robolectric:robolectric-annotations:3.1.2@jar" level="project" />
     <orderEntry type="library" name="com.android.support:appcompat-v7-27.0.2" level="project" />
@@ -185,8 +182,10 @@
     <orderEntry type="library" scope="TEST" name="org.apache.maven:maven-model:2.2.1@jar" level="project" />
     <orderEntry type="library" name="com.github.bumptech.glide:glide:3.6.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="junit:junit:3.8.1@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:support-annotations:27.0.2@jar" level="project" />
     <orderEntry type="library" name="com.android.support:design-27.0.2" level="project" />
     <orderEntry type="library" scope="TEST" name="com.google.guava:guava:19.0@jar" level="project" />
+    <orderEntry type="library" name="org.jetbrains:annotations-java5:15.0@jar" level="project" />
     <orderEntry type="library" name="com.mcxiaoke.volley:library:1.0.19@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="junit:junit:4.12@jar" level="project" />
     <orderEntry type="library" name="org.aspectj:aspectjrt:1.8.5@jar" level="project" />
@@ -200,6 +199,8 @@
     <orderEntry type="library" scope="TEST" name="com.google.protobuf:protobuf-java:2.6.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.apache.ant:ant:1.8.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.codehaus.plexus:plexus-utils:1.5.15@jar" level="project" />
+    <orderEntry type="library" name="android.arch.persistence.room:runtime-1.0.0" level="project" />
+    <orderEntry type="library" name="android.arch.persistence:db-1.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="org.apache.maven:maven-error-diagnostics:2.2.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support.test:rules-1.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="com.android.support.test.espresso:espresso-intents-3.0.1" level="project" />
@@ -218,6 +219,7 @@
     <orderEntry type="library" scope="TEST" name="xpp3:xpp3_min:1.1.4c@jar" level="project" />
     <orderEntry type="library" name="de.greenrobot:eventbus:2.4.0@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-core-utils-27.0.2" level="project" />
+    <orderEntry type="library" name="android.arch.persistence.room:common:1.0.0@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="classworlds:classworlds:1.1-alpha-2@jar" level="project" />
     <orderEntry type="library" name="com.google.dagger:dagger:2.14.1@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="org.apache.maven:maven-plugin-registry:2.2.1@jar" level="project" />
