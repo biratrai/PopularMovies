@@ -63,19 +63,19 @@ public class MovieDetail extends AppCompatActivity {
         loadBackdrop();
 
         // Set the relevant text to the field
-        movieDescription.setText(movie.mOverview);
-        releaseDate.setText(movie.getmReleaseDate());
-        voteAverage.setText(movie.getmVoteAverage());
+        movieDescription.setText(movie.movieOverview);
+        releaseDate.setText(movie.getMovieReleaseDate());
+        voteAverage.setText(movie.getMovieVoteAverage());
 
-//        mReleaseDateText.setText("Release Date: " + movie.getmReleaseDate());
+//        mReleaseDateText.setText("Release Date: " + movie.getMovieReleaseDate());
 
-        float movie_rating = Float.parseFloat(movie.getmVoteAverage()) / 2;
+        float movie_rating = Float.parseFloat(movie.getMovieVoteAverage()) / 2;
 
         mDetailRatingBar.setRating((movie_rating));
 
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(movie.getmTitle());
+        collapsingToolbar.setTitle(movie.getMovieTitle());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.detail_fab_button);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +100,7 @@ public class MovieDetail extends AppCompatActivity {
 
     private void loadBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        Glide.with(this).load(Constants.BACKDROP_PATH + movie.mBackdropPath).centerCrop().into(imageView);
+        Glide.with(this).load(Constants.BACKDROP_PATH + movie.movieBackdropPath).centerCrop().into(imageView);
     }
 
     @Override

@@ -20,6 +20,7 @@ import java.util.ArrayList;
  * Presenter for the Movie
  */
 public class MovieListPresenter implements MovieContract.UserActionsListener {
+    public static final String TAG = MovieListPresenter.class.getSimpleName();
     private final String LOG_TAG = MovieListPresenter.class.getSimpleName();
     private final ArrayList<MovieData> mMovieDataArrayList = new ArrayList<>();
     private final MovieContract.View movieView;
@@ -62,6 +63,7 @@ public class MovieListPresenter implements MovieContract.UserActionsListener {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
                 String id = jsonObject.getString("id");
+                Log.i(TAG, "parseJSONresponse: " + id);
                 String title = jsonObject.getString("original_title");
                 String overview = jsonObject.getString("overview");
                 String release_date = jsonObject.getString("release_date");

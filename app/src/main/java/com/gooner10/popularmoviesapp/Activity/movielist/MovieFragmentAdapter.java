@@ -45,7 +45,7 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
     public void onBindViewHolder(final ViewHolderData holder, int position) {
         MovieData movie = mMovieData.get(position);
         Picasso.with(mContext)
-                .load(Constants.POSTER_PATH + movie.getmPosterPath())
+                .load(Constants.POSTER_PATH + movie.getMoviePosterPath())
                 .placeholder(R.drawable.ic_headset)
                 .error(R.drawable.ic_done)
                 .into(holder.movieImageView);
