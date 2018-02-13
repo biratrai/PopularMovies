@@ -22,12 +22,12 @@
         <activity
             android:name=".Activity.moviedetail.MovieDetail"
             android:label="@string/title_activity_movie_detail"
-            android:parentActivityName=".Activity.movielist.MovieActivity"/>
+            android:parentActivityName=".Activity.movielist.MovieActivity" />
         <activity
             android:name=".Activity.moviesettings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".Activity.movielist.MovieActivity"/>
+            android:parentActivityName=".Activity.movielist.MovieActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
