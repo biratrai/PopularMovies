@@ -9,7 +9,7 @@ import android.os.Parcelable;
 /**
  * Movie Data Model for the pojo
  */
-@Entity
+@Entity(tableName = "moviedata")
 public class MovieData implements Parcelable {
 
     @PrimaryKey
