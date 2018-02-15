@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.gooner10.popularmoviesapp.Activity.movieBus.OnItemClickEvent;
 import com.gooner10.popularmoviesapp.Activity.data.Constants;
 import com.gooner10.popularmoviesapp.Activity.data.MovieData;
-import com.gooner10.popularmoviesapp.Activity.movielist.MovieActivity;
+import com.gooner10.popularmoviesapp.Activity.moviemain.MovieActivity;
 import com.gooner10.popularmoviesapp.R;
 
 import butterknife.BindView;

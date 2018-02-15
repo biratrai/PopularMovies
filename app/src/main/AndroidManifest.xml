@@ -5,13 +5,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".Activity.extras.MyApplication"
+        android:name=".Activity.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.movielist.MovieActivity"
+            android:name=".Activity.moviemain.MovieActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,11 +22,11 @@
         <activity
             android:name=".Activity.moviedetail.MovieDetail"
             android:label="@string/title_activity_movie_detail"
-            android:parentActivityName=".Activity.movielist.MovieActivity" />
+            android:parentActivityName=".Activity.moviemain.MovieActivity" />
         <activity
             android:name=".Activity.moviesettings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".Activity.movielist.MovieActivity"
+            android:parentActivityName=".Activity.moviemain.MovieActivity"
             android:theme="@style/AppTheme" />
     </application>
 
