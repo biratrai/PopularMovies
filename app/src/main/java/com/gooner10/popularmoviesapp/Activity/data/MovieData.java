@@ -5,6 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 /**
  * Movie Data Model for the pojo
@@ -13,6 +14,7 @@ import android.os.Parcelable;
 public class MovieData implements Parcelable {
 
     @PrimaryKey
+    @NonNull
     private final String id;
 
     @ColumnInfo
@@ -39,15 +41,15 @@ public class MovieData implements Parcelable {
     @ColumnInfo
     public final String movieBackdropPath;
 
-    public MovieData(String id, String movieTitle, String overview, String posterPath, String voteAverage,
-                     String voteCount, String releaseDate, String moviePopularity, String movieBackdropPath) {
+    public MovieData(String id, String movieTitle, String movieOverview, String moviePosterPath, String movieVoteAverage,
+                     String movieVoteCount, String movieReleaseDate, String moviePopularity, String movieBackdropPath) {
         this.id = id;
         this.movieTitle = movieTitle;
-        this.movieOverview = overview;
-        this.moviePosterPath = posterPath;
-        this.movieVoteAverage = voteAverage;
-        this.movieVoteCount = voteCount;
-        this.movieReleaseDate = releaseDate;
+        this.movieOverview = movieOverview;
+        this.moviePosterPath = moviePosterPath;
+        this.movieVoteAverage = movieVoteAverage;
+        this.movieVoteCount = movieVoteCount;
+        this.movieReleaseDate = movieReleaseDate;
         this.moviePopularity = moviePopularity;
         this.movieBackdropPath = movieBackdropPath;
     }
