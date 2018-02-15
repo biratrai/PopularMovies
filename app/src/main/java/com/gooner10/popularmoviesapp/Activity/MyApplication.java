@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.Activity.extras;
+package com.gooner10.popularmoviesapp.Activity;
 
 import android.app.Application;
 import android.content.Context;
