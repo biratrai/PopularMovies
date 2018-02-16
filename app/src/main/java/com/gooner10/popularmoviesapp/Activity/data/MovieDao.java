@@ -13,12 +13,12 @@ import java.util.List;
 
 @Dao
 public interface MovieDao {
-    @Query("SELECT * FROM MovieData")
+    @Query("SELECT * FROM moviedata")
     List<MovieData> getAllFavoritMovie();
 
     @Insert
     void insertAll(MovieData... movieData);
 
     @Delete
-    void delete(MovieData movieData);
+    void deleteMovies(MovieData movieData);
 }
