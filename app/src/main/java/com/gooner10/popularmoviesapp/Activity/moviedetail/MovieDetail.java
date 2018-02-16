@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.gooner10.popularmoviesapp.Activity.data.Constants;
 import com.gooner10.popularmoviesapp.Activity.data.MovieData;
+import com.gooner10.popularmoviesapp.Activity.data.MovieDatabase;
+import com.gooner10.popularmoviesapp.Activity.data.MovieRepository;
 import com.gooner10.popularmoviesapp.Activity.movieBus.OnItemClickEvent;
 import com.gooner10.popularmoviesapp.Activity.moviemain.MovieActivity;
 import com.gooner10.popularmoviesapp.R;
@@ -27,7 +29,7 @@ import de.greenrobot.event.EventBus;
 public class MovieDetail extends AppCompatActivity {
 
     private MovieData movie;
-    private
+    private MovieDatabase movieDatabase;
 
     @BindView(R.id.movie_description)
     TextView movieDescription;
@@ -92,7 +94,7 @@ public class MovieDetail extends AppCompatActivity {
     }
 
     private void addToDatabase() {
-        mDb =
+        movieDatabase = MovieRepository.getMovieDatabaseInstance(this);
     }
 
     // onEvent Receive the Event
