@@ -27,6 +27,7 @@ import de.greenrobot.event.EventBus;
 public class MovieDetail extends AppCompatActivity {
 
     private MovieData movie;
+    private
 
     @BindView(R.id.movie_description)
     TextView movieDescription;
@@ -40,8 +41,11 @@ public class MovieDetail extends AppCompatActivity {
     @BindView(R.id.detailRatingBar)
     RatingBar mDetailRatingBar;
 
-//    @Bind(R.id.releaseDateTextView)
-//    TextView mReleaseDateText;
+    @BindView(R.id.detail_fab_button)
+    FloatingActionButton favoriteButton;
+
+    @BindView(R.id.backdrop)
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +53,7 @@ public class MovieDetail extends AppCompatActivity {
         setContentView(R.layout.activity_movie_detail);
         ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // assert the null pointer exception error
@@ -73,18 +77,22 @@ public class MovieDetail extends AppCompatActivity {
 
         mDetailRatingBar.setRating((movie_rating));
 
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(movie.getMovieTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.detail_fab_button);
+        FloatingActionButton fab = findViewById(R.id.detail_fab_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                addToDatabase();
             }
         });
+    }
+
+    private void addToDatabase() {
+        mDb =
     }
 
     // onEvent Receive the Event
@@ -99,7 +107,6 @@ public class MovieDetail extends AppCompatActivity {
     }
 
     private void loadBackdrop() {
-        final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
         Glide.with(this).load(Constants.BACKDROP_PATH + movie.movieBackdropPath).centerCrop().into(imageView);
     }
 
