@@ -3,8 +3,10 @@ package com.gooner10.popularmoviesapp.Activity;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.stetho.Stetho;
+
 /**
- * Created by Gooner10 on 8/28/15.
+ * Application class for the app
  */
 public class MyApplication extends Application {
     private static MyApplication sInstance;
@@ -13,6 +15,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        Stetho.initializeWithDefaults(this);
     }
 
     public static MyApplication getInstance() {
