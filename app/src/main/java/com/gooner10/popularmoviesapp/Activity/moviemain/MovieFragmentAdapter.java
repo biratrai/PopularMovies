@@ -16,7 +16,7 @@ import com.gooner10.popularmoviesapp.Activity.moviedetail.MovieDetail;
 import com.gooner10.popularmoviesapp.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import de.greenrobot.event.EventBus;
 
@@ -26,13 +26,13 @@ import de.greenrobot.event.EventBus;
 
 public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdapter.ViewHolderData> {
     private LayoutInflater layoutInflater;
-    private Context mContext;
-    private ArrayList<MovieData> mMovieData;
+    private Context context;
+    private List<MovieData> movieData;
 
-    public MovieFragmentAdapter(Context context, ArrayList<MovieData> mMovieArray) {
+    public MovieFragmentAdapter(Context context, List<MovieData> mMovieArray) {
         layoutInflater = LayoutInflater.from(context);
-        this.mContext = context;
-        this.mMovieData = mMovieArray;
+        this.context = context;
+        this.movieData = mMovieArray;
     }
 
     @Override
@@ -43,19 +43,19 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
 
     @Override
     public void onBindViewHolder(final ViewHolderData holder, int position) {
-        MovieData movie = mMovieData.get(position);
-        Picasso.with(mContext)
+        MovieData movie = movieData.get(position);
+        Picasso.with(context)
                 .load(Constants.POSTER_PATH + movie.getMoviePosterPath())
                 .placeholder(R.drawable.ic_headset)
                 .error(R.drawable.ic_done)
                 .into(holder.movieImageView);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, MovieDetail.class);
-                MovieData movie = mMovieData.get(holder.getAdapterPosition());
+                MovieData movie = movieData.get(holder.getAdapterPosition());
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("movie_data", movie);
                 intent.putExtras(bundle);
@@ -69,17 +69,22 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
 
     @Override
     public int getItemCount() {
-        return mMovieData.size();
+        return movieData.size();
+    }
+
+    public void setData(List<MovieData> movieDataList) {
+        this.movieData = movieDataList;
+        notifyDataSetChanged();
     }
 
     public class ViewHolderData extends RecyclerView.ViewHolder {
-        public final View mView;
+        public final View view;
         public final ImageView movieImageView;
 
         public ViewHolderData(View itemView) {
             super(itemView);
-            mView = itemView;
-            movieImageView = (ImageView) itemView.findViewById(R.id.imageView);
+            view = itemView;
+            movieImageView = itemView.findViewById(R.id.imageView);
         }
     }
 
