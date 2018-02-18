@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.gooner10.popularmoviesapp.Activity.data.Constants;
 import com.gooner10.popularmoviesapp.Activity.data.MovieData;
 import com.gooner10.popularmoviesapp.Activity.data.MovieDatabase;
-import com.gooner10.popularmoviesapp.Activity.data.MovieRepository;
+import com.gooner10.popularmoviesapp.Activity.data.MovieRepositoryImpl;
 import com.gooner10.popularmoviesapp.Activity.movieBus.OnItemClickEvent;
 import com.gooner10.popularmoviesapp.Activity.moviemain.MovieActivity;
 import com.gooner10.popularmoviesapp.R;
@@ -94,7 +94,7 @@ public class MovieDetail extends AppCompatActivity {
     }
 
     private void addToDatabase() {
-        movieDatabase = MovieRepository.getMovieDatabaseInstance(this);
+        movieDatabase = MovieRepositoryImpl.getMovieDatabaseInstance(this);
     }
 
     // onEvent Receive the Event
