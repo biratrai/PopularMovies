@@ -24,11 +24,11 @@ import butterknife.ButterKnife;
 
 public class MovieFragment extends Fragment implements MovieContract.View {
     private final String LOG_TAG = "MovieFragment";
-    private MovieFragmentAdapter mMovieAdapter;
+    private MovieFragmentAdapter movieFragmentAdapter;
     MovieContract.UserActionsListener movieListPresenter = new MovieListPresenter(this);
 
     @BindView(R.id.recyclerViewMovie)
-    RecyclerView mMovieRecyclerView;
+    RecyclerView movierecyclerview;
 
     public MovieFragment() {
         // Required empty public constructor
@@ -50,9 +50,9 @@ public class MovieFragment extends Fragment implements MovieContract.View {
         // Bind all of the view
         ButterKnife.bind(this, view);
 
-        mMovieRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        mMovieAdapter = new MovieFragmentAdapter(getActivity(), new ArrayList<MovieData>());
-        mMovieRecyclerView.setAdapter(mMovieAdapter);
+        movierecyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        movieFragmentAdapter = new MovieFragmentAdapter(getActivity(), new ArrayList<MovieData>());
+        movierecyclerview.setAdapter(movieFragmentAdapter);
 
         return view;
     }
@@ -64,8 +64,7 @@ public class MovieFragment extends Fragment implements MovieContract.View {
 
     @Override
     public void displayMovieList(ArrayList<MovieData> movieDataList) {
-        mMovieAdapter = new MovieFragmentAdapter(getActivity(), movieDataList);
-        mMovieRecyclerView.setAdapter(mMovieAdapter);
+        movieFragmentAdapter.setData(movieDataList);
         Log.i(LOG_TAG, "displayMovieList");
     }
 
