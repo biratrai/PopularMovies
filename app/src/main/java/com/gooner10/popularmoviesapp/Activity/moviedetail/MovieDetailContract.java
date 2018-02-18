@@ -1,7 +1,7 @@
 package com.gooner10.popularmoviesapp.Activity.moviedetail;
 
 /**
- * Created by Gooner10 on 3/14/16.
+ * Contract for movie deatils
  */
 public interface MovieDetailContract {
     interface View{
