@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,8 +16,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.gooner10.popularmoviesapp.Activity.data.Constants;
+import com.gooner10.popularmoviesapp.Activity.data.IMovieRepository;
 import com.gooner10.popularmoviesapp.Activity.data.MovieData;
-import com.gooner10.popularmoviesapp.Activity.data.MovieDatabase;
 import com.gooner10.popularmoviesapp.Activity.data.MovieRepositoryImpl;
 import com.gooner10.popularmoviesapp.Activity.movieBus.OnItemClickEvent;
 import com.gooner10.popularmoviesapp.Activity.moviemain.MovieActivity;
@@ -25,11 +26,13 @@ import com.gooner10.popularmoviesapp.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
+import hugo.weaving.DebugLog;
 
 public class MovieDetail extends AppCompatActivity {
 
+    private static final String TAG = MovieDetail.class.getSimpleName();
     private MovieData movie;
-    private MovieDatabase movieDatabase;
+    private IMovieRepository movieRepository;
 
     @BindView(R.id.movie_description)
     TextView movieDescription;
@@ -93,8 +96,10 @@ public class MovieDetail extends AppCompatActivity {
         });
     }
 
+    @DebugLog
     private void addToDatabase() {
-        movieDatabase = MovieRepositoryImpl.getMovieDatabaseInstance(this);
+        movieRepository = MovieRepositoryImpl.getMovieDatabaseInstance(this);
+        Log.i(TAG, "addToDatabase: "+ movieRepository.getMovie());
     }
 
     // onEvent Receive the Event
