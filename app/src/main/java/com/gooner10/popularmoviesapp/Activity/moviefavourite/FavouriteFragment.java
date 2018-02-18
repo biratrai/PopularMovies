@@ -17,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hugo.weaving.DebugLog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,15 +39,19 @@ public class FavouriteFragment extends Fragment implements MovieFavouriteContrac
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favourite, container, false);
         ButterKnife.bind(this, view);
-
         favoriteRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         favoriteMovieFragmentAdapter = new FavoriteMovieFragmentAdapter(getActivity(), new ArrayList<MovieData>());
         favoriteRecyclerView.setAdapter(favoriteMovieFragmentAdapter);
+
+        MovieFavouriteContract.Presenter presenter = new MovieFavoritePresenter(getActivity(), this);
+        presenter.loadFavoriteMovieFromRepository();
+
         return view;
     }
 
 
     @Override
+    @DebugLog
     public void displayFavoriteMovie(List<MovieData> movieDataList) {
         favoriteMovieFragmentAdapter.setData(movieDataList);
     }
