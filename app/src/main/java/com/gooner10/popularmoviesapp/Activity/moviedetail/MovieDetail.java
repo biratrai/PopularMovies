@@ -100,6 +100,7 @@ public class MovieDetail extends AppCompatActivity {
     private void addToDatabase() {
         movieRepository = MovieRepositoryImpl.getMovieDatabaseInstance(this);
         Log.i(TAG, "addToDatabase: "+ movieRepository.getMovie());
+        movieRepository.insertOrUpdateMovieData(movie);
     }
 
     // onEvent Receive the Event

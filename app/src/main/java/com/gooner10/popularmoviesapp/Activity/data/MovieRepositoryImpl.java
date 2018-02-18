@@ -36,7 +36,7 @@ public class MovieRepositoryImpl implements IMovieRepository {
 
     @Override
     public void insertOrUpdateMovieData(MovieData movieData) {
-
+        movieDao.insertAll(movieData);
     }
 
     @Override
