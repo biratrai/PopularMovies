@@ -24,6 +24,7 @@ public class FavoriteMovieFragmentAdapter extends RecyclerView.Adapter<FavoriteM
     public FavoriteMovieFragmentAdapter(Context context, List<MovieData> movieData) {
         this.context = context;
         this.movieData = movieData;
+        layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -39,7 +40,7 @@ public class FavoriteMovieFragmentAdapter extends RecyclerView.Adapter<FavoriteM
 
     @Override
     public int getItemCount() {
-        return 0;
+        return movieData.size();
     }
 
     public void setData(List<MovieData> movieDataList) {
