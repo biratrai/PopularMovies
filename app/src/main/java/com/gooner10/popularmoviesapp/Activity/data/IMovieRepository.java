@@ -1,5 +1,7 @@
 package com.gooner10.popularmoviesapp.Activity.data;
 
+import java.util.List;
+
 /**
  * Access point for accessing movie data.
  */
@@ -12,7 +14,7 @@ public interface IMovieRepository {
      *
      * @return all the movie from the data source.
      */
-    MovieData getMovie();
+    List<MovieData> getMovie();
 
     /**
      * Inserts the movie in the data source, or, if this is an existing movie, it updates it.

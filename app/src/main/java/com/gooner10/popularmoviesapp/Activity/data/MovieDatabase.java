@@ -13,6 +13,8 @@ public abstract class MovieDatabase extends RoomDatabase {
     private static final String MOVIE_DATABASE_NAME = "movie.db";
     private static MovieDatabase INSTANCE;
 
+    public abstract MovieDao movieDao();
+
     public static MovieDatabase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
