@@ -2,6 +2,7 @@ package com.gooner10.popularmoviesapp.Activity.data;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  */
 
 public class MovieRepositoryImpl implements IMovieRepository {
+    public static final String TAG = MovieRepositoryImpl.class.getSimpleName();
     private static volatile MovieRepositoryImpl INSTANCE;
     private MovieDao movieDao;
 
@@ -43,4 +45,12 @@ public class MovieRepositoryImpl implements IMovieRepository {
     public void deleteAllMovieData() {
 
     }
+
+    @Override
+    public boolean findMovieAlreadyIsFavorite(MovieData movieData) {
+        Log.d(TAG, "findMovieAlreadyIsFavorite: " + movieDao.movieExists(movieData.getId()));
+        return movieDao.movieExists(movieData.getId());
+    }
+
+
 }
