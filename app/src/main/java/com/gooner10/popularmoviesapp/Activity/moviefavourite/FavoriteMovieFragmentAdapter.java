@@ -5,10 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gooner10.popularmoviesapp.Activity.data.Constants;
 import com.gooner10.popularmoviesapp.Activity.data.MovieData;
 import com.gooner10.popularmoviesapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,6 +39,11 @@ public class FavoriteMovieFragmentAdapter extends RecyclerView.Adapter<FavoriteM
     @Override
     public void onBindViewHolder(MovieFavoriteViewHolder holder, int position) {
         holder.favoriteMovieText.setText(movieData.get(position).getMovieTitle());
+        Picasso.with(context)
+                .load(Constants.POSTER_PATH + movieData.get(position).getMoviePosterPath())
+                .placeholder(R.drawable.ic_headset)
+                .error(R.drawable.ic_done)
+                .into(holder.favoriteMovieImage);
     }
 
     @Override
@@ -50,10 +58,12 @@ public class FavoriteMovieFragmentAdapter extends RecyclerView.Adapter<FavoriteM
 
     public class MovieFavoriteViewHolder extends RecyclerView.ViewHolder {
         TextView favoriteMovieText;
+        ImageView favoriteMovieImage;
 
         public MovieFavoriteViewHolder(View itemView) {
             super(itemView);
             favoriteMovieText = itemView.findViewById(R.id.favorite_movie_text);
+            favoriteMovieImage = itemView.findViewById(R.id.favorite_movie_imageView);
         }
     }
 }
