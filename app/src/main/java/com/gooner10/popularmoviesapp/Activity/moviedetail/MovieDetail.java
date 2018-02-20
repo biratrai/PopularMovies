@@ -99,8 +99,10 @@ public class MovieDetail extends AppCompatActivity {
     @DebugLog
     private void addToDatabase() {
         movieRepository = MovieRepositoryImpl.getMovieDatabaseInstance(this);
-        Log.i(TAG, "addToDatabase: "+ movieRepository.getMovie());
-        movieRepository.insertOrUpdateMovieData(movie);
+        Log.i(TAG, "addToDatabase: " + movieRepository.getMovie());
+        if (!movieRepository.findMovieAlreadyIsFavorite(movie)) {
+            movieRepository.insertOrUpdateMovieData(movie);
+        }
     }
 
     // onEvent Receive the Event
