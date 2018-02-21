@@ -26,7 +26,7 @@ public interface IMovieRepository {
     /**
      * Deletes all movie from the data source.
      */
-    void deleteAllMovieData();
+    void deleteAllMovieData(MovieData movieData);
 
     /**
      * Finds whether movie already exists in favorite database
