@@ -42,8 +42,8 @@ public class MovieRepositoryImpl implements IMovieRepository {
     }
 
     @Override
-    public void deleteAllMovieData() {
-
+    public void deleteAllMovieData(MovieData movieData) {
+        movieDao.deleteMovies(movieData);
     }
 
     @Override
