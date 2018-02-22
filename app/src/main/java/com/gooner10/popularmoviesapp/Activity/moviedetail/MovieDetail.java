@@ -1,10 +1,13 @@
 package com.gooner10.popularmoviesapp.Activity.moviedetail;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -71,6 +74,8 @@ public class MovieDetail extends AppCompatActivity {
         // Set the image view to the Detail Activity
         loadBackdrop();
 
+        movieRepository = MovieRepositoryImpl.getMovieDatabaseInstance(this);
+
         // Set the relevant text to the field
         movieDescription.setText(movie.movieOverview);
         releaseDate.setText(movie.getMovieReleaseDate());
@@ -85,23 +90,42 @@ public class MovieDetail extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(movie.getMovieTitle());
 
-        FloatingActionButton fab = findViewById(R.id.detail_fab_button);
-        fab.setOnClickListener(new View.OnClickListener() {
+        if (movieRepository.findMovieAlreadyIsFavorite(movie)) {
+            setFavorite(true);
+        } else {
+            setFavorite(false);
+        }
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 addToDatabase();
             }
         });
     }
 
     @DebugLog
+    private void setFavorite(boolean isFavorite) {
+        Drawable drawable;
+        if (isFavorite) {
+            drawable = ContextCompat.getDrawable(this, R.drawable.ic_favorite_24dp);
+        } else {
+            drawable = ContextCompat.getDrawable(this, R.drawable.ic_favorite_white_24dp);
+        }
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
+            favoriteButton.setImageDrawable(drawable);
+        } else {
+            favoriteButton.setImageDrawable(drawable);
+        }
+    }
+
+    @DebugLog
     private void addToDatabase() {
-        movieRepository = MovieRepositoryImpl.getMovieDatabaseInstance(this);
         Log.i(TAG, "addToDatabase: " + movieRepository.getMovie());
         if (!movieRepository.findMovieAlreadyIsFavorite(movie)) {
             movieRepository.insertOrUpdateMovieData(movie);
+            setFavorite(true);
+        } else {
+            setFavorite(false);
         }
     }
 
