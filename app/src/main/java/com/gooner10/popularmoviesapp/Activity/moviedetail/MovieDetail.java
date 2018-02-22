@@ -126,6 +126,7 @@ public class MovieDetail extends AppCompatActivity {
             setFavorite(true);
         } else {
             setFavorite(false);
+            movieRepository.deleteAllMovieData(movie);
         }
     }
 
