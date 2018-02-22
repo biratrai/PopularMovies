@@ -28,7 +28,8 @@ public class MovieActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MovieActivity.class.getSimpleName();
     private final Fragment movieFragment = new MovieFragment();
-    private final Fragment favouriteFragment = new FavouriteFragment();
+    private final FavouriteFragment favouriteFragment = new FavouriteFragment();
+    public static final String TAG = MovieActivity.class.getSimpleName();
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -77,6 +78,27 @@ public class MovieActivity extends AppCompatActivity {
             mMovieAdapter.addFragment(movieFragment, "Popular Movies");
             mMovieAdapter.addFragment(favouriteFragment, "Favourites");
             viewPager.setAdapter(mMovieAdapter);
+            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                    Log.i(TAG, "onPageScrolled: " + position);
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    Log.i(TAG, "onPageSelected: " + position);
+                    if (position == 0) {
+
+                    } else if (position == 1) {
+                        favouriteFragment.setData();
+                    }
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+                    Log.i(TAG, "onPageScrollStateChanged: " + state);
+                }
+            });
         }
     }
 
