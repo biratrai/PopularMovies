@@ -128,7 +128,9 @@ public class FavouriteFragment extends Fragment implements MovieFavouriteContrac
 
     public void setData() {
         Log.d(TAG, "setData: " + presenter);
-        presenter.loadFavoriteMovieFromRepository();
+        if (presenter != null) {
+            presenter.loadFavoriteMovieFromRepository();
+        }
     }
 
 }
