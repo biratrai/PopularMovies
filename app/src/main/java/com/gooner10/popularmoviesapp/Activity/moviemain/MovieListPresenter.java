@@ -59,11 +59,9 @@ public class MovieListPresenter implements MovieContract.UserActionsListener {
             String jsonString = response.getString("results");
 
             JSONArray jsonArray = new JSONArray(jsonString);
-//            Log.i(LOG_TAG, "Array" + jsonArray.getClass());
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
                 String id = jsonObject.getString("id");
-                Log.i(TAG, "parseJSONresponse: " + id);
                 String title = jsonObject.getString("original_title");
                 String overview = jsonObject.getString("overview");
                 String release_date = jsonObject.getString("release_date");
@@ -79,10 +77,8 @@ public class MovieListPresenter implements MovieContract.UserActionsListener {
             }
 
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(TAG, "parseJSONresponse:", e);
         }
         movieView.displayMovieList(mMovieDataArrayList);
-        Log.d(LOG_TAG, "" + mMovieDataArrayList);
-//      EventBus.getDefault().postSticky(mMovieDataArrayList);
     }
 }
