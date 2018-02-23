@@ -23,12 +23,13 @@ import com.gooner10.popularmoviesapp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hugo.weaving.DebugLog;
 
 public class MovieActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MovieActivity.class.getSimpleName();
-    private final Fragment movieFragment = new MovieFragment();
-    private final FavouriteFragment favouriteFragment = new FavouriteFragment();
+    private Fragment movieFragment;
+    private FavouriteFragment favouriteFragment;
     public static final String TAG = MovieActivity.class.getSimpleName();
 
     @BindView(R.id.toolbar)
@@ -45,6 +46,7 @@ public class MovieActivity extends AppCompatActivity {
 
 
     @Override
+    @DebugLog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
@@ -72,11 +74,18 @@ public class MovieActivity extends AppCompatActivity {
         Log.d("TAG", username);
     }
 
+    @DebugLog
     private void setupViewPager() {
+        Log.i(TAG, "setupViewPager: " + viewPager);
         if (viewPager != null) {
             MovieAdapter mMovieAdapter = new MovieAdapter(getSupportFragmentManager());
+            favouriteFragment = new FavouriteFragment();
+            movieFragment = new MovieFragment();
+//            movieFragment.setRetainInstance(true);
+//            favouriteFragment.setRetainInstance(true);
             mMovieAdapter.addFragment(movieFragment, "Popular Movies");
             mMovieAdapter.addFragment(favouriteFragment, "Favourites");
+            Log.d(TAG, "setupViewPager favouriteFragment: " + favouriteFragment);
             viewPager.setAdapter(mMovieAdapter);
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
@@ -90,6 +99,7 @@ public class MovieActivity extends AppCompatActivity {
                     if (position == 0) {
 
                     } else if (position == 1) {
+                        Log.d(TAG, "onPageSelected favouriteFragment: "+ favouriteFragment);
                         favouriteFragment.setData();
                     }
                 }
