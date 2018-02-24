@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +20,19 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
+import hugo.weaving.DebugLog;
 
 /**
  * Fragment adapter for the MovieFragment
  */
 
 public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdapter.ViewHolderData> {
+    private static final String TAG = MovieFragmentAdapter.class.getSimpleName();
     private LayoutInflater layoutInflater;
     private Context context;
     private List<MovieData> movieData;
 
+    @DebugLog
     public MovieFragmentAdapter(Context context, List<MovieData> mMovieArray) {
         layoutInflater = LayoutInflater.from(context);
         this.context = context;
@@ -68,7 +72,9 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
     }
 
     @Override
+    @DebugLog
     public int getItemCount() {
+        Log.i(TAG, "getItemCount: "+ movieData);
         return movieData.size();
     }
 
