@@ -14,16 +14,18 @@ import com.gooner10.popularmoviesapp.Activity.data.MovieData;
 import com.gooner10.popularmoviesapp.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hugo.weaving.DebugLog;
 
 /**
  * Movie Fragment to display the Movie List in GridLayout
  */
 
 public class MovieFragment extends Fragment implements MovieContract.View {
-    private final String LOG_TAG = "MovieFragment";
+    private final String TAG = "MovieFragment";
     private MovieFragmentAdapter movieFragmentAdapter;
     MovieContract.UserActionsListener movieListPresenter = new MovieListPresenter(this);
 
@@ -43,8 +45,6 @@ public class MovieFragment extends Fragment implements MovieContract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        movieListPresenter.loadData();
-
         View view = inflater.inflate(R.layout.fragment_movie, container, false);
 
         // Bind all of the view
@@ -53,7 +53,8 @@ public class MovieFragment extends Fragment implements MovieContract.View {
         movierecyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         movieFragmentAdapter = new MovieFragmentAdapter(getActivity(), new ArrayList<MovieData>());
         movierecyclerview.setAdapter(movieFragmentAdapter);
-
+        Log.i(TAG, "onCreateView movieFragmentAdapter: " + movieFragmentAdapter);
+        movieListPresenter.loadData();
         return view;
     }
 
@@ -63,9 +64,11 @@ public class MovieFragment extends Fragment implements MovieContract.View {
     }
 
     @Override
-    public void displayMovieList(ArrayList<MovieData> movieDataList) {
+    @DebugLog
+    public void displayMovieList(List<MovieData> movieDataList) {
+        Log.i(TAG, "displayMovieList movieFragmentAdapter: " + movieFragmentAdapter);
         movieFragmentAdapter.setData(movieDataList);
-        Log.i(LOG_TAG, "displayMovieList");
+        Log.i(TAG, "displayMovieList");
     }
 
 }
