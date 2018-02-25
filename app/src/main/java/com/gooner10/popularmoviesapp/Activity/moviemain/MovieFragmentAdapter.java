@@ -72,9 +72,7 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
     }
 
     @Override
-    @DebugLog
     public int getItemCount() {
-        Log.i(TAG, "getItemCount: "+ movieData);
         return movieData.size();
     }
 
