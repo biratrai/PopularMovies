@@ -32,10 +32,13 @@ public class MovieViewModel extends ViewModel {
 
     @DebugLog
     public LiveData<List<MovieData>> getMovieDataList() {
-        if (movieDataList == null) {
+        Log.i(TAG, "getMovieDataList: " + movieDataList.getValue());
+        if (movieDataList.getValue() == null) {
             AsyncTask.execute(new Runnable() {
                 @Override
+                @DebugLog
                 public void run() {
+                    Log.i(TAG, "run: ");
                     fetchMovieData();
                 }
             });
