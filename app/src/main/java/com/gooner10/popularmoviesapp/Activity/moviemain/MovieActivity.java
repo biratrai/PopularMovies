@@ -78,15 +78,13 @@ public class MovieActivity extends AppCompatActivity {
     private void setupViewPager() {
         Log.i(TAG, "setupViewPager: " + viewPager);
         if (viewPager != null) {
-            MovieAdapter mMovieAdapter = new MovieAdapter(getSupportFragmentManager());
+            MovieAdapter movieAdapter = new MovieAdapter(getSupportFragmentManager());
             favouriteFragment = new FavouriteFragment();
             movieFragment = new MovieFragment();
-//            movieFragment.setRetainInstance(true);
-//            favouriteFragment.setRetainInstance(true);
-            mMovieAdapter.addFragment(movieFragment, "Popular Movies");
-            mMovieAdapter.addFragment(favouriteFragment, "Favourites");
+            movieAdapter.addFragment(movieFragment, "Popular Movies");
+            movieAdapter.addFragment(favouriteFragment, "Favourites");
             Log.d(TAG, "setupViewPager favouriteFragment: " + favouriteFragment);
-            viewPager.setAdapter(mMovieAdapter);
+            viewPager.setAdapter(movieAdapter);
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
