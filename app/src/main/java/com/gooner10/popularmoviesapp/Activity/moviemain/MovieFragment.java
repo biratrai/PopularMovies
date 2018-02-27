@@ -27,7 +27,7 @@ import hugo.weaving.DebugLog;
 public class MovieFragment extends Fragment implements MovieContract.View {
     private final String TAG = "MovieFragment";
     private MovieFragmentAdapter movieFragmentAdapter;
-    MovieContract.UserActionsListener movieListPresenter = new MovieListPresenter(this);
+    MovieContract.UserActionsListener movieListPresenter = new MovieListPresenter(this, this);
 
     @BindView(R.id.recyclerViewMovie)
     RecyclerView movierecyclerview;
@@ -54,7 +54,6 @@ public class MovieFragment extends Fragment implements MovieContract.View {
         movieFragmentAdapter = new MovieFragmentAdapter(getActivity(), new ArrayList<MovieData>());
         movierecyclerview.setAdapter(movieFragmentAdapter);
         Log.i(TAG, "onCreateView movieFragmentAdapter: " + movieFragmentAdapter);
-        movieListPresenter.loadData();
         return view;
     }
 
