@@ -27,10 +27,9 @@ import hugo.weaving.DebugLog;
 
 public class MovieActivity extends AppCompatActivity {
 
-    private final String LOG_TAG = MovieActivity.class.getSimpleName();
+    public static final String TAG = MovieActivity.class.getSimpleName();
     private Fragment movieFragment;
     private FavouriteFragment favouriteFragment;
-    public static final String TAG = MovieActivity.class.getSimpleName();
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -131,7 +130,7 @@ public class MovieActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     drawerLayout.openDrawer(GravityCompat.START);
-                    Log.d(LOG_TAG, "onClick");
+                    Log.d(TAG, "onClick");
                 }
             });
         }
