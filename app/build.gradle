@@ -39,18 +39,18 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Android libraries
-    compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.android.support:support-annotations:28.0.0'
-    compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.android.support:design:27.1.1'
-    compile 'com.android.support:support-v4:27.1.1'
-    compile 'com.android.support:recyclerview-v7:27.1.1'
-    compile 'com.android.support:cardview-v7:27.1.1'
-    compile 'org.jetbrains:annotations-java5:15.0'
-    compile 'com.mcxiaoke.volley:library:1.0.19'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-annotations:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
 
     // Room persistence library
     // Room (use 1.1.0-alpha1 for latest alpha)
@@ -62,11 +62,11 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:1.1.1"
 
     // External dependent libraries
-    compile 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'de.greenrobot:eventbus:2.4.0'
-    compile 'com.github.bumptech.glide:glide:3.6.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'de.greenrobot:eventbus:2.4.0'
+    implementation 'com.github.bumptech.glide:glide:3.6.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     // Dependency Injection
     implementation 'com.google.dagger:dagger:2.21'
@@ -76,21 +76,21 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.16'
 
     // Stetho
-    compile 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho:1.5.0'
 
     // Lottie for animation
-    compile 'com.airbnb.android:lottie:2.5.0-rc1'
+    implementation 'com.airbnb.android:lottie:2.5.0-rc1'
 
     // Testing Dependencies
-    testCompile 'org.robolectric:robolectric:3.1.2'
+    testImplementation 'org.robolectric:robolectric:3.1.2'
 
     // Espresso Testing Dependencies
-    androidTestCompile 'com.android.support:support-annotations:28.0.0'
-    androidTestCompile 'com.android.support.test:runner:1.0.2'
-    androidTestCompile 'com.android.support.test:rules:1.0.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // add this for intent mocking support
-    androidTestCompile 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
 
 }
