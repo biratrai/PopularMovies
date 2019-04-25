@@ -1,0 +1,81 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "f659bcd373e91e13b53a51e96f3582c7",
+    "entities": [
+      {
+        "tableName": "moviedata",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `movieTitle` TEXT, `movieOverview` TEXT, `moviePosterPath` TEXT, `movieVoteAverage` TEXT, `movieVoteCount` TEXT, `movieReleaseDate` TEXT, `moviePopularity` TEXT, `movieBackdropPath` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "movieTitle",
+            "columnName": "movieTitle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "movieOverview",
+            "columnName": "movieOverview",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "moviePosterPath",
+            "columnName": "moviePosterPath",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "movieVoteAverage",
+            "columnName": "movieVoteAverage",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "movieVoteCount",
+            "columnName": "movieVoteCount",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "movieReleaseDate",
+            "columnName": "movieReleaseDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "moviePopularity",
+            "columnName": "moviePopularity",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "movieBackdropPath",
+            "columnName": "movieBackdropPath",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"f659bcd373e91e13b53a51e96f3582c7\")"
+    ]
+  }
+}
