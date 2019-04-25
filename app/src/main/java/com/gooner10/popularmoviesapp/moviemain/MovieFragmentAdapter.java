@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.gooner10.popularmoviesapp.R;
 import com.gooner10.popularmoviesapp.data.Constants;
-import com.gooner10.popularmoviesapp.data.MovieData;
+import com.gooner10.popularmoviesapp.data.MovieItem;
 import com.gooner10.popularmoviesapp.movieBus.OnItemClickEvent;
 import com.gooner10.popularmoviesapp.moviedetail.MovieDetail;
-import com.gooner10.popularmoviesapp.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -29,10 +29,10 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
     private static final String TAG = MovieFragmentAdapter.class.getSimpleName();
     private LayoutInflater layoutInflater;
     private Context context;
-    private List<MovieData> movieData;
+    private List<MovieItem> movieData;
 
     @DebugLog
-    public MovieFragmentAdapter(Context context, List<MovieData> mMovieArray) {
+    public MovieFragmentAdapter(Context context, List<MovieItem> mMovieArray) {
         layoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.movieData = mMovieArray;
@@ -46,9 +46,9 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
 
     @Override
     public void onBindViewHolder(final ViewHolderData holder, int position) {
-        MovieData movie = movieData.get(position);
+        MovieItem movie = movieData.get(position);
         Picasso.with(context)
-                .load(Constants.POSTER_PATH + movie.getMoviePosterPath())
+                .load(Constants.POSTER_PATH + movie.getPosterPath())
                 .placeholder(R.drawable.ic_headset)
                 .error(R.drawable.ic_done)
                 .into(holder.movieImageView);
@@ -58,9 +58,9 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, MovieDetail.class);
-                MovieData movie = movieData.get(holder.getAdapterPosition());
+                MovieItem movie = movieData.get(holder.getAdapterPosition());
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("movie_data", movie);
+//                bundle.putParcelable("movie_data", movie);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
 
@@ -75,7 +75,7 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
         return movieData.size();
     }
 
-    public void setData(List<MovieData> movieDataList) {
+    public void setData(List<MovieItem> movieDataList) {
         this.movieData = movieDataList;
         notifyDataSetChanged();
     }

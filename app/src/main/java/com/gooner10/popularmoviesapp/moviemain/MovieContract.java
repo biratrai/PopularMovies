@@ -1,6 +1,6 @@
 package com.gooner10.popularmoviesapp.moviemain;
 
-import com.gooner10.popularmoviesapp.data.MovieData;
+import com.gooner10.popularmoviesapp.data.MovieItem;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface MovieContract {
     interface View {
-        void displayMovieList(List<MovieData> movieDataList);
+        void displayMovieList(List<MovieItem> movieDataList);
     }
 
     interface UserActionsListener {

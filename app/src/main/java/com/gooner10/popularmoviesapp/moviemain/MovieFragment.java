@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gooner10.popularmoviesapp.data.MovieData;
 import com.gooner10.popularmoviesapp.R;
+import com.gooner10.popularmoviesapp.data.MovieItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class MovieFragment extends Fragment implements MovieContract.View {
         ButterKnife.bind(this, view);
 
         movierecyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        movieFragmentAdapter = new MovieFragmentAdapter(getActivity(), new ArrayList<MovieData>());
+        movieFragmentAdapter = new MovieFragmentAdapter(getActivity(), new ArrayList<MovieItem>());
         movierecyclerview.setAdapter(movieFragmentAdapter);
         Log.i(TAG, "onCreateView movieFragmentAdapter: " + movieFragmentAdapter);
         return view;
@@ -64,7 +64,7 @@ public class MovieFragment extends Fragment implements MovieContract.View {
 
     @Override
     @DebugLog
-    public void displayMovieList(List<MovieData> movieDataList) {
+    public void displayMovieList(List<MovieItem> movieDataList) {
         Log.i(TAG, "displayMovieList movieFragmentAdapter: " + movieFragmentAdapter);
         movieFragmentAdapter.setData(movieDataList);
         Log.i(TAG, "displayMovieList");

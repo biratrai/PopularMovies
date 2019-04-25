@@ -9,7 +9,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.gooner10.popularmoviesapp.data.MovieData;
+import com.gooner10.popularmoviesapp.data.MovieItem;
 import com.gooner10.popularmoviesapp.data.MovieViewModel;
 
 import java.util.List;
@@ -33,10 +33,10 @@ public class MovieListPresenter implements MovieContract.UserActionsListener, Li
         MovieViewModel movieViewModel = ViewModelProviders.of((MovieFragment) movieView).get(MovieViewModel.class);
         Log.i(TAG, "loadData " + movieView);
         Log.i(TAG, "loadData getMovieDataList: " + movieViewModel.getMovieDataList());
-        movieViewModel.getMovieDataList().observe((MovieFragment) movieView, new Observer<List<MovieData>>() {
+        movieViewModel.getMovieDataList().observe((MovieFragment) movieView, new Observer<List<MovieItem>>() {
             @Override
             @DebugLog
-            public void onChanged(@Nullable List<MovieData> movieDataList) {
+            public void onChanged(@Nullable List<MovieItem> movieDataList) {
                 movieView.displayMovieList(movieDataList);
             }
         });
