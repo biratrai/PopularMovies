@@ -60,7 +60,7 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
                 Intent intent = new Intent(context, MovieDetail.class);
                 MovieItem movie = movieData.get(holder.getAdapterPosition());
                 Bundle bundle = new Bundle();
-//                bundle.putParcelable("movie_data", movie);
+                bundle.putParcelable("movie_data", movie);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
 
