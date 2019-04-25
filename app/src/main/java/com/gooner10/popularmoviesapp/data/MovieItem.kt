@@ -2,7 +2,7 @@ package com.gooner10.popularmoviesapp.data
 
 import com.google.gson.annotations.SerializedName
 
-data class ResultsItem(
+data class MovieItem(
 
 	@field:SerializedName("overview")
 	val overview: String? = null,
