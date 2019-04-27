@@ -7,6 +7,8 @@ The data is coming [from moviedb.org](https://www.themoviedb.org/) using the [di
 
 It  is a basis to learn the android support library for design and the new [Android Architecture Component](https://developer.android.com/topic/libraries/architecture/index.html).
 
+![Main App Screen](https://github.com/biratrai/PopularMovies/blob/master/app/images/main.png)
+
 ## The Android Apis used:
 This project mainly is concerned with [Android Architecture Component](https://developer.android.com/topic/libraries/architecture/index.html) as a whole.
 * [Lifecycle Components](https://developer.android.com/topic/libraries/architecture/lifecycle.html) - These components provide constructs to tie core components to android lifecycle events.
