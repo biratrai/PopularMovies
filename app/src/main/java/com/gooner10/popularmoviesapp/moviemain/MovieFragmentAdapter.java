@@ -12,13 +12,11 @@ import android.widget.ImageView;
 import com.gooner10.popularmoviesapp.R;
 import com.gooner10.popularmoviesapp.data.Constants;
 import com.gooner10.popularmoviesapp.data.MovieItem;
-import com.gooner10.popularmoviesapp.movieBus.OnItemClickEvent;
-import com.gooner10.popularmoviesapp.moviedetail.MovieDetail;
+import com.gooner10.popularmoviesapp.moviedetail.MovieDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import de.greenrobot.event.EventBus;
 import hugo.weaving.DebugLog;
 
 /**
@@ -27,6 +25,7 @@ import hugo.weaving.DebugLog;
 
 public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdapter.ViewHolderData> {
     private static final String TAG = MovieFragmentAdapter.class.getSimpleName();
+    public static final String MOVIE_DATA = "movie_data";
     private LayoutInflater layoutInflater;
     private Context context;
     private List<MovieItem> movieData;
@@ -57,15 +56,12 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                Intent intent = new Intent(context, MovieDetail.class);
+                Intent intent = new Intent(context, MovieDetailActivity.class);
                 MovieItem movie = movieData.get(holder.getAdapterPosition());
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("movie_data", movie);
+                bundle.putParcelable(MOVIE_DATA, movie);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
-
-                // Get and Post the event
-                EventBus.getDefault().postSticky(new OnItemClickEvent(bundle));
             }
         });
     }
