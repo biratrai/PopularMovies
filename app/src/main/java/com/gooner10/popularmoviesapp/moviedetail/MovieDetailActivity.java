@@ -23,17 +23,17 @@ import com.gooner10.popularmoviesapp.data.Constants;
 import com.gooner10.popularmoviesapp.data.IMovieRepository;
 import com.gooner10.popularmoviesapp.data.MovieItem;
 import com.gooner10.popularmoviesapp.data.MovieRepositoryImpl;
-import com.gooner10.popularmoviesapp.movieBus.OnItemClickEvent;
 import com.gooner10.popularmoviesapp.moviemain.MovieActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.greenrobot.event.EventBus;
 import hugo.weaving.DebugLog;
 
-public class MovieDetail extends AppCompatActivity {
+import static com.gooner10.popularmoviesapp.moviemain.MovieFragmentAdapter.MOVIE_DATA;
 
-    private static final String TAG = MovieDetail.class.getSimpleName();
+public class MovieDetailActivity extends AppCompatActivity {
+
+    private static final String TAG = MovieDetailActivity.class.getSimpleName();
     private MovieItem movie;
     private IMovieRepository movieRepository;
 
@@ -72,9 +72,7 @@ public class MovieDetail extends AppCompatActivity {
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Register to the bus
-        EventBus.getDefault().registerSticky(this);
-
+        movie = getIntent().getParcelableExtra(MOVIE_DATA);
         // Set the image view to the Detail Activity
         loadBackdrop();
 
@@ -83,9 +81,7 @@ public class MovieDetail extends AppCompatActivity {
         // Set the relevant text to the field
         movieDescription.setText(movie.getOverview());
         releaseDate.setText(movie.getReleaseDate());
-//        voteAverage.setText(movie.getVoteAverage());
-
-//        mReleaseDateText.setText("Release Date: " + movie.getMovieReleaseDate());
+        voteAverage.setText(Double.toString(movie.getVoteAverage()));
 
         float movie_rating = Float.parseFloat(String.valueOf(movie.getVoteAverage())) / 2;
 
@@ -94,11 +90,11 @@ public class MovieDetail extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(movie.getTitle());
 
-//        if (movieRepository.findMovieAlreadyIsFavorite(movie)) {
-//            setFavorite(true);
-//        } else {
-//            setFavorite(false);
-//        }
+        if (movieRepository.findMovieAlreadyIsFavorite(movie)) {
+            setFavorite(true);
+        } else {
+            setFavorite(false);
+        }
         favoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,28 +121,16 @@ public class MovieDetail extends AppCompatActivity {
     @DebugLog
     private void addToDatabase() {
         Log.i(TAG, "addToDatabase: " + movieRepository.getMovie());
-//        if (!movieRepository.findMovieAlreadyIsFavorite(movie)) {
-//            movieRepository.insertOrUpdateMovieData(movie);
-//            setFavorite(true);
-//        } else {
-//            setFavorite(false);
-//            movieRepository.deleteAllMovieData(movie);
-//        }
-    }
-
-    // onEvent Receive the Event
-    public void onEventMainThread(OnItemClickEvent event) {
-        movie = (MovieItem) event.bundle.get("movie_data");
-    }
-
-    @Override
-    public void onStop() {
-        EventBus.getDefault().unregister(this);
-        super.onStop();
+        if (!movieRepository.findMovieAlreadyIsFavorite(movie)) {
+            movieRepository.insertOrUpdateMovieData(movie);
+            setFavorite(true);
+        } else {
+            setFavorite(false);
+            movieRepository.deleteAllMovieData(movie);
+        }
     }
 
     private void loadBackdrop() {
-        movie = getIntent().getParcelableExtra("movie_data");
         Glide.with(this).load(Constants.BACKDROP_PATH + movie.getBackdropPath()).centerCrop().into(imageView);
     }
 
