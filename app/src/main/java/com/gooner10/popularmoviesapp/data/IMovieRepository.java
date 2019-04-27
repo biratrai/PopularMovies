@@ -14,19 +14,19 @@ public interface IMovieRepository {
      *
      * @return all the movie from the data source.
      */
-    List<MovieData> getMovie();
+    List<MovieItem> getMovie();
 
     /**
      * Inserts the movie in the data source, or, if this is an existing movie, it updates it.
      *
      * @param movieData the movie to be inserted or updated.
      */
-    void insertOrUpdateMovieData(MovieData movieData);
+    void insertOrUpdateMovieData(MovieItem movieData);
 
     /**
      * Deletes all movie from the data source.
      */
-    void deleteAllMovieData(MovieData movieData);
+    void deleteAllMovieData(MovieItem movieData);
 
     /**
      * Finds whether movie already exists in favorite database
@@ -34,5 +34,5 @@ public interface IMovieRepository {
      * @param movieData MovieData to be searched
      * @return true if exits in database; false otherwise
      */
-    boolean findMovieAlreadyIsFavorite(MovieData movieData);
+    boolean findMovieAlreadyIsFavorite(MovieItem movieData);
 }

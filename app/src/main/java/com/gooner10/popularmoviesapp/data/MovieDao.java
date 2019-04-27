@@ -14,13 +14,13 @@ import java.util.List;
 @Dao
 public interface MovieDao {
     @Query("SELECT * FROM moviedata")
-    List<MovieData> getAllFavoritMovie();
+    List<MovieItem> getAllFavoritMovie();
 
     @Insert
-    void insertAll(MovieData... movieData);
+    void insertAll(MovieItem... movieData);
 
     @Delete
-    void deleteMovies(MovieData movieData);
+    void deleteMovies(MovieItem movieData);
 
     @Query("SELECT * FROM moviedata where id LIKE :movieId")
     boolean movieExists(String movieId);

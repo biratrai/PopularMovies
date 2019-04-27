@@ -13,8 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gooner10.popularmoviesapp.data.MovieData;
 import com.gooner10.popularmoviesapp.R;
+import com.gooner10.popularmoviesapp.data.MovieItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class FavouriteFragment extends Fragment implements MovieFavouriteContrac
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         favoriteRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        favoriteMovieFragmentAdapter = new FavoriteMovieFragmentAdapter(getActivity(), new ArrayList<MovieData>());
+        favoriteMovieFragmentAdapter = new FavoriteMovieFragmentAdapter(getActivity(), new ArrayList<MovieItem>());
         favoriteRecyclerView.setAdapter(favoriteMovieFragmentAdapter);
     }
 
@@ -122,7 +122,7 @@ public class FavouriteFragment extends Fragment implements MovieFavouriteContrac
 
     @Override
     @DebugLog
-    public void displayFavoriteMovie(List<MovieData> movieDataList) {
+    public void displayFavoriteMovie(List<MovieItem> movieDataList) {
         favoriteMovieFragmentAdapter.setData(movieDataList);
     }
 

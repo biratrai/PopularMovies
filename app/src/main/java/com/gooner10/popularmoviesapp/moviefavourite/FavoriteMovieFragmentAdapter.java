@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.gooner10.popularmoviesapp.data.Constants;
-import com.gooner10.popularmoviesapp.data.MovieData;
 import com.gooner10.popularmoviesapp.R;
+import com.gooner10.popularmoviesapp.data.Constants;
+import com.gooner10.popularmoviesapp.data.MovieItem;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -22,9 +22,9 @@ import java.util.List;
 public class FavoriteMovieFragmentAdapter extends RecyclerView.Adapter<FavoriteMovieFragmentAdapter.MovieFavoriteViewHolder> {
     private LayoutInflater layoutInflater;
     private Context context;
-    private List<MovieData> movieData;
+    private List<MovieItem> movieData;
 
-    public FavoriteMovieFragmentAdapter(Context context, List<MovieData> movieData) {
+    public FavoriteMovieFragmentAdapter(Context context, List<MovieItem> movieData) {
         this.context = context;
         this.movieData = movieData;
         layoutInflater = LayoutInflater.from(context);
@@ -38,9 +38,9 @@ public class FavoriteMovieFragmentAdapter extends RecyclerView.Adapter<FavoriteM
 
     @Override
     public void onBindViewHolder(MovieFavoriteViewHolder holder, int position) {
-        holder.favoriteMovieText.setText(movieData.get(position).getMovieTitle());
+        holder.favoriteMovieText.setText(movieData.get(position).getTitle());
         Picasso.with(context)
-                .load(Constants.POSTER_PATH + movieData.get(position).getMoviePosterPath())
+                .load(Constants.POSTER_PATH + movieData.get(position).getPosterPath())
                 .placeholder(R.drawable.ic_headset)
                 .error(R.drawable.ic_done)
                 .into(holder.favoriteMovieImage);
@@ -51,7 +51,7 @@ public class FavoriteMovieFragmentAdapter extends RecyclerView.Adapter<FavoriteM
         return movieData.size();
     }
 
-    public void setData(List<MovieData> movieDataList) {
+    public void setData(List<MovieItem> movieDataList) {
         this.movieData = movieDataList;
         notifyDataSetChanged();
     }

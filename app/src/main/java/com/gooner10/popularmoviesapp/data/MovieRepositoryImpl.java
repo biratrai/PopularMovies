@@ -32,24 +32,24 @@ public class MovieRepositoryImpl implements IMovieRepository {
     }
 
     @Override
-    public List<MovieData> getMovie() {
+    public List<MovieItem> getMovie() {
         return movieDao.getAllFavoritMovie();
     }
 
     @Override
-    public void insertOrUpdateMovieData(MovieData movieData) {
+    public void insertOrUpdateMovieData(MovieItem movieData) {
         movieDao.insertAll(movieData);
     }
 
     @Override
-    public void deleteAllMovieData(MovieData movieData) {
+    public void deleteAllMovieData(MovieItem movieData) {
         movieDao.deleteMovies(movieData);
     }
 
     @Override
-    public boolean findMovieAlreadyIsFavorite(MovieData movieData) {
-        Log.d(TAG, "findMovieAlreadyIsFavorite: " + movieDao.movieExists(movieData.getId()));
-        return movieDao.movieExists(movieData.getId());
+    public boolean findMovieAlreadyIsFavorite(MovieItem movieData) {
+        Log.d(TAG, "findMovieAlreadyIsFavorite: " + movieDao.movieExists(String.valueOf(movieData.getId())));
+        return movieDao.movieExists(String.valueOf(movieData.getId()));
     }
 
 

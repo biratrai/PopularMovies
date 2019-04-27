@@ -8,7 +8,7 @@ import android.content.Context;
 /**
  * Class to define Room database
  */
-@Database(entities = {MovieData.class}, version = 1)
+@Database(entities = {MovieItem.class}, version = 2)
 public abstract class MovieDatabase extends RoomDatabase {
     private static final String MOVIE_DATABASE_NAME = "movie.db";
     private static MovieDatabase INSTANCE;
@@ -21,6 +21,7 @@ public abstract class MovieDatabase extends RoomDatabase {
                     Room.databaseBuilder(context.getApplicationContext(),
                             MovieDatabase.class,
                             MOVIE_DATABASE_NAME)
+                            .fallbackToDestructiveMigration()
                             // To simplify the codelab, allow queries on the main thread.
                             // Don't do this on a real app! See PersistenceBasicSample for an example.
                             .allowMainThreadQueries()

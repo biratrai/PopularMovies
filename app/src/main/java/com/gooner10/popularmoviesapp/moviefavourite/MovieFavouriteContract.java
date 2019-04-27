@@ -1,6 +1,6 @@
 package com.gooner10.popularmoviesapp.moviefavourite;
 
-import com.gooner10.popularmoviesapp.data.MovieData;
+import com.gooner10.popularmoviesapp.data.MovieItem;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MovieFavouriteContract {
     interface View {
-        void displayFavoriteMovie(List<MovieData> movieDataList);
+        void displayFavoriteMovie(List<MovieItem> movieDataList);
     }
 
     interface Presenter {
