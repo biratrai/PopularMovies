@@ -2,7 +2,6 @@ package com.gooner10.popularmoviesapp.moviedetail;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -111,11 +110,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         } else {
             drawable = ContextCompat.getDrawable(this, R.drawable.ic_favorite_white_24dp);
         }
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
-            favoriteButton.setImageDrawable(drawable);
-        } else {
-            favoriteButton.setImageDrawable(drawable);
-        }
+        favoriteButton.setImageDrawable(drawable);
     }
 
     @DebugLog
