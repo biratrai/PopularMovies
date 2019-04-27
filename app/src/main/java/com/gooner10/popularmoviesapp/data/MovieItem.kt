@@ -1,51 +1,69 @@
 package com.gooner10.popularmoviesapp.data
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@Entity(tableName = "moviedata")
 data class MovieItem(
 
-	@field:SerializedName("overview")
-	val overview: String? = null,
+        @ColumnInfo
+        @field:SerializedName("overview")
+        var overview: String,
 
-	@field:SerializedName("original_language")
-	val originalLanguage: String? = null,
+        @ColumnInfo
+        @field:SerializedName("original_language")
+        var originalLanguage: String,
 
-	@field:SerializedName("original_title")
-	val originalTitle: String? = null,
+        @ColumnInfo
+        @field:SerializedName("original_title")
+        var originalTitle: String,
 
-	@field:SerializedName("video")
-	val video: Boolean? = null,
+        @ColumnInfo
+        @field:SerializedName("video")
+        var video: Boolean,
 
-	@field:SerializedName("title")
-	val title: String? = null,
+        @ColumnInfo
+        @field:SerializedName("title")
+        var title: String,
 
-	@field:SerializedName("genre_ids")
-	val genreIds: List<Int?>? = null,
+//        @ColumnInfo
+//        @field:SerializedName("genre_ids")
+//        var genreIds: List<Int?>?,
 
-	@field:SerializedName("poster_path")
-	val posterPath: String? = null,
+        @ColumnInfo
+        @field:SerializedName("poster_path")
+        var posterPath: String,
 
-	@field:SerializedName("backdrop_path")
-	val backdropPath: String? = null,
+        @ColumnInfo
+        @field:SerializedName("backdrop_path")
+        var backdropPath: String,
 
-	@field:SerializedName("release_date")
-	val releaseDate: String? = null,
+        @ColumnInfo
+        @field:SerializedName("release_date")
+        var releaseDate: String,
 
-	@field:SerializedName("vote_average")
-	val voteAverage: Double? = null,
+        @ColumnInfo
+        @field:SerializedName("vote_average")
+        var voteAverage: Double,
 
-	@field:SerializedName("popularity")
-	val popularity: Double? = null,
+        @ColumnInfo
+        @field:SerializedName("popularity")
+        var popularity: Double,
 
-	@field:SerializedName("id")
-	val id: Int? = null,
+        @PrimaryKey
+        @field:SerializedName("id")
+        var id: Int,
 
-	@field:SerializedName("adult")
-	val adult: Boolean? = null,
+        @ColumnInfo
+        @field:SerializedName("adult")
+        var adult: Boolean,
 
-	@field:SerializedName("vote_count")
-	val voteCount: Int? = null
+        @ColumnInfo
+        @field:SerializedName("vote_count")
+        var voteCount: Int
 ) : Parcelable
