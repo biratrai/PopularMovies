@@ -161,6 +161,5 @@ public class MovieActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        EventBus.getDefault().unregister(this);
     }
 }
