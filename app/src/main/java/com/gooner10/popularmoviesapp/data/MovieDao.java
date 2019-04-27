@@ -23,5 +23,5 @@ public interface MovieDao {
     void deleteMovies(MovieItem movieData);
 
     @Query("SELECT * FROM moviedata where id LIKE :movieId")
-    boolean movieExists(String movieId);
+    boolean movieExists(int movieId);
 }

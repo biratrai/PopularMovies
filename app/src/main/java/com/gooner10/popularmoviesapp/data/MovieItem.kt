@@ -11,6 +11,10 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "moviedata")
 data class MovieItem(
 
+        @PrimaryKey(autoGenerate = false)
+        @field:SerializedName("id")
+        var id: Int,
+
         @ColumnInfo
         @field:SerializedName("overview")
         var overview: String,
@@ -31,10 +35,6 @@ data class MovieItem(
         @field:SerializedName("title")
         var title: String,
 
-//        @ColumnInfo
-//        @field:SerializedName("genre_ids")
-//        var genreIds: List<Int?>?,
-
         @ColumnInfo
         @field:SerializedName("poster_path")
         var posterPath: String,
@@ -54,10 +54,6 @@ data class MovieItem(
         @ColumnInfo
         @field:SerializedName("popularity")
         var popularity: Double,
-
-        @PrimaryKey
-        @field:SerializedName("id")
-        var id: Int,
 
         @ColumnInfo
         @field:SerializedName("adult")

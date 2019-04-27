@@ -48,8 +48,8 @@ public class MovieRepositoryImpl implements IMovieRepository {
 
     @Override
     public boolean findMovieAlreadyIsFavorite(MovieItem movieData) {
-        Log.d(TAG, "findMovieAlreadyIsFavorite: " + movieDao.movieExists(String.valueOf(movieData.getId())));
-        return movieDao.movieExists(String.valueOf(movieData.getId()));
+        Log.d(TAG, "findMovieAlreadyIsFavorite: " + movieDao.movieExists(movieData.getId()));
+        return movieDao.movieExists(movieData.getId());
     }
 
 
