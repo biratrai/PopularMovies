@@ -55,7 +55,6 @@ public class MovieFragmentAdapter extends RecyclerView.Adapter<MovieFragmentAdap
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = view.getContext();
                 Intent intent = new Intent(context, MovieDetailActivity.class);
                 MovieItem movie = movieData.get(holder.getAdapterPosition());
                 Bundle bundle = new Bundle();
