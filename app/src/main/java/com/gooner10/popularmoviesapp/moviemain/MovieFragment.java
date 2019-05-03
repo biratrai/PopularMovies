@@ -1,7 +1,6 @@
 package com.gooner10.popularmoviesapp.moviemain;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.gooner10.popularmoviesapp.R;
 import com.gooner10.popularmoviesapp.data.MovieItem;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +38,7 @@ public class MovieFragment extends Fragment implements MovieContract.View {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_movie, container, false);
@@ -58,16 +54,10 @@ public class MovieFragment extends Fragment implements MovieContract.View {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
     @DebugLog
     public void displayMovieList(List<MovieItem> movieDataList) {
         Log.i(TAG, "displayMovieList movieFragmentAdapter: " + movieFragmentAdapter);
         movieFragmentAdapter.setData(movieDataList);
-        Log.i(TAG, "displayMovieList");
     }
 
 }
