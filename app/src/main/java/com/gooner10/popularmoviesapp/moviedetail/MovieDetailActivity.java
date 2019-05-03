@@ -24,6 +24,8 @@ import com.gooner10.popularmoviesapp.data.MovieItem;
 import com.gooner10.popularmoviesapp.data.MovieRepositoryImpl;
 import com.gooner10.popularmoviesapp.moviemain.MovieActivity;
 
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hugo.weaving.DebugLog;
@@ -80,20 +82,16 @@ public class MovieDetailActivity extends AppCompatActivity {
         // Set the relevant text to the field
         movieDescription.setText(movie.getOverview());
         releaseDate.setText(movie.getReleaseDate());
-        voteAverage.setText(Double.toString(movie.getVoteAverage()));
+        voteAverage.setText(String.format(Locale.getDefault(), "%1$,.1f", movie.getVoteAverage()));
 
-        float movie_rating = Float.parseFloat(String.valueOf(movie.getVoteAverage())) / 2;
+        float movieRating = Float.parseFloat(String.valueOf(movie.getVoteAverage())) / 2;
 
-        mDetailRatingBar.setRating((movie_rating));
+        mDetailRatingBar.setRating(movieRating);
 
         CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(movie.getTitle());
 
-        if (movieRepository.findMovieAlreadyIsFavorite(movie)) {
-            setFavorite(true);
-        } else {
-            setFavorite(false);
-        }
+        setFavorite(movieRepository.findMovieAlreadyIsFavorite(movie));
         favoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
