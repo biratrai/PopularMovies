@@ -1,6 +1,9 @@
 package com.gooner10.popularmoviesapp.moviemain;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,8 +31,7 @@ import hugo.weaving.DebugLog;
 public class MovieFragment extends Fragment implements MovieContract.View {
     private final String TAG = "MovieFragment";
     private MovieFragmentAdapter movieFragmentAdapter;
-    MovieContract.UserActionsListener movieListPresenter = new MovieListPresenter(this, this);
-
+˚
     @BindView(R.id.recyclerViewMovie)
     RecyclerView movierecyclerview;
 
@@ -50,6 +52,15 @@ public class MovieFragment extends Fragment implements MovieContract.View {
         movieFragmentAdapter = new MovieFragmentAdapter(getActivity(), new ArrayList<MovieItem>());
         movierecyclerview.setAdapter(movieFragmentAdapter);
         Log.i(TAG, "onCreateView movieFragmentAdapter: " + movieFragmentAdapter);
+        MovieViewModel movieViewModel = ViewModelProviders.of(getActivity()).get(MovieViewModel.class);
+        Log.i(TAG, "loadData getMovieDataList: " + movieViewModel.getMovieDataList());
+        movieViewModel.getMovieDataList().observe(getActivity(), new Observer<List<MovieItem>>() {
+            @Override
+            @DebugLog
+            public void onChanged(@Nullable List<MovieItem> movieDataList) {
+                displayMovieList(movieDataList);
+            }
+        });
         return view;
     }
 
