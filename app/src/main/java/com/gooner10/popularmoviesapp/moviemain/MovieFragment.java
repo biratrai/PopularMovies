@@ -31,7 +31,7 @@ import hugo.weaving.DebugLog;
 public class MovieFragment extends Fragment implements MovieContract.View {
     private final String TAG = "MovieFragment";
     private MovieFragmentAdapter movieFragmentAdapter;
-˚
+
     @BindView(R.id.recyclerViewMovie)
     RecyclerView movierecyclerview;
 
