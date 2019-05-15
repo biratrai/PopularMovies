@@ -2,7 +2,7 @@ package com.gooner10.popularmoviesapp.moviesettings;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.gooner10.popularmoviesapp.R;
 
