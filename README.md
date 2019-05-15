@@ -8,7 +8,7 @@ Android Jetpack is a set of components, tools and guidance to make great Android
 together the existing Support Library and Architecture Components and arranges them into four
 categories:
 
-![Android Jetpack](screenshots/jetpack_donut.png "Android Jetpack Components")
+![Android Jetpack](images/jetpack_donut.png "Android Jetpack Components")
 
 Popular Movies Android app is using the material design with support library and design library.
 
