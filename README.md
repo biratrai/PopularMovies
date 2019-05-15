@@ -8,7 +8,7 @@ Android Jetpack is a set of components, tools and guidance to make great Android
 together the existing Support Library and Architecture Components and arranges them into four
 categories:
 
-![Android Jetpack](images/jetpack_donut.png "Android Jetpack Components")
+![Android Jetpack](app/images/jetpack_donut.png "Android Jetpack Components")
 
 Popular Movies Android app is using the material design with support library and design library.
 
@@ -16,7 +16,7 @@ The data is coming [from moviedb.org](https://www.themoviedb.org/) using the [di
 
 It  is a basis to learn the android support library for design and the new [Android Architecture Component](https://developer.android.com/topic/libraries/architecture/index.html).
 
-![Main App Screen](https://github.com/biratrai/PopularMovies/blob/master/app/images/main.png) ![Detail App Screen](https://github.com/biratrai/PopularMovies/blob/master/app/images/detail.png)
+![Main App Screen](app/images/main.png) ![Detail App Screen](app/images/detail.png)
 
 ## The Android Apis used:
 This project mainly is concerned with [Android Architecture Component](https://developer.android.com/topic/libraries/architecture/index.html) as a whole.
