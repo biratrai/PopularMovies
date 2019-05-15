@@ -11,8 +11,4 @@ public interface MovieContract {
     interface View {
         void displayMovieList(List<MovieItem> movieDataList);
     }
-
-    interface UserActionsListener {
-        void loadData();
-    }
 }
