@@ -3,18 +3,16 @@ package com.gooner10.popularmoviesapp.moviemain
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-
+import androidx.recyclerview.widget.RecyclerView
 import com.gooner10.popularmoviesapp.R
 import com.gooner10.popularmoviesapp.data.Constants
 import com.gooner10.popularmoviesapp.data.MovieItem
 import com.gooner10.popularmoviesapp.moviedetail.MovieDetailActivity
 import com.squareup.picasso.Picasso
-
 import hugo.weaving.DebugLog
 
 /**
@@ -23,13 +21,9 @@ import hugo.weaving.DebugLog
 
 class MovieFragmentAdapter @DebugLog
 constructor(private val context: Context, private var movieData: List<MovieItem>?) : RecyclerView.Adapter<MovieFragmentAdapter.ViewHolderData>() {
-    private val layoutInflater: LayoutInflater
-
-    init {
-        layoutInflater = LayoutInflater.from(context)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderData {
+        val layoutInflater = LayoutInflater.from(context)
         val view = layoutInflater.inflate(R.layout.single_movie_row, parent, false)
         return ViewHolderData(view)
     }
@@ -56,23 +50,18 @@ constructor(private val context: Context, private var movieData: List<MovieItem>
         return movieData!!.size
     }
 
-    fun setData(movieDataList: List<MovieItem>) {
+    fun setData(movieDataList: List<MovieItem>?) {
         this.movieData = movieDataList
         notifyDataSetChanged()
     }
 
     inner class ViewHolderData(val view: View) : RecyclerView.ViewHolder(view) {
-        val movieImageView: ImageView
+        val movieImageView: ImageView = view.findViewById(R.id.imageView)
 
-        init {
-            movieImageView = view.findViewById(R.id.imageView)
-        }
     }
 
     companion object {
-        private val TAG = MovieFragmentAdapter::class.java.simpleName
-        val MOVIE_DATA = "movie_data"
+        const val MOVIE_DATA = "movie_data"
     }
-
 
 }
