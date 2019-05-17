@@ -1,13 +1,12 @@
 package com.gooner10.popularmoviesapp.moviefavourite
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-
+import androidx.recyclerview.widget.RecyclerView
 import com.gooner10.popularmoviesapp.R
 import com.gooner10.popularmoviesapp.data.Constants
 import com.gooner10.popularmoviesapp.data.MovieItem
@@ -18,13 +17,9 @@ import com.squareup.picasso.Picasso
  */
 
 class FavoriteMovieFragmentAdapter(private val context: Context, private var movieData: List<MovieItem>?) : RecyclerView.Adapter<FavoriteMovieFragmentAdapter.MovieFavoriteViewHolder>() {
-    private val layoutInflater: LayoutInflater
-
-    init {
-        layoutInflater = LayoutInflater.from(context)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieFavoriteViewHolder {
+        val layoutInflater = LayoutInflater.from(context)
         val view = layoutInflater.inflate(R.layout.favorite_movie_row, parent, false)
         return MovieFavoriteViewHolder(view)
     }
@@ -48,12 +43,8 @@ class FavoriteMovieFragmentAdapter(private val context: Context, private var mov
     }
 
     inner class MovieFavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        internal var favoriteMovieText: TextView
-        internal var favoriteMovieImage: ImageView
+        internal var favoriteMovieText: TextView = itemView.findViewById(R.id.favorite_movie_text)
+        internal var favoriteMovieImage: ImageView = itemView.findViewById(R.id.favorite_movie_imageView)
 
-        init {
-            favoriteMovieText = itemView.findViewById(R.id.favorite_movie_text)
-            favoriteMovieImage = itemView.findViewById(R.id.favorite_movie_imageView)
-        }
     }
 }
