@@ -1,11 +1,5 @@
 package com.gooner10.popularmoviesapp.moviemain;
 
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.OnLifecycleEvent;
-import androidx.lifecycle.ViewModel;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -16,6 +10,12 @@ import com.gooner10.popularmoviesapp.network.RetrofitServiceGenerator;
 
 import java.util.List;
 
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.ViewModel;
 import hugo.weaving.DebugLog;
 import retrofit2.Call;
 import retrofit2.Callback;
