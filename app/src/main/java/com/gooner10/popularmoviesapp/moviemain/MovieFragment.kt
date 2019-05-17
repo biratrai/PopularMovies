@@ -1,5 +1,6 @@
 package com.gooner10.popularmoviesapp.moviemain
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -32,7 +33,7 @@ class MovieFragment : Fragment(), MovieContract.View {
         val view = inflater.inflate(R.layout.fragment_movie, container, false)
 
         view.recyclerViewMovie.layoutManager = GridLayoutManager(activity, 2)
-        movieFragmentAdapter = MovieFragmentAdapter(activity, ArrayList())
+        movieFragmentAdapter = MovieFragmentAdapter(activity as Context, ArrayList())
         view.recyclerViewMovie.adapter = movieFragmentAdapter
         Log.i(TAG, "onCreateView movieFragmentAdapter: " + movieFragmentAdapter!!)
         val movieViewModel = ViewModelProviders.of(activity!!).get(MovieViewModel::class.java)

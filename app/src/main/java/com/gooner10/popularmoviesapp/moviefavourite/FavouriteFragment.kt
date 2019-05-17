@@ -1,6 +1,7 @@
 package com.gooner10.popularmoviesapp.moviefavourite
 
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -32,14 +33,14 @@ class FavouriteFragment : Fragment(), MovieFavouriteContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.favourite_recyclerview.layoutManager = GridLayoutManager(activity, 2)
-        favoriteMovieFragmentAdapter = FavoriteMovieFragmentAdapter(activity, ArrayList())
+        favoriteMovieFragmentAdapter = FavoriteMovieFragmentAdapter(activity as Context, ArrayList())
         view.favourite_recyclerview.adapter = favoriteMovieFragmentAdapter
     }
 
     @DebugLog
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        presenter = MovieFavoritePresenter(activity, this)
+        presenter = MovieFavoritePresenter(activity as Context, this)
         setData()
     }
 

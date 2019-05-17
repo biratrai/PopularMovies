@@ -53,8 +53,8 @@ class MovieActivity : AppCompatActivity() {
         val movieAdapter = MovieAdapter(supportFragmentManager)
         favouriteFragment = FavouriteFragment()
         movieFragment = MovieFragment()
-        movieAdapter.addFragment(movieFragment, "Popular Movies")
-        movieAdapter.addFragment(favouriteFragment, "Favourites")
+        movieAdapter.addFragment(movieFragment as MovieFragment, "Popular Movies")
+        movieAdapter.addFragment(favouriteFragment!!, "Favourites")
         Log.d(TAG, "setupViewPager favouriteFragment: " + favouriteFragment!!)
         viewpager!!.adapter = movieAdapter
         viewpager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
