@@ -3,8 +3,7 @@ package com.gooner10.popularmoviesapp.moviemain
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-
-import java.util.ArrayList
+import java.util.*
 
 /**
  * View pager for MovieActivity
