@@ -7,7 +7,7 @@ import com.gooner10.popularmoviesapp.data.MovieItem
  */
 
 class MovieFavouriteContract {
-    internal interface View {
+    interface View {
         fun displayFavoriteMovie(movieDataList: List<MovieItem>)
     }
 
