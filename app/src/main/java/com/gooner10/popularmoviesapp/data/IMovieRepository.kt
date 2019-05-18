@@ -19,12 +19,12 @@ interface IMovieRepository {
      *
      * @param movieData the movie to be inserted or updated.
      */
-    fun insertOrUpdateMovieData(movieData: MovieItem)
+    fun insertOrUpdateMovieData(movieData: MovieItem?)
 
     /**
      * Deletes all movie from the data source.
      */
-    fun deleteAllMovieData(movieData: MovieItem)
+    fun deleteAllMovieData(movieData: MovieItem?)
 
     /**
      * Finds whether movie already exists in favorite database
@@ -32,5 +32,5 @@ interface IMovieRepository {
      * @param movieData MovieData to be searched
      * @return true if exits in database; false otherwise
      */
-    fun findMovieAlreadyIsFavorite(movieData: MovieItem): Boolean
+    fun findMovieAlreadyIsFavorite(movieData: MovieItem?): Boolean
 }
