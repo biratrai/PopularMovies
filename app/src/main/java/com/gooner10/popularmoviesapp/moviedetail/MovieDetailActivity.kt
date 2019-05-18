@@ -53,7 +53,7 @@ class MovieDetailActivity : AppCompatActivity() {
         val collapsingToolbar = findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar)
         collapsingToolbar.title = movie!!.title
 
-        setFavorite(movieRepository!!.findMovieAlreadyIsFavorite(movie))
+        setFavorite(movieRepository!!.findMovieAlreadyIsFavorite(movie!!))
         detail_fab_button!!.setOnClickListener { addToDatabase() }
     }
 
