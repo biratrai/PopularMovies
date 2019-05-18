@@ -1,12 +1,10 @@
-package com.gooner10.popularmoviesapp.data;
-
-import java.util.List;
+package com.gooner10.popularmoviesapp.data
 
 /**
  * Access point for accessing movie data.
  */
 
-public interface IMovieRepository {
+interface IMovieRepository {
 
 
     /**
@@ -14,19 +12,19 @@ public interface IMovieRepository {
      *
      * @return all the movie from the data source.
      */
-    List<MovieItem> getMovie();
+    val movie: List<MovieItem>
 
     /**
      * Inserts the movie in the data source, or, if this is an existing movie, it updates it.
      *
      * @param movieData the movie to be inserted or updated.
      */
-    void insertOrUpdateMovieData(MovieItem movieData);
+    fun insertOrUpdateMovieData(movieData: MovieItem)
 
     /**
      * Deletes all movie from the data source.
      */
-    void deleteAllMovieData(MovieItem movieData);
+    fun deleteAllMovieData(movieData: MovieItem)
 
     /**
      * Finds whether movie already exists in favorite database
@@ -34,5 +32,5 @@ public interface IMovieRepository {
      * @param movieData MovieData to be searched
      * @return true if exits in database; false otherwise
      */
-    boolean findMovieAlreadyIsFavorite(MovieItem movieData);
+    fun findMovieAlreadyIsFavorite(movieData: MovieItem): Boolean
 }
