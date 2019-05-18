@@ -43,7 +43,7 @@ class MovieFragment : Fragment(), MovieContract.View {
     }
 
     @DebugLog
-    override fun displayMovieList(movieDataList: List<MovieItem>?) {
+    override fun displayMovieList(movieDataList: List<MovieItem>) {
         Log.i(TAG, "displayMovieList movieFragmentAdapter: " + movieFragmentAdapter!!)
         movieFragmentAdapter!!.setData(movieDataList)
     }
