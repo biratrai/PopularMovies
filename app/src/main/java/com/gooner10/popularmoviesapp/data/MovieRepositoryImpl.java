@@ -4,6 +4,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 
 /**
@@ -37,17 +39,17 @@ public class MovieRepositoryImpl implements IMovieRepository {
     }
 
     @Override
-    public void insertOrUpdateMovieData(MovieItem movieData) {
+    public void insertOrUpdateMovieData(@Nullable MovieItem movieData) {
         movieDao.insertAll(movieData);
     }
 
     @Override
-    public void deleteAllMovieData(MovieItem movieData) {
+    public void deleteAllMovieData(@Nullable MovieItem movieData) {
         movieDao.deleteMovies(movieData);
     }
 
     @Override
-    public boolean findMovieAlreadyIsFavorite(MovieItem movieData) {
+    public boolean findMovieAlreadyIsFavorite(@Nullable MovieItem movieData) {
         Log.d(TAG, "findMovieAlreadyIsFavorite: " + movieDao.movieExists(movieData.getId()));
         return movieDao.movieExists(movieData.getId());
     }
