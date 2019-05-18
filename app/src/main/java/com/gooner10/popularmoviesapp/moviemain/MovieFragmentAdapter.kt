@@ -38,9 +38,9 @@ constructor(private val context: Context, private var movieData: List<MovieItem>
 
         holder.view.setOnClickListener {
             val intent = Intent(context, MovieDetailActivity::class.java)
-            val movie = movieData!![holder.adapterPosition]
+            val movieItem = movieData!![holder.adapterPosition]
             val bundle = Bundle()
-            bundle.putParcelable(MOVIE_DATA, movie)
+            bundle.putParcelable(MOVIE_DATA, movieItem)
             intent.putExtras(bundle)
             context.startActivity(intent)
         }
