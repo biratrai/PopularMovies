@@ -2,18 +2,11 @@ package com.gooner10.popularmoviesapp.moviemain
 
 import android.os.AsyncTask
 import android.util.Log
-
+import androidx.lifecycle.*
 import com.gooner10.popularmoviesapp.data.MovieItem
 import com.gooner10.popularmoviesapp.data.MovieResponse
 import com.gooner10.popularmoviesapp.network.PopularMoviesAPI
 import com.gooner10.popularmoviesapp.network.RetrofitServiceGenerator
-
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.ViewModel
 import hugo.weaving.DebugLog
 import retrofit2.Call
 import retrofit2.Callback
