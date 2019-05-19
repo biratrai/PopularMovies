@@ -37,8 +37,7 @@ class MovieFragment : Fragment(), MovieContract.View {
         view.recyclerViewMovie.adapter = movieFragmentAdapter
         Log.i(TAG, "onCreateView movieFragmentAdapter: " + movieFragmentAdapter!!)
         val movieViewModel = ViewModelProviders.of(activity!!).get(MovieViewModel::class.java)
-        Log.i(TAG, "loadData getMovieDataList: " + movieViewModel.movieDataList)
-        movieViewModel.movieDataList.observe(activity!!, Observer { movieDataList -> displayMovieList(movieDataList) })
+        movieViewModel.getMovieDataList().observe(activity!!, Observer { movieDataList -> displayMovieList(movieDataList) })
         return view
     }
 
