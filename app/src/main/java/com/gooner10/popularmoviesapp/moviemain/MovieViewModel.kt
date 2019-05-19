@@ -1,0 +1,97 @@
+package com.gooner10.popularmoviesapp.moviemain
+
+import android.os.AsyncTask
+import android.util.Log
+
+import com.gooner10.popularmoviesapp.data.MovieItem
+import com.gooner10.popularmoviesapp.data.MovieResponse
+import com.gooner10.popularmoviesapp.network.PopularMoviesAPI
+import com.gooner10.popularmoviesapp.network.RetrofitServiceGenerator
+
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ViewModel
+import hugo.weaving.DebugLog
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
+/**
+ * ViewModel class that gets the list of data fetched from back-end
+ */
+
+class MovieViewModel : ViewModel(), LifecycleObserver {
+    private val movieDataList = MutableLiveData<List<MovieItem>>()
+
+    @DebugLog
+    fun getMovieDataList(): LiveData<List<MovieItem>> {
+        Log.i(TAG, "getMovieDataList: " + movieDataList.value!!)
+        if (movieDataList.value == null) {
+            AsyncTask.execute {
+                Log.i(TAG, "fetching the movie: ")
+                fetchMovieData()
+            }
+        }
+        return movieDataList
+    }
+
+    @DebugLog
+    private fun fetchMovieData() {
+
+        val call = RetrofitServiceGenerator.createService(PopularMoviesAPI::class.java)
+                .fetchMoviesByPopularity("popularity.desc", "530c5cfd24953abae83df3e614c6d774")
+        call.enqueue(object : Callback<MovieResponse> {
+            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
+                Log.i(TAG, "onResponse: $response")
+                if (response.isSuccessful) {
+                    Log.i(TAG, "onResponse: " + response.body()!!)
+                    movieDataList.postValue(response.body()!!.movieList)
+                } else {
+                    Log.e(TAG, "onResponse: " + response.code())
+                }
+            }
+
+            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ", t)
+            }
+        })
+    }
+
+    @DebugLog
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    internal fun onCreate() {
+        Log.i(TAG, " MovieViewModel onCreate: ")
+    }
+
+    @DebugLog
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    internal fun onStart() {
+        Log.i(TAG, "MovieViewModel onStart: ")
+        getMovieDataList()
+    }
+
+    @DebugLog
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    internal fun onStop() {
+        Log.i(TAG, "MovieViewModel onStop: ")
+    }
+
+    @DebugLog
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    internal fun onPause() {
+        Log.i(TAG, "MovieViewModel onPause: ")
+    }
+
+    @DebugLog
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    internal fun onResume() {
+        Log.i(TAG, "MovieViewModel onResume: ")
+    }
+
+    companion object {
+        val TAG = MovieViewModel::class.java.simpleName
+    }
+}
