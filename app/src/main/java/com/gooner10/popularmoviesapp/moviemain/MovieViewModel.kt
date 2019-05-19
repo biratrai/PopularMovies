@@ -28,7 +28,6 @@ class MovieViewModel : ViewModel(), LifecycleObserver {
 
     @DebugLog
     fun getMovieDataList(): LiveData<List<MovieItem>> {
-        Log.i(TAG, "getMovieDataList: " + movieDataList.value!!)
         if (movieDataList.value == null) {
             AsyncTask.execute {
                 Log.i(TAG, "fetching the movie: ")
@@ -48,7 +47,9 @@ class MovieViewModel : ViewModel(), LifecycleObserver {
                 Log.i(TAG, "onResponse: $response")
                 if (response.isSuccessful) {
                     Log.i(TAG, "onResponse: " + response.body()!!)
-                    movieDataList.postValue(response.body()!!.movieList)
+                    val movieResponse = response.body()
+                    val movieList = movieResponse?.movieList
+                    movieDataList.postValue(movieList as List<MovieItem>?)
                 } else {
                     Log.e(TAG, "onResponse: " + response.code())
                 }
