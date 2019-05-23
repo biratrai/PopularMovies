@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.moviemain
+package com.gooner10.popularmoviesapp
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,9 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
-import com.gooner10.popularmoviesapp.R
 import com.gooner10.popularmoviesapp.moviefavourite.FavouriteFragment
+import com.gooner10.popularmoviesapp.moviemain.MovieFragment
 import com.gooner10.popularmoviesapp.moviesettings.SettingsActivity
+import com.gooner10.popularmoviesapp.trivia.MovieTriviaFragment
 import hugo.weaving.DebugLog
 import kotlinx.android.synthetic.main.activity_movie.*
 import kotlinx.android.synthetic.main.list_viewpager.*
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 class MovieActivity : AppCompatActivity() {
     private var movieFragment: Fragment? = null
     private var favouriteFragment: FavouriteFragment? = null
+    private var triviaFragment: MovieTriviaFragment? = null
 
     @DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,8 +55,10 @@ class MovieActivity : AppCompatActivity() {
         val movieAdapter = MovieAdapter(supportFragmentManager)
         favouriteFragment = FavouriteFragment()
         movieFragment = MovieFragment()
-        movieAdapter.addFragment(movieFragment as MovieFragment, "Popular Movies")
+        triviaFragment = MovieTriviaFragment()
+        movieAdapter.addFragment(movieFragment as MovieFragment, "Popular")
         movieAdapter.addFragment(favouriteFragment!!, "Favourites")
+        movieAdapter.addFragment(triviaFragment!!, "Trivia")
         Log.d(TAG, "setupViewPager favouriteFragment: " + favouriteFragment!!)
         viewpager!!.adapter = movieAdapter
         viewpager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {

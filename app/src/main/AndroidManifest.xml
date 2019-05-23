@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".moviemain.MovieActivity"
+            android:name=".MovieActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,11 +23,11 @@
         <activity
             android:name=".moviedetail.MovieDetailActivity"
             android:label="@string/title_activity_movie_detail"
-            android:parentActivityName=".moviemain.MovieActivity" />
+            android:parentActivityName=".MovieActivity" />
         <activity
             android:name=".moviesettings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".moviemain.MovieActivity"
+            android:parentActivityName=".MovieActivity"
             android:theme="@style/AppTheme" />
     </application>
 

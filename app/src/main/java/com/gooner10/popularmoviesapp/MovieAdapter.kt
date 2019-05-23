@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.moviemain
+package com.gooner10.popularmoviesapp
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
