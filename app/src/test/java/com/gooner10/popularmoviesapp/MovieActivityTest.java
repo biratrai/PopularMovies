@@ -1,7 +1,5 @@
 package com.gooner10.popularmoviesapp;
 
-import com.gooner10.popularmoviesapp.moviemain.MovieActivity;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

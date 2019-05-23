@@ -15,7 +15,7 @@ import com.gooner10.popularmoviesapp.data.Constants
 import com.gooner10.popularmoviesapp.data.IMovieRepository
 import com.gooner10.popularmoviesapp.data.MovieItem
 import com.gooner10.popularmoviesapp.data.MovieRepositoryImpl
-import com.gooner10.popularmoviesapp.moviemain.MovieActivity
+import com.gooner10.popularmoviesapp.MovieActivity
 import com.gooner10.popularmoviesapp.moviemain.MovieFragmentAdapter.Companion.MOVIE_DATA
 import hugo.weaving.DebugLog
 import kotlinx.android.synthetic.main.activity_movie_detail.*
