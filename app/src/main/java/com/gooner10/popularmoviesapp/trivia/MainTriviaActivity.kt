@@ -1,7 +1,8 @@
 package com.gooner10.popularmoviesapp.trivia
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.gooner10.popularmoviesapp.R
 
 class MainTriviaActivity : AppCompatActivity() {
 
