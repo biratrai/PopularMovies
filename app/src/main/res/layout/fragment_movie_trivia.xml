@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".trivia.MovieTriviaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/triviaButton"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="@string/start_trivia_button" />
 
 </FrameLayout>
