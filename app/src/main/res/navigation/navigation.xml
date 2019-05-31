@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation">
+    <fragment
+        android:id="@+id/home_dest"
+        android:name="com.gooner10.popularmoviesapp.trivia.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+    </fragment>
 
+    <fragment
+        android:id="@+id/flow_step_one_dest"
+        android:name="com.gooner10.popularmoviesapp.trivia.FlowStepFragment"
+        tools:layout="@layout/fragment_flow_step_one">
+        <argument
+            android:name="flowStepNumber"
+            app:argType="integer"
+            android:defaultValue="1"/>
+
+        <action
+            android:id="@+id/next_action"
+            app:destination="@+id/flow_step_two_dest">
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/flow_step_two_dest"
+        android:name="com.gooner10.popularmoviesapp.trivia.FlowStepFragment"
+        tools:layout="@layout/fragment_flow_step_two">
+
+        <argument
+            android:name="flowStepNumber"
+            app:argType="integer"
+            android:defaultValue="2"/>
+
+        <action
+            android:id="@+id/next_action"
+            app:popUpTo="@id/home_dest">
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/deeplink_dest"
+        android:name="com.gooner10.popularmoviesapp.trivia.DeepLinkFragment"
+        android:label="@string/deeplink"
+        tools:layout="@layout/fragment_deep_link">
+
+        <argument
+            android:name="myarg"
+            android:defaultValue="Android!"/>
+    </fragment>
 </navigation>
