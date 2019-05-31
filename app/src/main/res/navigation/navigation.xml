@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation">
+    android:id="@+id/navigation"
+    app:startDestination="@+id/home_dest">
     <fragment
         android:id="@+id/home_dest"
         android:name="com.gooner10.popularmoviesapp.trivia.HomeFragment"
@@ -16,8 +17,8 @@
         tools:layout="@layout/fragment_flow_step_one">
         <argument
             android:name="flowStepNumber"
-            app:argType="integer"
-            android:defaultValue="1"/>
+            android:defaultValue="1"
+            app:argType="integer" />
 
         <action
             android:id="@+id/next_action"
@@ -32,8 +33,8 @@
 
         <argument
             android:name="flowStepNumber"
-            app:argType="integer"
-            android:defaultValue="2"/>
+            android:defaultValue="2"
+            app:argType="integer" />
 
         <action
             android:id="@+id/next_action"
@@ -49,6 +50,6 @@
 
         <argument
             android:name="myarg"
-            android:defaultValue="Android!"/>
+            android:defaultValue="Android!" />
     </fragment>
 </navigation>
