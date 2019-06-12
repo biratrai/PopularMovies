@@ -19,10 +19,9 @@ class FlowStepFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val safeArgs: FlowStepFragmentArgs by navArgs()
-        val flowStepNumber = safeArgs.flowStepNumber
 
         // Inflate the layout for this fragment
-        return when (flowStepNumber) {
+        return when (safeArgs.flowStepNumber) {
             2 ->
                 inflater.inflate(R.layout.fragment_flow_step_two, container, false)
             else ->
