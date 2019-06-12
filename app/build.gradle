@@ -5,6 +5,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'androidx.navigation.safeargs'
+
 apply plugin: 'com.jakewharton.hugo'
 
 android {
@@ -102,4 +104,8 @@ dependencies {
 }
 repositories {
     mavenCentral()
+}
+
+task hello {
+        println 'Hello, My World!'
 }
