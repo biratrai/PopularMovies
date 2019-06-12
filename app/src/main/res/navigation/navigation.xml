@@ -27,6 +27,10 @@
             android:name="flowStepNumber"
             android:defaultValue="1"
             app:argType="integer" />
+        <action
+            android:id="@+id/next_action"
+            app:destination="@+id/flow_step_two_dest">
+        </action>
 
     </fragment>
 
@@ -40,6 +44,10 @@
             android:defaultValue="2"
             app:argType="integer" />
 
+        <action
+            android:id="@+id/next_action"
+            app:popUpTo="@id/home_dest">
+        </action>
     </fragment>
 
     <fragment
