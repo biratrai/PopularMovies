@@ -41,5 +41,7 @@
     <string name="deeplink">Deep Link</string>
     <string name="welcome_to_trivia">Welcome to Movie Trivia</string>
     <string name="next">Next</string>
+    <string name="settings">Settings</string>
+    <string name="home">Home</string>
 
 </resources>
