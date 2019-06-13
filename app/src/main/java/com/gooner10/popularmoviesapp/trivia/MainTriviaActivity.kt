@@ -2,10 +2,14 @@ package com.gooner10.popularmoviesapp.trivia
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.onNavDestinationSelected
+import com.google.android.material.navigation.NavigationView
 import com.gooner10.popularmoviesapp.R
 
 class MainTriviaActivity : AppCompatActivity() {
@@ -38,4 +42,11 @@ class MainTriviaActivity : AppCompatActivity() {
         return retValue
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Have the NavigationUI look for an action or destination matching the menu
+        // item id and navigate there if found.
+        // Otherwise, bubble up to the parent.
+        return item.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
+                || super.onOptionsItemSelected(item)
+    }
 }
