@@ -1,6 +1,7 @@
 package com.gooner10.popularmoviesapp.trivia
 
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
@@ -23,6 +24,18 @@ class MainTriviaActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val retValue = super.onCreateOptionsMenu(menu)
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        // The NavigationView already has these same navigation items, so we only add
+        // navigation items to the menu here if there isn't a NavigationView
+        if (navigationView == null) {
+            menuInflater.inflate(R.menu.overflow_menu, menu)
+            return true
+        }
+        return retValue
     }
 
 }
