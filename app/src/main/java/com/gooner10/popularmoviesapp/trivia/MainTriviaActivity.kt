@@ -5,10 +5,13 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.gooner10.popularmoviesapp.R
 
@@ -27,6 +30,8 @@ class MainTriviaActivity : AppCompatActivity() {
         val navController = host.navController
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        setupBottomNavMenu(navController)
 
     }
 
@@ -48,5 +53,10 @@ class MainTriviaActivity : AppCompatActivity() {
         // Otherwise, bubble up to the parent.
         return item.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))
                 || super.onOptionsItemSelected(item)
+    }
+
+    private fun setupBottomNavMenu(navController: NavController) {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+        bottomNav?.setupWithNavController(navController)
     }
 }
