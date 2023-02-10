@@ -16,20 +16,23 @@ import com.gooner10.popularmoviesapp.data.IMovieRepository
 import com.gooner10.popularmoviesapp.data.MovieItem
 import com.gooner10.popularmoviesapp.data.MovieRepositoryImpl
 import com.gooner10.popularmoviesapp.MovieActivity
+import com.gooner10.popularmoviesapp.databinding.ActivityMovieDetailBinding
 import com.gooner10.popularmoviesapp.moviemain.MovieFragmentAdapter.Companion.MOVIE_DATA
-import hugo.weaving.DebugLog
-import kotlinx.android.synthetic.main.activity_movie_detail.*
+//import hugo.weaving.DebugLog
+//import kotlinx.android.synthetic.main.activity_movie_detail.*
 import java.util.*
 
 class MovieDetailActivity : AppCompatActivity() {
     private var movie: MovieItem? = null
     private var movieRepository: IMovieRepository? = null
+    private lateinit var binding: ActivityMovieDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_detail)
+        binding = ActivityMovieDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
 
         // assert the null pointer exception error
         assert(supportActionBar != null)
@@ -42,32 +45,32 @@ class MovieDetailActivity : AppCompatActivity() {
         movieRepository = MovieRepositoryImpl.getMovieDatabaseInstance(this)
 
         // Set the relevant text to the field
-        movie_description.text = movie!!.overview
-        release_date.text = movie!!.releaseDate
-        vote_average.text = String.format(Locale.getDefault(), "%1$,.1f", movie!!.voteAverage)
+        binding.movieDescription.text = movie!!.overview
+        binding.releaseDate.text = movie!!.releaseDate
+        binding.voteAverage.text = String.format(Locale.getDefault(), "%1$,.1f", movie!!.voteAverage)
 
         val movieRating = java.lang.Float.parseFloat(movie!!.voteAverage.toString()) / 2
 
-        detailRatingBar.rating = movieRating
+        binding.detailRatingBar.rating = movieRating
 
         val collapsingToolbar = findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar)
         collapsingToolbar.title = movie!!.title
 
         setFavorite(movieRepository!!.findMovieAlreadyIsFavorite(movie!!))
-        detail_fab_button!!.setOnClickListener { addToDatabase() }
+        binding.detailFabButton.setOnClickListener { addToDatabase() }
     }
 
-    @DebugLog
+    //@DebugLog
     private fun setFavorite(isFavorite: Boolean) {
         val drawable: Drawable? = if (isFavorite) {
             ContextCompat.getDrawable(this, R.drawable.ic_favorite_24dp)
         } else {
             ContextCompat.getDrawable(this, R.drawable.ic_favorite_white_24dp)
         }
-        detail_fab_button.setImageDrawable(drawable)
+        binding.detailFabButton.setImageDrawable(drawable)
     }
 
-    @DebugLog
+    //@DebugLog
     private fun addToDatabase() {
         Log.i(TAG, "addToDatabase: " + movieRepository!!.movie)
         if (!movieRepository!!.findMovieAlreadyIsFavorite(movie)) {
@@ -80,7 +83,7 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun loadBackdrop() {
-        Glide.with(this).load(Constants.BACKDROP_PATH + movie!!.backdropPath).centerCrop().into(backdrop!!)
+        Glide.with(this).load("https://static-media.fox.com/ms/stg1/sports/play-5c0cbe38d0000db--gimenez.png").centerCrop().into(binding.backdrop!!)
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {

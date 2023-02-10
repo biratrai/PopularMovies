@@ -9,7 +9,9 @@
         android:theme="@style/ThemeOverlay.AppCompat.Light">
 
         <!-- Toolbar instead of ActionBar so the drawer can slide on top -->
-        <include layout="@layout/toolbar" />
+        <include
+            android:id="@+id/main_toolbar"
+            layout="@layout/toolbar" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"

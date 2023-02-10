@@ -13,13 +13,13 @@ import com.gooner10.popularmoviesapp.data.Constants
 import com.gooner10.popularmoviesapp.data.MovieItem
 import com.gooner10.popularmoviesapp.moviedetail.MovieDetailActivity
 import com.squareup.picasso.Picasso
-import hugo.weaving.DebugLog
+//import hugo.weaving.DebugLog
 
 /**
  * Fragment adapter for the MovieFragment
  */
 
-class MovieFragmentAdapter @DebugLog
+class MovieFragmentAdapter //@DebugLog
 constructor(private val context: Context, private var movieData: List<MovieItem>?) : RecyclerView.Adapter<MovieFragmentAdapter.ViewHolderData>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderData {

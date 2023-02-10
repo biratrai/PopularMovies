@@ -20,7 +20,7 @@ class RetrofitServiceGenerator private constructor() {
 
         private fun getBuilder(): Retrofit.Builder {
             if (builder == null) {
-                builder = retrofit2.Retrofit.Builder()
+                builder = Retrofit.Builder()
                         .baseUrl(BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create())
             }

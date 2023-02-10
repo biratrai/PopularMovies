@@ -91,7 +91,7 @@ The focus of this project is on Android Jetpack and the Android framework.
 Thus, there are no immediate plans to implement features outside of this scope.
 for DI, there are no plans to incorporate DI into Popular Movies App.  
 This allows developers unfamiliar with dependency injection to better 
-understand Sunflower's code without having to learn DI.
+understand Popular Movies code without having to learn DI.
 
 
 

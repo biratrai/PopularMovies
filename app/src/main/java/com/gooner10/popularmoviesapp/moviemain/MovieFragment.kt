@@ -12,8 +12,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gooner10.popularmoviesapp.R
 import com.gooner10.popularmoviesapp.data.MovieItem
-import hugo.weaving.DebugLog
-import kotlinx.android.synthetic.main.fragment_movie.view.*
+import com.gooner10.popularmoviesapp.databinding.FragmentMovieBinding
+//import hugo.weaving.DebugLog
+//import kotlinx.android.synthetic.main.fragment_movie.view.*
 import java.util.*
 
 /**
@@ -29,19 +30,19 @@ class MovieFragment : Fragment(), MovieContract.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        val binding = FragmentMovieBinding.inflate(inflater, container, false)
+//        val view = inflater.inflate(R.layout.fragment_movie, container, false)
 
-        val view = inflater.inflate(R.layout.fragment_movie, container, false)
-
-        view.recyclerViewMovie.layoutManager = GridLayoutManager(activity, 2)
+        binding.recyclerViewMovie.layoutManager = GridLayoutManager(activity, 2)
         movieFragmentAdapter = MovieFragmentAdapter(activity as Context, ArrayList())
-        view.recyclerViewMovie.adapter = movieFragmentAdapter
+        binding.recyclerViewMovie.adapter = movieFragmentAdapter
         Log.i(TAG, "onCreateView movieFragmentAdapter: " + movieFragmentAdapter!!)
         val movieViewModel = ViewModelProviders.of(activity!!).get(MovieViewModel::class.java)
         movieViewModel.getMovieDataList().observe(activity!!, Observer { movieDataList -> displayMovieList(movieDataList) })
-        return view
+        return binding.root
     }
 
-    @DebugLog
+    //@DebugLog
     override fun displayMovieList(movieDataList: List<MovieItem>) {
         Log.i(TAG, "displayMovieList movieFragmentAdapter: " + movieFragmentAdapter!!)
         movieFragmentAdapter!!.setData(movieDataList)
