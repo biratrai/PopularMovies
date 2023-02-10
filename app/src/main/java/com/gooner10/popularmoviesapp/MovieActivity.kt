@@ -11,24 +11,28 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.gooner10.popularmoviesapp.databinding.ActivityMovieBinding
 import com.gooner10.popularmoviesapp.moviefavourite.FavouriteFragment
 import com.gooner10.popularmoviesapp.moviemain.MovieFragment
 import com.gooner10.popularmoviesapp.moviesettings.SettingsActivity
 import com.gooner10.popularmoviesapp.trivia.MovieTriviaFragment
-import hugo.weaving.DebugLog
-import kotlinx.android.synthetic.main.activity_movie.*
-import kotlinx.android.synthetic.main.list_viewpager.*
-import kotlinx.android.synthetic.main.toolbar.*
+////import hugo.weaving.DebugLog
+//import kotlinx.android.synthetic.main.activity_movie.*
+//import kotlinx.android.synthetic.main.list_viewpager.*
+//import kotlinx.android.synthetic.main.toolbar.*
 
 class MovieActivity : AppCompatActivity() {
     private var movieFragment: Fragment? = null
     private var favouriteFragment: FavouriteFragment? = null
     private var triviaFragment: MovieTriviaFragment? = null
+    private lateinit var binding: ActivityMovieBinding
 
-    @DebugLog
+//    //@DebugLog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie)
+        binding = ActivityMovieBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         // Setup Toolbar
         setUpToolbar()
@@ -41,17 +45,17 @@ class MovieActivity : AppCompatActivity() {
 
         setUpHamburger()
         // Initialize Tabs
-        tabs.setupWithViewPager(viewpager)
+        binding.viewpagerLayout.tabs.setupWithViewPager(binding.viewpagerLayout.viewpager)
 
         PreferenceManager.setDefaultValues(this, R.xml.pref_general, false)
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         val username = sharedPref.getString(getString(R.string.pref_sort_choice), "default value")
-        Log.d("TAG", username)
+//        Log.d("TAG", username)
     }
 
-    @DebugLog
+    //@DebugLog
     private fun setupViewPager() {
-        Log.i(TAG, "setupViewPager: " + viewpager!!)
+//        Log.i(TAG, "setupViewPager: " + viewpager!!)
         val movieAdapter = MovieAdapter(supportFragmentManager)
         favouriteFragment = FavouriteFragment()
         movieFragment = MovieFragment()
@@ -60,8 +64,8 @@ class MovieActivity : AppCompatActivity() {
         movieAdapter.addFragment(favouriteFragment!!, "Favourites")
         movieAdapter.addFragment(triviaFragment!!, "Trivia")
         Log.d(TAG, "setupViewPager favouriteFragment: " + favouriteFragment!!)
-        viewpager!!.adapter = movieAdapter
-        viewpager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        binding.viewpagerLayout.viewpager.adapter = movieAdapter
+        binding.viewpagerLayout.viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 Log.i(TAG, "onPageScrolled: $position")
             }
@@ -82,25 +86,22 @@ class MovieActivity : AppCompatActivity() {
 
     private fun setUpHamburger() {
         // Set up the hamburger icon to open and close the drawer
-        val mActionDrawerToggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.drawer_open,
-                R.string.drawer_close)
-        drawer_layout!!.setDrawerListener(mActionDrawerToggle)
-        mActionDrawerToggle.syncState()
+//        val mActionDrawerToggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.drawer_open,
+//                R.string.drawer_close)
+//        drawer_layout!!.setDrawerListener(mActionDrawerToggle)
+//        mActionDrawerToggle.syncState()
     }
 
     private fun setUpToolbar() {
-        if (toolbar != null) {
-            setSupportActionBar(toolbar)
-        }
+        setSupportActionBar(binding.viewpagerLayout.mainToolbar.toolbar)
     }
 
     private fun setupNavigationView() {
-        if (toolbar != null) {
-            toolbar!!.setNavigationIcon(R.drawable.ic_launcher)
-            toolbar!!.setNavigationOnClickListener {
-                drawer_layout!!.openDrawer(GravityCompat.START)
-                Log.d(TAG, "onClick")
-            }
+        val toolbar = binding.viewpagerLayout.mainToolbar.toolbar
+        toolbar.setNavigationIcon(R.drawable.ic_launcher)
+        toolbar.setNavigationOnClickListener {
+//            drawer_layout!!.openDrawer(GravityCompat.START)
+//            Log.d(TAG, "onClick")
         }
     }
 

@@ -11,8 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gooner10.popularmoviesapp.R
 import com.gooner10.popularmoviesapp.data.MovieItem
-import hugo.weaving.DebugLog
-import kotlinx.android.synthetic.main.fragment_favourite.view.*
+import com.gooner10.popularmoviesapp.databinding.FragmentFavouriteBinding
+//import hugo.weaving.DebugLog
+//import kotlinx.android.synthetic.main.fragment_favourite.view.*
 import java.util.*
 
 /**
@@ -21,30 +22,32 @@ import java.util.*
 class FavouriteFragment : Fragment(), MovieFavouriteContract.View {
     private var favoriteMovieFragmentAdapter: FavoriteMovieFragmentAdapter? = null
     private var presenter: MovieFavouriteContract.Presenter? = null
+    private lateinit var binding: FragmentFavouriteBinding
 
-    @DebugLog
+    //@DebugLog
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favourite, container, false)
+        binding = FragmentFavouriteBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    @DebugLog
+    //@DebugLog
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.favourite_recyclerview.layoutManager = GridLayoutManager(activity, 2)
+        binding.favouriteRecyclerview.layoutManager = GridLayoutManager(activity, 2)
         favoriteMovieFragmentAdapter = FavoriteMovieFragmentAdapter(activity as Context, ArrayList())
-        view.favourite_recyclerview.adapter = favoriteMovieFragmentAdapter
+        binding.favouriteRecyclerview.adapter = favoriteMovieFragmentAdapter
     }
 
-    @DebugLog
+    //@DebugLog
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         presenter = MovieFavoritePresenter(activity as Context, this)
         setData()
     }
 
-    @DebugLog
+    //@DebugLog
     override fun displayFavoriteMovie(movieDataList: List<MovieItem>) {
         favoriteMovieFragmentAdapter!!.setData(movieDataList)
     }

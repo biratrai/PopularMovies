@@ -7,7 +7,7 @@ import com.gooner10.popularmoviesapp.data.MovieItem
 import com.gooner10.popularmoviesapp.data.MovieResponse
 import com.gooner10.popularmoviesapp.network.PopularMoviesAPI
 import com.gooner10.popularmoviesapp.network.RetrofitServiceGenerator
-import hugo.weaving.DebugLog
+//import hugo.weaving.DebugLog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +19,7 @@ import retrofit2.Response
 class MovieViewModel : ViewModel(), LifecycleObserver {
     private val movieDataList = MutableLiveData<List<MovieItem>>()
 
-    @DebugLog
+    //@DebugLog
     fun getMovieDataList(): LiveData<List<MovieItem>> {
         if (movieDataList.value == null) {
             AsyncTask.execute {
@@ -30,7 +30,7 @@ class MovieViewModel : ViewModel(), LifecycleObserver {
         return movieDataList
     }
 
-    @DebugLog
+    //@DebugLog
     private fun fetchMovieData() {
 
         val call = RetrofitServiceGenerator.createService(PopularMoviesAPI::class.java)
@@ -54,32 +54,32 @@ class MovieViewModel : ViewModel(), LifecycleObserver {
         })
     }
 
-    @DebugLog
+    //@DebugLog
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     internal fun onCreate() {
         Log.i(TAG, " MovieViewModel onCreate: ")
     }
 
-    @DebugLog
+    //@DebugLog
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     internal fun onStart() {
         Log.i(TAG, "MovieViewModel onStart: ")
         getMovieDataList()
     }
 
-    @DebugLog
+    //@DebugLog
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     internal fun onStop() {
         Log.i(TAG, "MovieViewModel onStop: ")
     }
 
-    @DebugLog
+    //@DebugLog
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     internal fun onPause() {
         Log.i(TAG, "MovieViewModel onPause: ")
     }
 
-    @DebugLog
+    //@DebugLog
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     internal fun onResume() {
         Log.i(TAG, "MovieViewModel onResume: ")

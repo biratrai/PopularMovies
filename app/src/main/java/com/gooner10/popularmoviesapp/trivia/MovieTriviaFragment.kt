@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.gooner10.popularmoviesapp.R
-import kotlinx.android.synthetic.main.fragment_movie_trivia.view.*
+import com.gooner10.popularmoviesapp.databinding.FragmentMovieTriviaBinding
 
 
 /**
@@ -21,9 +21,9 @@ class MovieTriviaFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_movie_trivia, container, false)
-        val button = view.triviaButton
-        button.setOnClickListener{ context?.startActivity(Intent(context, MainTriviaActivity::class.java)) }
-        return view
+        val binding = FragmentMovieTriviaBinding.inflate(layoutInflater, container, false)
+        binding.triviaButton.setOnClickListener{ context?.startActivity(Intent(context, MainTriviaActivity::class.java)) }
+        return binding.root
     }
 
 
