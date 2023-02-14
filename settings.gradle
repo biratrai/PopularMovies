@@ -15,3 +15,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "My Application"
 include ':app'
+include ':core:network'
+include ':feature'
+include ':core:domain'
+include ':core:ui'
+include ':core:data'
