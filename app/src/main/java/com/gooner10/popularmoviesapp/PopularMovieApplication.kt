@@ -7,7 +7,7 @@ import com.facebook.stetho.Stetho
 /**
  * Application class for the app
  */
-class MyApplication : Application() {
+class PopularMovieApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
