@@ -12,13 +12,13 @@ import androidx.room.Query
 @Dao
 interface MovieDao {
     @get:Query("SELECT * FROM moviedata")
-    val allFavoritMovie: List<com.gooner10.data.MovieItem>
+    val allFavoritMovie: List<MovieItem>
 
     @Insert
-    fun insertAll(vararg movieData: com.gooner10.data.MovieItem)
+    fun insertAll(vararg movieData: MovieItem)
 
     @Delete
-    fun deleteMovies(movieData: com.gooner10.data.MovieItem)
+    fun deleteMovies(movieData: MovieItem)
 
     @Query("SELECT * FROM moviedata where id LIKE :movieId")
     fun movieExists(movieId: Int): Boolean

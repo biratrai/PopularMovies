@@ -1,16 +1,38 @@
 package com.gooner10.network
 
+import com.gooner10.data.MovieItem
+import com.gooner10.data.MovieResponse
 import okhttp3.OkHttpClient
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Class to generate instance of Retrofit Service
  */
-class RetrofitServiceGenerator private constructor() {
+class RetrofitServiceGenerator private constructor() : PopularMoviesNetworkDataSource {
     init {
         throw AssertionError("Cannot instantiate private constructor")
     }
+
+    private val networkApi = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .client(
+            OkHttpClient.Builder()
+//                .addInterceptor(
+                    // TODO: Decide logging logic
+//                    HttpLoggingInterceptor().apply {
+//                        setLevel(HttpLoggingInterceptor.Level.BODY)
+//                    }
+//                )
+                .build()
+        )
+//        .addConverterFactory(
+//            @OptIn(ExperimentalSerializationApi::class)
+//            networkJson.asConverterFactory("application/json".toMediaType())
+//        )
+        .build()
+        .create(RetrofitPopularMoviesNetworkApi::class.java)
 
     companion object {
 
@@ -33,6 +55,11 @@ class RetrofitServiceGenerator private constructor() {
                     .build()
             return retrofit.create(serviceClass)
         }
+    }
+
+    override suspend fun getPopularMovies(order: String): List<MovieItem> {
+//        return networkApi.fetchMoviesByPopularity(order, "530c5cfd24953abae83df3e614c6d774")
+        return emptyList()
     }
 
 }

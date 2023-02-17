@@ -11,8 +11,23 @@ data class MovieResponse(
         val totalPages: Int? = null,
 
     @field:SerializedName("results")
-        val movieList: List<com.gooner10.data.MovieItem?>? = null,
+        val movieList: List<MovieItem?>? = null,
 
     @field:SerializedName("total_results")
         val totalResults: Int? = null
+)
+
+data class Movies(
+
+    @field:SerializedName("page")
+    val page: Int? = null,
+
+    @field:SerializedName("total_pages")
+    val totalPages: Int? = null,
+
+    @field:SerializedName("results")
+    val movieList: List<MovieItem?>? = null,
+
+    @field:SerializedName("total_results")
+    val totalResults: Int? = null
 )
