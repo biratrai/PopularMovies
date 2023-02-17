@@ -9,18 +9,18 @@ import android.util.Log
 
 class MovieRepositoryImpl(private val movieDao: MovieDao) : IMovieRepository {
 
-    override val movie: List<com.gooner10.data.MovieItem>
+    override val movie: List<MovieItem>
         get() = movieDao.allFavoritMovie
 
-    override fun insertOrUpdateMovieData(movieData: com.gooner10.data.MovieItem?) {
+    override fun insertOrUpdateMovieData(movieData: MovieItem?) {
         movieDao.insertAll(movieData!!)
     }
 
-    override fun deleteAllMovieData(movieData: com.gooner10.data.MovieItem?) {
+    override fun deleteAllMovieData(movieData: MovieItem?) {
         movieDao.deleteMovies(movieData!!)
     }
 
-    override fun findMovieAlreadyIsFavorite(movieData: com.gooner10.data.MovieItem?): Boolean {
+    override fun findMovieAlreadyIsFavorite(movieData: MovieItem?): Boolean {
         Log.d(TAG, "findMovieAlreadyIsFavorite: " + movieDao.movieExists(movieData!!.id))
         return movieDao.movieExists(movieData.id)
     }

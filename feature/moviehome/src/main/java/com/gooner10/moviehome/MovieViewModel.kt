@@ -4,7 +4,7 @@ import android.os.AsyncTask
 import android.util.Log
 import androidx.lifecycle.*
 import com.gooner10.data.MovieResponse
-import com.gooner10.network.PopularMoviesAPI
+import com.gooner10.network.RetrofitPopularMoviesNetworkApi
 import com.gooner10.network.RetrofitServiceGenerator
 //import hugo.weaving.DebugLog
 import retrofit2.Call
@@ -32,7 +32,7 @@ class MovieViewModel : ViewModel(), LifecycleObserver {
     //@DebugLog
     private fun fetchMovieData() {
 
-        val call = RetrofitServiceGenerator.createService(PopularMoviesAPI::class.java)
+        val call = RetrofitServiceGenerator.createService(RetrofitPopularMoviesNetworkApi::class.java)
                 .fetchMoviesByPopularity("popularity.desc", "530c5cfd24953abae83df3e614c6d774")
         call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
