@@ -4,14 +4,8 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_movie_detail">MovieDetail</string>
-    <string name="movie_description">This is the movie details.</string>
     <string name="title_activity_title">TitleActivity</string>
     <string name="movie_title">Movie Title</string>
-    <string name="release_date">Release Date</string>
-    <string name="movie_image_description">Movie Image</string>
-    <string name="plot_synopsis">Plot Synopsis</string>
-    <string name="movie_release_date">Movie Release Date</string>
-    <string name="vote_average">Vote Average</string>
     <string name="title_activity_movie_settings">Movie Settings</string>
 
     <!-- Strings related to Settings -->

@@ -20,7 +20,6 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/default_margin"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/movie_image_description"
             android:scaleType="fitCenter"
             tools:background="@drawable/sample_0" />
 
