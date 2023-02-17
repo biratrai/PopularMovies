@@ -121,6 +121,7 @@ dependencies {
     // Lottie for animation
     implementation 'com.airbnb.android:lottie:2.5.0-rc1'
     implementation project(path: ':core:data')
+    implementation project(path: ':feature:settings')
 
     // Testing Dependencies
     testImplementation 'org.robolectric:robolectric:3.1.2'

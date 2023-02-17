@@ -1,4 +1,4 @@
-package com.gooner10.popularmoviesapp.moviesettings
+package com.gooner10.settings
 
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
@@ -9,7 +9,6 @@ import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gooner10.popularmoviesapp.R
 
 /**
  * Settings Fragment that extends PreferenceFragment
