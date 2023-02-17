@@ -16,7 +16,8 @@ dependencyResolutionManagement {
 rootProject.name = "Popular Movies"
 include ':app'
 include ':core:network'
-include ':feature'
 include ':core:domain'
 include ':core:ui'
 include ':core:data'
+include ':feature:moviehome'
+include ':feature:moviedetail'

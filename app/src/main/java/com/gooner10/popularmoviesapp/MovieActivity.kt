@@ -6,14 +6,12 @@ import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.gooner10.moviehome.MovieFragment
 import com.gooner10.popularmoviesapp.databinding.ActivityMovieBinding
 import com.gooner10.popularmoviesapp.moviefavourite.FavouriteFragment
-import com.gooner10.popularmoviesapp.moviemain.MovieFragment
 import com.gooner10.popularmoviesapp.moviesettings.SettingsActivity
 import com.gooner10.popularmoviesapp.trivia.MovieTriviaFragment
 ////import hugo.weaving.DebugLog

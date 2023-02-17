@@ -9,8 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.gooner10.popularmoviesapp.R
-import com.gooner10.popularmoviesapp.data.MovieItem
+import com.gooner10.data.MovieItem
 import com.gooner10.popularmoviesapp.databinding.FragmentFavouriteBinding
 //import hugo.weaving.DebugLog
 //import kotlinx.android.synthetic.main.fragment_favourite.view.*
@@ -48,7 +47,7 @@ class FavouriteFragment : Fragment(), MovieFavouriteContract.View {
     }
 
     //@DebugLog
-    override fun displayFavoriteMovie(movieDataList: List<MovieItem>) {
+    override fun displayFavoriteMovie(movieDataList: List<com.gooner10.data.MovieItem>) {
         favoriteMovieFragmentAdapter!!.setData(movieDataList)
     }
 
