@@ -4,8 +4,7 @@ plugins {
 }
 
 android {
-    val sdkVersion: Int by rootProject.extra
-    compileSdk = sdkVersion
+    compileSdk = rootProject.extra["sdkVersion"] as Int?
 
     buildFeatures {
 //        compose true
