@@ -6,7 +6,7 @@
     app:startDestination="@+id/home_dest">
     <fragment
         android:id="@+id/home_dest"
-        android:name="com.gooner10.popularmoviesapp.trivia.HomeFragment"
+        android:name="com.gooner10.trivia.HomeFragment"
         android:label="@string/welcome_to_trivia"
         tools:layout="@layout/fragment_home">
 
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/flow_step_one_dest"
-        android:name="com.gooner10.popularmoviesapp.trivia.FlowStepFragment"
+        android:name="com.gooner10.trivia.FlowStepFragment"
         tools:layout="@layout/fragment_flow_step_one">
         <argument
             android:name="flowStepNumber"
@@ -36,7 +36,7 @@
 
     <fragment
         android:id="@+id/flow_step_two_dest"
-        android:name="com.gooner10.popularmoviesapp.trivia.FlowStepFragment"
+        android:name="com.gooner10.trivia.FlowStepFragment"
         tools:layout="@layout/fragment_flow_step_two">
 
         <argument
@@ -52,7 +52,7 @@
 
     <fragment
         android:id="@+id/deeplink_dest"
-        android:name="com.gooner10.popularmoviesapp.trivia.DeepLinkFragment"
+        android:name="com.gooner10.trivia.DeepLinkFragment"
         android:label="@string/deeplink"
         tools:layout="@layout/fragment_deep_link">
 

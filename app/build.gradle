@@ -122,6 +122,8 @@ dependencies {
     implementation 'com.airbnb.android:lottie:2.5.0-rc1'
     implementation project(path: ':core:data')
     implementation project(path: ':feature:settings')
+    implementation project(path: ':feature:trivia')
+    implementation project(path: ':feature:favoritemovie')
 
     // Testing Dependencies
     testImplementation 'org.robolectric:robolectric:3.1.2'
