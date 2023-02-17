@@ -2,7 +2,6 @@ package com.gooner10.popularmoviesapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -11,9 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.gooner10.moviehome.MovieFragment
 import com.gooner10.popularmoviesapp.databinding.ActivityMovieBinding
-import com.gooner10.popularmoviesapp.moviefavourite.FavouriteFragment
-import com.gooner10.popularmoviesapp.moviesettings.SettingsActivity
-import com.gooner10.popularmoviesapp.trivia.MovieTriviaFragment
+import com.gooner10.favorite.FavouriteFragment
+import com.gooner10.trivia.MovieTriviaFragment
 ////import hugo.weaving.DebugLog
 //import kotlinx.android.synthetic.main.activity_movie.*
 //import kotlinx.android.synthetic.main.list_viewpager.*
@@ -45,9 +43,9 @@ class MovieActivity : AppCompatActivity() {
         // Initialize Tabs
         binding.viewpagerLayout.tabs.setupWithViewPager(binding.viewpagerLayout.viewpager)
 
-        PreferenceManager.setDefaultValues(this, R.xml.pref_general, false)
-        val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
-        val username = sharedPref.getString(getString(R.string.pref_sort_choice), "default value")
+//        PreferenceManager.setDefaultValues(this, R.xml.pref_general, false)
+//        val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
+//        val username = sharedPref.getString(getString(R.string.pref_sort_choice), "default value")
 //        Log.d("TAG", username)
     }
 
@@ -55,9 +53,9 @@ class MovieActivity : AppCompatActivity() {
     private fun setupViewPager() {
 //        Log.i(TAG, "setupViewPager: " + viewpager!!)
         val movieAdapter = MovieAdapter(supportFragmentManager)
-        favouriteFragment = FavouriteFragment()
+        favouriteFragment = com.gooner10.favorite.FavouriteFragment()
         movieFragment = MovieFragment()
-        triviaFragment = MovieTriviaFragment()
+        triviaFragment = com.gooner10.trivia.MovieTriviaFragment()
         movieAdapter.addFragment(movieFragment as MovieFragment, "Popular")
         movieAdapter.addFragment(favouriteFragment!!, "Favourites")
         movieAdapter.addFragment(triviaFragment!!, "Trivia")
@@ -117,7 +115,7 @@ class MovieActivity : AppCompatActivity() {
 
 
         if (id == R.id.action_settings) {
-            startActivity(Intent(this@MovieActivity, SettingsActivity::class.java))
+            startActivity(Intent(this@MovieActivity, com.gooner10.settings.SettingsActivity::class.java))
         }
 
         return super.onOptionsItemSelected(item)

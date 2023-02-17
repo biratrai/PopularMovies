@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".trivia.MainTriviaActivity">
+        <activity android:name="com.gooner10.trivia.MainTriviaActivity">
         </activity>
         <activity
             android:name=".MovieActivity"
@@ -28,7 +28,7 @@
             android:label="@string/title_activity_movie_detail"
             android:parentActivityName=".MovieActivity" />
         <activity
-            android:name=".moviesettings.SettingsActivity"
+            android:name="com.gooner10.settings.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MovieActivity"
             android:theme="@style/AppTheme" />
