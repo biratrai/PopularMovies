@@ -3,6 +3,7 @@ package com.gooner10.moviehome
 import android.os.AsyncTask
 import android.util.Log
 import androidx.lifecycle.*
+import com.gooner10.data.MovieItem
 import com.gooner10.data.MovieResponse
 import com.gooner10.network.RetrofitPopularMoviesNetworkApi
 import com.gooner10.network.RetrofitServiceGenerator
@@ -16,10 +17,10 @@ import retrofit2.Response
  */
 
 class MovieViewModel : ViewModel(), LifecycleObserver {
-    private val movieDataList = MutableLiveData<List<com.gooner10.data.MovieItem>>()
+    private val movieDataList = MutableLiveData<List<MovieItem>>()
 
     //@DebugLog
-    fun getMovieDataList(): LiveData<List<com.gooner10.data.MovieItem>> {
+    fun getMovieDataList(): LiveData<List<MovieItem>> {
         if (movieDataList.value == null) {
             AsyncTask.execute {
                 Log.i(TAG, "fetching the movie: ")
@@ -41,7 +42,7 @@ class MovieViewModel : ViewModel(), LifecycleObserver {
                     Log.i(TAG, "onResponse: " + response.body()!!)
                     val movieResponse = response.body()
                     val movieList = movieResponse?.movieList
-                    movieDataList.postValue(movieList as List<com.gooner10.data.MovieItem>?)
+                    movieDataList.postValue(movieList as List<MovieItem>?)
                 } else {
                     Log.e(TAG, "onResponse: " + response.code())
                 }
