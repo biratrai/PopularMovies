@@ -14,10 +14,14 @@ android {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":core:network")))
+    implementation(project(mapOf("path" to ":core:model")))
 
     implementation ("androidx.core:core-ktx:1.9.0")
 
     implementation ("com.google.code.gson:gson:2.9.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     // Room persistence library
     // Room (use 1.1.0-alpha1 for latest alpha)

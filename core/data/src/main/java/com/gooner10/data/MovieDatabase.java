@@ -5,6 +5,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import android.content.Context;
 
+import com.gooner10.data.model.MovieItem;
+
 /**
  * Class to define Room database
  */

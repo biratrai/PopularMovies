@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import com.gooner10.data.MovieItem
+import com.gooner10.data.model.MovieItem
 import com.gooner10.moviehome.databinding.FragmentMovieBinding
 //import hugo.weaving.DebugLog
 //import kotlinx.android.synthetic.main.fragment_movie.view.*

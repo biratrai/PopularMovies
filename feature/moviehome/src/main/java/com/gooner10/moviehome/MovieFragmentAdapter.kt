@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.gooner10.data.model.MovieItem
 import com.squareup.picasso.Picasso
 //import hugo.weaving.DebugLog
 
@@ -14,7 +15,7 @@ import com.squareup.picasso.Picasso
  */
 
 class MovieFragmentAdapter //@DebugLog
-constructor(private val context: Context, private var movieData: List<com.gooner10.data.MovieItem>?) : RecyclerView.Adapter<MovieFragmentAdapter.ViewHolderData>() {
+constructor(private val context: Context, private var movieData: List<MovieItem>?) : RecyclerView.Adapter<MovieFragmentAdapter.ViewHolderData>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderData {
         val layoutInflater = LayoutInflater.from(context)
@@ -44,7 +45,7 @@ constructor(private val context: Context, private var movieData: List<com.gooner
         return movieData!!.size
     }
 
-    fun setData(movieDataList: List<com.gooner10.data.MovieItem>?) {
+    fun setData(movieDataList: List<MovieItem>?) {
         this.movieData = movieDataList
         notifyDataSetChanged()
     }

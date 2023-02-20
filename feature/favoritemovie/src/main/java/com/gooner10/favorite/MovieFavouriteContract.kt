@@ -1,6 +1,6 @@
 package com.gooner10.favorite
 
-import com.gooner10.data.MovieItem
+import com.gooner10.data.model.MovieItem
 
 /**
  * Contract for the favorite fragment

@@ -1,4 +1,6 @@
-package com.gooner10.data
+package com.gooner10.data.repository
+
+import com.gooner10.data.model.MovieItem
 
 /**
  * Access point for accessing movie data.

@@ -1,4 +1,4 @@
-package com.gooner10.data
+package com.gooner10.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

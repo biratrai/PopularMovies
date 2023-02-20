@@ -3,10 +3,11 @@ package com.gooner10.moviehome
 import android.os.AsyncTask
 import android.util.Log
 import androidx.lifecycle.*
-import com.gooner10.data.MovieItem
-import com.gooner10.data.MovieResponse
+import com.gooner10.data.model.MovieItem
+import com.gooner10.data.model.MovieResponse
 import com.gooner10.network.RetrofitPopularMoviesNetworkApi
 import com.gooner10.network.RetrofitServiceGenerator
+import com.gooner10.network.model.NetWorkMovieResponse
 //import hugo.weaving.DebugLog
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,8 +36,8 @@ class MovieViewModel : ViewModel(), LifecycleObserver {
 
         val call = RetrofitServiceGenerator.createService(RetrofitPopularMoviesNetworkApi::class.java)
                 .fetchMoviesByPopularity("popularity.desc", "530c5cfd24953abae83df3e614c6d774")
-        call.enqueue(object : Callback<MovieResponse> {
-            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
+        call.enqueue(object : Callback<NetWorkMovieResponse> {
+            override fun onResponse(call: Call<NetWorkMovieResponse>, response: Response<NetWorkMovieResponse>) {
                 Log.i(TAG, "onResponse: $response")
                 if (response.isSuccessful) {
                     Log.i(TAG, "onResponse: " + response.body()!!)
@@ -48,7 +49,7 @@ class MovieViewModel : ViewModel(), LifecycleObserver {
                 }
             }
 
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+            override fun onFailure(call: Call<NetWorkMovieResponse>, t: Throwable) {
                 Log.e(TAG, "onFailure: ", t)
             }
         })

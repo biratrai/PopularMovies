@@ -1,9 +1,8 @@
 package com.gooner10.network
 
-import com.gooner10.data.MovieItem
-import com.gooner10.data.MovieResponse
+import com.gooner10model.Movie
+import kotlinx.coroutines.flow.Flow
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -57,9 +56,8 @@ class RetrofitServiceGenerator private constructor() : PopularMoviesNetworkDataS
         }
     }
 
-    override suspend fun getPopularMovies(order: String): List<MovieItem> {
-//        return networkApi.fetchMoviesByPopularity(order, "530c5cfd24953abae83df3e614c6d774")
-        return emptyList()
+    override suspend fun getPopularMovies(order: String): List<Movie?>? {
+        return networkApi.getMoviesByPopularity(order, "530c5cfd24953abae83df3e614c6d774").data.movieList
     }
 
 }

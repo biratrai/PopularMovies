@@ -1,4 +1,4 @@
-package com.gooner10.data
+package com.gooner10.data.model
 
 import com.google.gson.annotations.SerializedName
 

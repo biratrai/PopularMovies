@@ -1,6 +1,5 @@
 package com.example.moviedetail
 
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
@@ -10,9 +9,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.gooner10.data.IMovieRepository
-import com.gooner10.data.MovieItem
-import com.gooner10.data.MovieRepositoryImpl
+import com.gooner10.data.model.MovieItem
+import com.gooner10.data.repository.IMovieRepository
+import com.gooner10.data.repository.MovieRepositoryImpl
 import com.gooner10.moviedetail.R
 import com.gooner10.moviedetail.databinding.ActivityMovieDetailBinding
 //import hugo.weaving.DebugLog

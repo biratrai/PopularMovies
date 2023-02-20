@@ -1,7 +1,10 @@
-package com.gooner10.data
+package com.gooner10.data.repository
 
 import android.content.Context
 import android.util.Log
+import com.gooner10.data.MovieDao
+import com.gooner10.data.MovieDatabase
+import com.gooner10.data.model.MovieItem
 
 /**
  * Repository class to handle moviedata

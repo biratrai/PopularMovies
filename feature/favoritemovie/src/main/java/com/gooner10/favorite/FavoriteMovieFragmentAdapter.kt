@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.gooner10.data.MovieItem
+import com.gooner10.data.model.MovieItem
 
 /**
  * Adapter for Favorite Movie Fragment
  */
 
-class FavoriteMovieFragmentAdapter(private val context: Context, private var movieData: List<com.gooner10.data.MovieItem>?) : RecyclerView.Adapter<FavoriteMovieFragmentAdapter.MovieFavoriteViewHolder>() {
+class FavoriteMovieFragmentAdapter(private val context: Context, private var movieData: List<MovieItem>?) : RecyclerView.Adapter<FavoriteMovieFragmentAdapter.MovieFavoriteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieFavoriteViewHolder {
         val layoutInflater = LayoutInflater.from(context)

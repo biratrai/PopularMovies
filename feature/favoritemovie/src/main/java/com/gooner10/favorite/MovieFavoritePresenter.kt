@@ -2,7 +2,7 @@ package com.gooner10.favorite
 
 import android.content.Context
 
-import com.gooner10.data.MovieRepositoryImpl
+import com.gooner10.data.repository.MovieRepositoryImpl
 
 /**
  * Presenter for the FavoriteFragment
